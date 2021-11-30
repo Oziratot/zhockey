@@ -1,0 +1,37 @@
+$font-family: 'Montserrat', sans-serif;
+
+$black: #474B54;
+$primary: #fa6900;
+
+$error: #ff1e31;
+$success: #06cf7f;
+$info: #3d5afe;
+$warning: #f5a623;
+
+$cubic-nikitosa: cubic-bezier(.25, .1, .25, 1);
+$trans-fast: .15s $cubic-nikitosa;
+$trans: .3s $cubic-nikitosa;
+$trans-semi-slow-duration: var(--trans-semi-slow-duration, 450ms);
+$trans-semi-slow: $trans-semi-slow-duration $cubic-nikitosa;
+$trans-slow: .6s $cubic-nikitosa;
+
+$laptopMaxWidth: 1679px;
+$tabletMaxWidth: 1023px;
+$mobileMaxWidth: 767px;
+$mobileSmallMaxWidth: 413px;
+
+$media-desktop: '(min-width: #{$laptopMaxWidth + 1})';
+$media-laptop-desktop: '(min-width: #{$tabletMaxWidth + 1})';
+$media-laptop: '(max-width: #{$laptopMaxWidth})';
+$media-laptop-only: '(min-width: #{$tabletMaxWidth + 1}) and (max-width: #{$laptopMaxWidth})';
+$media-tablet-laptop-desktop: '(min-width: #{$mobileMaxWidth + 1})';
+$media-tablet-laptop: '(min-width: #{$mobileMaxWidth + 1}) and (max-width: #{$laptopMaxWidth})';
+$media-tablet: '(max-width: #{$tabletMaxWidth})';
+$media-tablet-only: '(min-width: #{$mobileMaxWidth + 1}) and (max-width: #{$tabletMaxWidth})';
+$media-mobile: '(max-width: #{$mobileMaxWidth})';
+$media-mobile-small: '(max-width: #{$mobileSmallMaxWidth})';
+
+$sidebarWidth: 270px;
+$headerHeight: 60px;
+
+$themeChangeTrans: color $trans-fast, background-color $trans-fast, border-color $trans-fast, box-shadow $trans-fast;
