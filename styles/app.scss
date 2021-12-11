@@ -1,4 +1,10 @@
 @import "reset";
 @import "main";
+@import "fonts";
+@import "common";
 @import "../src/components/Header/header";
 @import "../src/components/Nav/nav";
+@import "../src/components/BookBar/bookbar";
+@import "../src/components/PriceTab/pricetab";
+@import "../src/components/PhotoSwiper/photoswiper.scss";
+@import "../src/components/MapModal/map-modal";

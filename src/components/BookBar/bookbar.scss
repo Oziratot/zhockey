@@ -1,0 +1,28 @@
+.bookbar {
+  width: 100%;
+  height: 150px;
+  background-color: #E16428;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.15);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  .bookbar-text {
+    font-size: 30px;
+    line-height: 1.2;
+    font-weight: 600;
+    color: #FFFFFF;
+    margin-right: 100px;
+  }
+
+  .bookbar-button {
+    cursor: pointer;
+    width: 345px;
+    height: 70px;
+    background-color: #FFFFFF;
+    font-size: 24px;
+    line-height: 1.3;
+    font-weight: 400;
+  }
+}
+

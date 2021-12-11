@@ -1,13 +1,22 @@
+@import "./styles/variables";
+
 .navigation {
   display: flex;
+  justify-content: space-between;
+  max-width: 643px;
+  width: 100%;
 
   .nav-link {
-    margin-right: 50px;
     color: white;
     text-decoration: none;
     font-size: 24px;
     line-height: 1.3;
     font-weight: 400;
+    transition: opacity $trans;
+
+    &:hover {
+      opacity: 0.6;
+    }
 
     &:last-of-type {
       margin-right: 0;
@@ -19,6 +28,7 @@
   display: flex;
 
   .social-links-item {
+    cursor: pointer;
     height: 40px;
     width: 40px;
     border-radius: 20px;

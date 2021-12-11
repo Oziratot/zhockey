@@ -6,14 +6,15 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  position: relative;
+  position: fixed;
   z-index: 2;
 
   .header-wrapper {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    width: 1440px;
+    max-width: 75%;
+    width: 100%;
   }
 
   .header-contacts {
@@ -23,6 +24,22 @@
     .phone-number {
       font-size: 24px;
       line-height: 28px;
+      margin-bottom: 10px;
+      font-weight: 400;
+    }
+
+    .header-button {
+      cursor: pointer;
+      background-color: #222222;
+      border: none;
+      color: #E16428;
+      font-size: 24px;
+      line-height: 28px;
+      transition: opacity $trans;
+
+      &:hover {
+        opacity: 0.6;
+      }
     }
   }
 

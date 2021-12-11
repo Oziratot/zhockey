@@ -13,7 +13,7 @@ export const NAVLINKS = [
     },
     {
         title: "Отзывы",
-        path: "#review",
+        path: "#reviews",
     },
     {
         title: "Контакты",

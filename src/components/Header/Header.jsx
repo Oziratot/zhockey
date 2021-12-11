@@ -10,7 +10,7 @@ function Header({props}) {
                 <Nav />
                 <div className="header-contacts">
                     <p className="phone-number">+7 916 079-12-14</p>
-                    <button type="button">Заказать звонок</button>
+                    <button type="button" className="header-button">Заказать звонок</button>
                 </div>
             </div>
         </header>

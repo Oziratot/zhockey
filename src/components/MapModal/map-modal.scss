@@ -1,0 +1,98 @@
+@import "../../../styles/variables";
+@import "../../../styles/mixins";
+
+.contacts-map-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1000;
+  overflow: hidden;
+  background-color: #fff;
+
+  &-enter {
+    opacity: 0;
+    transform: scale(.95);
+  }
+  &-enter-active {
+    opacity: 1;
+    transform: scale(1);
+    transition: opacity $trans-fast, transform $trans-fast;
+  }
+  &-exit {
+    opacity: 1;
+    transform: scale(1);
+  }
+  &-exit-active {
+    opacity: 0;
+    transform: scale(.95);
+    transition: opacity $trans-fast, transform $trans-fast;
+  }
+
+  .modal-gha-logo {
+    position: absolute;
+    width: 90px;
+    height: auto;
+    top: 21px;
+    left: 3.6%;
+    z-index: 10;
+    pointer-events: none;
+
+    @include tablet {
+      top: 26px;
+      left: 5%;
+    }
+
+    @include mobile {
+      top: 16px;
+      left: 5.5%;
+    }
+  }
+
+  .modal-close-btn {
+    @include button-reset;
+    position: absolute;
+    top: 16px;
+    right: 3.6%;
+    width: 28px;
+    height: 28px;
+    background-color: #fff;
+    z-index: 10;
+
+    @include tablet {
+      top: 21px;
+      right: 5%;
+    }
+
+    @include mobile {
+      top: 11px;
+      right: 5.5%;
+    }
+
+    &::before,
+    &::after {
+      content: '';
+      display: block;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 19px;
+      height: 1px;
+      background-color: #161616;
+    }
+
+    &::before {
+      transform: translate(-50%, -50%) rotate(45deg);
+    }
+
+    &::after {
+      transform: translate(-50%, -50%) rotate(-45deg);
+    }
+  }
+
+  .modal-map {
+    width: 100%;
+    height: 100%;
+  }
+}
