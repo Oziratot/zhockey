@@ -1,18 +1,18 @@
 import Slider from "react-slick";
-import { PHOTOS } from "../../constants/photos";
+import { REVIEWS } from "../../constants/reviews";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import NextIcon from "../../assets/svg/slider-arrow-right.svg";
 import PrevIcon from "../../assets/svg/slider-arrow-left.svg";
-
+// import Img1 from "assets/img/reviews/review.jpeg";
 
 const settings = {
-    className: "photo-slider",
+    className: "reviews-slider",
     centerMode: true,
     infinite: true,
     slidesToShow: 3,
     speed: 500,
-    centerPadding: "60px",
+    // centerPadding: "60px",
     nextArrow: <NextArrow />,
     prevArrow: <PrevArrow />,
 }
@@ -41,14 +41,29 @@ function PrevArrow(props) {
     );
 }
 
-function PhotoSwiper() {
+function ReviewsSwiper() {
     return (
-            <Slider {...settings}>
-                {PHOTOS.map((item) => (
-                    <img src={item.src} key={item.photo} />
-                ))}
-            </Slider>
+        <Slider {...settings}>
+            <div>
+                <img src="/assets/img/reviews/review.jpeg" />
+            </div>
+            <div>
+                <img src="/assets/img/reviews/review.jpeg" />
+            </div>
+            <div>
+                <img src="/assets/img/reviews/review.jpeg" />
+            </div>
+            <div>
+                <img src="/assets/img/reviews/review.jpeg" />
+            </div>
+            <div>
+                <img src="/assets/img/reviews/review.jpeg" />
+            </div>
+            <div>
+                <img src="/assets/img/reviews/review.jpeg" />
+            </div>
+        </Slider>
     )
 }
 
-export default PhotoSwiper;
+export default ReviewsSwiper;

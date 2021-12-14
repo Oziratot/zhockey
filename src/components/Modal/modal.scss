@@ -1,0 +1,186 @@
+@import "./styles/variables";
+@import "./styles/mixins";
+
+.ui-modal-open {
+  overflow: hidden;
+}
+
+.modal-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1;
+  background-color: rgba(0, 0, 0, 0.4);
+
+  &.ui-modal-transition {
+    &-enter {
+      opacity: 0;
+    }
+
+    &-enter-active {
+      opacity: 1;
+      transition: opacity $trans;
+    }
+
+    &-exit {
+      opacity: 1;
+    }
+
+    &-exit-active {
+      opacity: 0;
+      transition: opacity $trans;
+    }
+  }
+}
+
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  outline: 0;
+  z-index: 9999;
+  white-space: nowrap;
+  text-align: center;
+
+  &:before {
+    content: '';
+    display: inline-block;
+    vertical-align: middle;
+    height: 100%;
+  }
+
+  .ui-modal-open & {
+    overflow-x: hidden;
+    overflow-y: auto;
+  }
+
+  &.ui-modal-transition {
+    &-enter {
+      .modal-backdrop {
+        opacity: 0;
+      }
+      .modal-content {
+        opacity: 0;
+        transform: translateY(-15px) rotate(0.0001deg);
+      }
+    }
+    &-enter-active {
+      .modal-backdrop {
+        opacity: 1;
+        transition: opacity $trans;
+      }
+      .modal-content {
+        opacity: 1;
+        transform: translateY(0) rotate(0.0001deg);
+        transition: $trans;
+        transition-property: opacity, transform;
+      }
+    }
+    &-exit{
+      .modal-backdrop {
+        opacity: 1;
+      }
+      .modal-content {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+    &-exit-active {
+      .modal-backdrop {
+        opacity: 0;
+        transition: opacity $trans;
+      }
+      .modal-content {
+        opacity: 0;
+        transform: scale(0.95);
+        transition: $trans;
+        transition-property: opacity, transform;
+      }
+    }
+  }
+}
+
+.modal-content {
+  position: relative;
+  display: inline-block;
+  vertical-align: middle;
+  box-sizing: border-box;
+  text-align: left;
+  white-space: normal;
+  z-index: 2;
+  margin: 16px;
+  width: calc(100% - 32px);
+  max-width: 860px;
+  //width: 500px;
+  //margin: 10vh auto; // IE11 flex bug workaround
+  padding: 60px 105px;
+  border-radius: 4px;
+  background: #fff;
+  box-shadow: 0 16px 32px 0 rgba($black, 0.09);
+  will-change: transform;
+
+  @include mobile {
+    padding: 16px 16px 0;
+  }
+
+  &:focus {
+    outline: 0;
+  }
+}
+
+.modal-header {
+  text-align: center;
+  font-family: inherit;
+  font-size: 24px;
+  line-height: 29px;
+  font-weight: 600;
+  margin: 0 50px 30px 50px;
+
+  @include mobile {
+    font-size: 16px;
+    margin-bottom: 30px;
+  }
+}
+
+.modal-body {
+  font-family: inherit;
+  font-size: 18px;
+  line-height: 1.67;
+}
+
+.close-btn {
+  border-radius: 0;
+  box-shadow: none;
+  border: none;
+  outline: 0;
+  background: none;
+  cursor: pointer;
+  display: block;
+  position: absolute;
+  top: 10px;
+  right: 16px;
+  padding: 10px;
+
+  &:hover {
+    .close-icon {
+      opacity: .5;
+      transform: rotate(90deg);
+    }
+  }
+
+  @include mobile {
+    top: 5px;
+    right: 6px;
+  }
+
+  .close-icon {
+    display: block;
+    opacity: .25;
+    will-change: transform;
+    transition: transform $trans, opacity $trans;
+  }
+}

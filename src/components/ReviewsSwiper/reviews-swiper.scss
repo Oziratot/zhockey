@@ -1,0 +1,23 @@
+.reviews-slider {
+  .slick-list.slick-list {
+    overflow: visible;
+    position: relative;
+
+    .slick-slide {
+      position: relative;
+
+      &.slick-active {
+        width: auto;
+      }
+
+      &.slick-current {
+        transform: scale(1.06);
+        z-index: 5;
+
+        &:after {
+          opacity: 0;
+        }
+      }
+    }
+  }
+}

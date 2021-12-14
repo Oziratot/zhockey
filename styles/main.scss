@@ -129,12 +129,13 @@ html {
   .methodology-wrap {
     display: flex;
     align-items: center;
+    justify-content: space-between;
 
     .methodology-wrapper {
       display: flex;
       flex-direction: column;
       width: 637px;
-      padding-left: 75px;
+      padding-left: 20px;
 
       .methodology-title {
         position: relative;
@@ -225,6 +226,7 @@ html {
             font-size: 30px;
             line-height: 1.5;
             font-weight: 600;
+            margin-bottom: 0;
             transition: margin-bottom $trans;
           }
 
@@ -239,12 +241,19 @@ html {
         &._active {
           .directions-item {
             max-height: 260px;
-          }
+
+            .direction-item {
+              transform: translateY(0);
+              }
+            }
+
           .directions-direction {
             margin-bottom: 30px;
           }
+
           .directions-icon {
             transform: rotate(180deg);
+          }
           }
         }
 
@@ -262,8 +271,14 @@ html {
             line-height: 1.3;
             font-weight: 300;
             margin-bottom: 30px;
+            transform: translateY(350%);
           }
-        }
+
+          @for $i from 1 through 3 {
+            .direction-item:nth-child(#{$i}) {
+              transition: transform 0.2s + $i * 0.1 linear;
+            }
+          }
       }
     }
   }
@@ -271,15 +286,18 @@ html {
 
 .section-coach {
   background-color: #F5F3F1;
-  display: flex;
-  justify-content: center;
   padding: 74px 0;
+
+  .coach-wrapper {
+    display: flex;
+    justify-content: space-between;
+
+  }
 
   .coach-text {
     display: flex;
     flex-direction: column;
     max-width: 608px;
-    padding-right: 108px;
     justify-content: center;
 
     .coach-title {
@@ -328,7 +346,7 @@ html {
   align-items: center;
 
   .schedule-title {
-
+    text-align: center;
   }
 
   .schedule-wrapper {
@@ -336,14 +354,72 @@ html {
 
     .schedule-text {
       margin-left: 50px;
+      max-height: 387px;
+      align-self: center;
 
       .schedule-paragraph {
         font-size: 24px;
         line-height: 36px;
         font-weight: 300;
         max-width: 710px;
+        margin-bottom: 60px;
+      }
+
+      .schedule-table {
+        display: flex;
+        padding-right: 50px;
+        justify-content: space-between;
+        height: 225px;
+        padding-left: 35px;
+
+        .table-column {
+          display: flex;
+          flex-direction: column;
+          justify-content: space-between;
+
+          &.highlighted {
+            position: relative;
+
+            &::before {
+              position: absolute;
+              content: '';
+              border-left: 10px solid #ED652C;
+              left: -25px;
+              height: 60%;
+              bottom: 0;
+            }
+          }
+
+          &.centered {
+            align-items: center;
+          }
+
+          .table-header {
+            font-size: 30px;
+            line-height: 1.5;
+            font-weight: 400;
+          }
+
+          .table-text {
+            font-size: 30px;
+            line-height: 1.5;
+            font-weight: 300;
+          }
+        }
       }
     }
+  }
+}
+
+.section-reviews.section-reviews {
+  background-color: #F5F3F1;
+  display: block;
+
+  .reviews-title {
+    font-family: Montserrat;
+    font-size: 48px;
+    line-height: 59px;
+    font-weight: 800;
   }
 }
 
@@ -355,7 +431,7 @@ html {
   background-color: #FFFFFF;
 
   .price-title {
-
+    text-align: center;
   }
 
   .price-wrapper {
@@ -365,22 +441,20 @@ html {
 
 .section-promotion {
   padding: 128px 0;
-  display: flex;
-  justify-content: center;
   background-color: #F5F3F1;
+
+  .promotion-wrapper {
+    display: flex;
+    justify-content: space-between;
+  }
 
   .promotion-pics {
     width: 800px;
     display: flex;
     justify-content: space-between;
-
-    .promotion-image-first {
-      background-image: url("../src/assets/images/promotion-1.png");
-    }
   }
 
   .promotion-text {
-    margin-left: 141px;
 
     .promotion-title {
       margin-bottom: 30px;
@@ -419,13 +493,14 @@ html {
     }
 
     .faq-list {
+      width: 735px;
 
       .faq-list-item {
         cursor: pointer;
         margin-bottom: 50px;
         position: relative;
         color: #FFFFFF;
-        max-width: 735px;
+
 
         &._opened {
           .question-wrapper {
@@ -486,19 +561,23 @@ html {
 .section-photo.section-photo {
   background-color: #F5F3F1;
   display: block;
+  padding-bottom: 232px;
 
   .photo-title {
     text-align: center;
+    margin-bottom: 142px;
   }
 }
 
 .section-contacts {
   background-color: #222222;
-  display: flex;
-  justify-content: center;
+
+  .contacts-wrapper {
+    display: flex;
+    justify-content: space-between;
+  }
 
   .contacts-content {
-    margin-right: 72px;
     display: flex;
     flex-direction: column;
 

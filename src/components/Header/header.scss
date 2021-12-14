@@ -1,5 +1,4 @@
 .header {
-  min-height: 100px;
   width: 100%;
   background-color: #222222;
   box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
@@ -18,6 +17,8 @@
   }
 
   .header-contacts {
+    min-width: 175px;
+    margin-left: 15px;
     display: flex;
     flex-direction: column;
 
@@ -30,7 +31,7 @@
 
     .header-button {
       cursor: pointer;
-      background-color: #222222;
+      background-color: transparent;
       border: none;
       color: #E16428;
       font-size: 24px;
