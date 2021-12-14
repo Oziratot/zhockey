@@ -1,3 +1,5 @@
+@import "styles/mixins";
+
 .header {
   width: 100%;
   background-color: #222222;
@@ -6,18 +8,189 @@
   justify-content: center;
   align-items: center;
   position: fixed;
-  z-index: 2;
+  z-index: 3;
 
   .header-wrapper {
     display: flex;
     justify-content: space-between;
     align-items: center;
     max-width: 75%;
+    height: 100%;
     width: 100%;
+
+    @include landscape {
+      max-width: 90%;
+    }
+
+    @include header {
+      max-width: 100%;
+      padding: 0 40px;
+    }
+
+    .mobile-icons {
+      display: flex;
+      align-items: center;
+
+      .phone-icon {
+        margin-right: 50px;
+        opacity: 1;
+        transition: opacity $trans;
+
+        &.invisible {
+          opacity: 0;
+        }
+      }
+
+      .header-burger-menu {
+        width: 40px;
+        height: 25px;
+        position: relative;
+        -webkit-transform: rotate(0deg);
+        -moz-transform: rotate(0deg);
+        -o-transform: rotate(0deg);
+        transform: rotate(0deg);
+        -webkit-transition: .5s ease-in-out;
+        -moz-transition: .5s ease-in-out;
+        -o-transition: .5s ease-in-out;
+        transition: .5s ease-in-out;
+        cursor: pointer;
+      }
+
+      .header-burger-menu span {
+        display: block;
+        position: absolute;
+        height: 5px;
+        width: 100%;
+        background: #E16428;
+        opacity: 1;
+        left: 0;
+        -webkit-transform: rotate(0deg);
+        -moz-transform: rotate(0deg);
+        -o-transform: rotate(0deg);
+        transform: rotate(0deg);
+        -webkit-transition: .25s ease-in-out;
+        -moz-transition: .25s ease-in-out;
+        -o-transition: .25s ease-in-out;
+        transition: .25s ease-in-out;
+      }
+
+      .header-burger-menu.open span {
+        background: #B6B6B6;
+      }
+
+      .header-burger-menu span:nth-child(1) {
+        top: 0px;
+      }
+
+      .header-burger-menu span:nth-child(2) {
+        top: 10px;
+      }
+
+      .header-burger-menu span:nth-child(3) {
+        top: 20px;
+      }
+
+      .header-burger-menu.open span:nth-child(1) {
+        top: 10px;
+        -webkit-transform: rotate(135deg);
+        -moz-transform: rotate(135deg);
+        -o-transform: rotate(135deg);
+        transform: rotate(135deg);
+      }
+
+      .header-burger-menu.open span:nth-child(2) {
+        opacity: 0;
+        left: -60px;
+      }
+
+      .header-burger-menu.open span:nth-child(3) {
+        top: 10px;
+        -webkit-transform: rotate(-135deg);
+        -moz-transform: rotate(-135deg);
+        -o-transform: rotate(-135deg);
+        transform: rotate(-135deg);
+      }
+      }
+    }
+
+  .mobile-nav {
+    //width: 100%;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    z-index: 2;
+
+    &-enter {
+      opacity: 0;
+      transform: translateY(-100%);
+    }
+    &-enter-active {
+      opacity: 1;
+      transform: translateY(0);
+      transition: $trans-semi-slow;
+      transition-property: opacity, transform;
+    }
+
+    &-exit {
+      transform: translateY(0%);
+      opacity: 1;
+    }
+
+    &-exit-active {
+      opacity: 0;
+      transform: translateY(-50%);
+      transition: $trans-slow;
+      transition-property: opacity, transform;
+    }
+
+    .container {
+      display: flex;
+      flex-direction: column;
+
+      .nav-container {
+        height: 150px;
+        background-color: #FFFFFF;
+        box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.15);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .contacts-container {
+        background-color: #F5F3F1;
+        height: 150px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        .header-contacts {
+          margin-right: 100px;
+
+          .phone-number {
+            color: #222222;
+          }
+        }
+
+        .social-links {
+          .social-links-item {
+            width: 50px;
+            height: 50px;
+            border-radius: 50px;
+            margin-right: 25px;
+
+            svg {
+              transform: scale(1.18);
+            }
+          }
+        }
+      }
+    }
+  }
   }
 
   .header-contacts {
-    min-width: 175px;
+    width: 175px;
     margin-left: 15px;
     display: flex;
     flex-direction: column;
@@ -47,4 +220,4 @@
   .phone-number {
     color: #fff;
   }
-}
+

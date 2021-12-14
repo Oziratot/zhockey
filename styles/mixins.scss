@@ -20,6 +20,18 @@
   }
 }
 
+@mixin landscape {
+  @media #{$media-laptop-landscape} {
+    @content;
+  }
+}
+
+@mixin header {
+  @media #{$media-header-tablet} {
+    @content;
+  }
+}
+
 @mixin laptop-desktop {
   @media #{$media-laptop-desktop} {
     @content;

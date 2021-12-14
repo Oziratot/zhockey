@@ -16,11 +16,15 @@ $trans-semi-slow: $trans-semi-slow-duration $cubic-nikitosa;
 $trans-slow: .6s $cubic-nikitosa;
 
 $laptopMaxWidth: 1679px;
+$tabletLandscapeMaxWidth: 1439px;
+$headerTablet: 1099px;
 $tabletMaxWidth: 1023px;
 $mobileMaxWidth: 767px;
 $mobileSmallMaxWidth: 413px;
 
 $media-desktop: '(min-width: #{$laptopMaxWidth + 1})';
+$media-laptop-landscape: '(max-width: #{$tabletLandscapeMaxWidth + 1})';
+$media-header-tablet: '(max-width: #{$headerTablet + 1})';
 $media-laptop-desktop: '(min-width: #{$tabletMaxWidth + 1})';
 $media-laptop: '(max-width: #{$laptopMaxWidth})';
 $media-laptop-only: '(min-width: #{$tabletMaxWidth + 1}) and (max-width: #{$laptopMaxWidth})';

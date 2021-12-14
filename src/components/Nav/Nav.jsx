@@ -6,7 +6,7 @@ import WhatsappIcon from '../../assets/svg/social/whatsapp-logo.svg';
 import TelegramIcon from '../../assets/svg/social/telegram-logo.svg';
 
 
-function Nav() {
+function Nav({ mobile }) {
     return (
         <>
             <nav className="navigation">
@@ -16,11 +16,11 @@ function Nav() {
                     </Link>
                 ))}
             </nav>
-            <div className="social-links">
-                <div className="social-links-item"><InstagramIcon /></div>
-                <div className="social-links-item"><WhatsappIcon /></div>
-                <div className="social-links-item"><TelegramIcon /></div>
-            </div>
+            {!mobile && (<div className="social-links">
+                <div className="social-links-item"><InstagramIcon/></div>
+                <div className="social-links-item"><WhatsappIcon/></div>
+                <div className="social-links-item"><TelegramIcon/></div>
+            </div>)}
         </>
     );
 }
