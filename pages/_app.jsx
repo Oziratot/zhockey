@@ -1,5 +1,9 @@
+import 'react-phone-input-2/lib/bootstrap.css';
 import Head from 'next/head';
 import "../styles/app.scss";
+import "slick-carousel/slick/slick.scss";
+import "slick-carousel/slick/slick-theme.scss";
+
 
 
 const YMetrikaScript = {
@@ -95,6 +99,13 @@ function MyApp({ Component, pageProps }) {
                 <script type="text/javascript" dangerouslySetInnerHTML={FbPixelScript} />
               </>
           )}
+            <title>Хоккейная школа Z-Hockey</title>
+            <link rel="preload" href="/fonts/GillSans.woff2" as="font" crossOrigin="" />
+            <link rel="preload" href="/fonts/GillSans-Light.woff2" as="font" crossOrigin="" />
+            <link rel="preload" href="/fonts/montserrat-v14-latin_cyrillic-regular.woff2" as="font" crossOrigin="" />
+            <link rel="preload" href="/fonts/montserrat-v14-latin_cyrillic-italic.woff2" as="font" crossOrigin="" />
+            <link rel="preload" href="/fonts/montserrat-v14-latin_cyrillic-500.woff2" as="font" crossOrigin="" />
+            <link rel="preload" href="/fonts/montserrat-v14-latin_cyrillic-600.woff2" as="font" crossOrigin="" />
         </Head>
         <Component {...pageProps} />
       </>

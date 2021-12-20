@@ -22,9 +22,23 @@
       max-width: 90%;
     }
 
-    @include header {
+    @include tablet {
       max-width: 100%;
       padding: 0 40px;
+    }
+
+    @include mobile-small {
+      padding: 0 30px;
+    }
+
+    @include mobile-smallest {
+      padding: 0 15px;
+    }
+
+    .header-logo {
+      @include mobile-small {
+        transform: scale(0.7);
+      }
     }
 
     .mobile-icons {
@@ -35,6 +49,10 @@
         margin-right: 50px;
         opacity: 1;
         transition: opacity $trans;
+
+        @include mobile-small {
+          margin-right: 30px;
+        }
 
         &.invisible {
           opacity: 0;
@@ -155,6 +173,11 @@
         display: flex;
         justify-content: center;
         align-items: center;
+
+        @include mobile-small {
+          padding: 30px 0 10px 0;
+          height: auto;
+        }
       }
 
       .contacts-container {
@@ -164,11 +187,26 @@
         justify-content: center;
         align-items: center;
 
+        @include mobile-small {
+          flex-direction: column;
+          height: auto;
+          padding: 40px 0;
+        }
+
         .header-contacts {
           margin-right: 100px;
 
+          @include mobile-small {
+            margin: 0 0 30px 0;
+          }
+
           .phone-number {
             color: #222222;
+
+            @include mobile-smallest {
+              font-size: 18px;
+              text-align: center;
+            }
           }
         }
 
@@ -179,8 +217,21 @@
             border-radius: 50px;
             margin-right: 25px;
 
+            &:last-of-type {
+              margin: 0;
+            }
+
             svg {
               transform: scale(1.18);
+            }
+
+            @include mobile-smallest {
+              width: 40px;
+              height: 40px;
+              border-radius: 30px;
+              svg {
+                transform: scale(1);
+              }
             }
           }
         }
@@ -194,6 +245,7 @@
     margin-left: 15px;
     display: flex;
     flex-direction: column;
+    flex-shrink: 0;
 
     .phone-number {
       font-size: 24px;
@@ -210,6 +262,11 @@
       font-size: 24px;
       line-height: 28px;
       transition: opacity $trans;
+
+      @include mobile-smallest {
+        font-size: 18px;
+        line-height: 21px;
+      }
 
       &:hover {
         opacity: 0.6;

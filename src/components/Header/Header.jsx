@@ -36,9 +36,9 @@ function Header({ windowWidth }) {
         <header
             className="header"
             style={{
-                height: `${windowWidth >= 1100 ? height : 80}px`,
+                height: `${windowWidth >= 1024 ? height : 80}px`,
         }}>
-            {(windowWidth >= 1100) ? (<div className="header-wrapper">
+            {(windowWidth >= 1024) ? (<div className="header-wrapper">
                 <div className="header-logo">
                     <HeaderLogo/>
                 </div>

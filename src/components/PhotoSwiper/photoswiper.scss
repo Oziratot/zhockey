@@ -25,38 +25,38 @@
     }
   }
 
-  .slick-list.slick-list {
-    overflow: visible;
-    position: relative;
-
-    .slick-slide {
-      position: relative;
-
-      &.slick-active {
-        transform: scale(0.975);
-      }
-
-      &.slick-current {
-        transform: scale(1.25);
-        z-index: 5;
-
-        &:after {
-          opacity: 0;
-        }
-      }
-
-      &:after {
-        position: absolute;
-        top: 0;
-        left: 0;
-        content: '';
-        background: linear-gradient(0deg, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5));
-        opacity: 0.5;
-        width: 100%;
-        height: 100%;
-      }
-    }
-  }
+  //.slick-list.slick-list {
+  //  overflow: visible;
+  //  position: relative;
+  //
+  //  .slick-slide {
+  //    position: relative;
+  //
+  //    &.slick-active {
+  //      transform: scale(0.975);
+  //    }
+  //
+  //    &.slick-current {
+  //      transform: scale(1.25);
+  //      z-index: 5;
+  //
+  //      &:after {
+  //        opacity: 0;
+  //      }
+  //    }
+  //
+  //    &:after {
+  //      position: absolute;
+  //      top: 0;
+  //      left: 0;
+  //      content: '';
+  //      background: linear-gradient(0deg, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5));
+  //      opacity: 0.5;
+  //      width: 100%;
+  //      height: 100%;
+  //    }
+  //  }
+  //}
 }
 
 

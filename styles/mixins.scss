@@ -26,11 +26,11 @@
   }
 }
 
-@mixin header {
-  @media #{$media-header-tablet} {
-    @content;
-  }
-}
+//@mixin header {
+//  @media #{$media-header-tablet} {
+//    @content;
+//  }
+//}
 
 @mixin laptop-desktop {
   @media #{$media-laptop-desktop} {
@@ -82,6 +82,12 @@
 
 @mixin mobile-small {
   @media #{$media-mobile-small} {
+    @content;
+  }
+}
+
+@mixin mobile-smallest {
+  @media #{$media-mobile-smallest} {
     @content;
   }
 }

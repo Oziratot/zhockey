@@ -1,23 +1,21 @@
-.reviews-slider {
-  .slick-list.slick-list {
-    overflow: visible;
-    position: relative;
+.reviews-wrapper {
+  //max-width: 1080px;
+  display: flex;
+  justify-content: center;
+
+  .reviews-slider {
+    width: 1300px;
 
     .slick-slide {
-      position: relative;
-
-      &.slick-active {
-        width: auto;
-      }
+      margin-top: 30px;
+      display: flex;
+      justify-content: center;
 
       &.slick-current {
-        transform: scale(1.06);
-        z-index: 5;
-
-        &:after {
-          opacity: 0;
-        }
+        transform: scale(1.063);
+        padding-bottom: 18px;
       }
     }
   }
 }
+

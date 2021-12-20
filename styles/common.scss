@@ -1,5 +1,5 @@
 @import "variables";
-//@import "mixins";
+@import "mixins";
 
 :root {
   --dark-gray: #222222;
@@ -55,9 +55,17 @@ body {
   align-items: center;
   padding: 150px calc((75% - 1440px)/2);
 
+  @include tablet {
+    padding: 100px 0;
+  }
+
   .section-wrapper {
     max-width: 75%;
     width: 100%;
+
+    @include landscape {
+      max-width: 90%;
+    }
   }
 }
 
@@ -67,6 +75,12 @@ body {
   font-size: 48px;
   line-height: 1.2;
   font-weight: 800;
+
+  @include tablet {
+    font-size: 36px;
+    line-height: 44px;
+    margin-bottom: 50px;
+  }
 }
 
 .button-orange {

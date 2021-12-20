@@ -12,7 +12,7 @@ const settings = {
     infinite: true,
     slidesToShow: 3,
     speed: 500,
-    centerPadding: "60px",
+    centerPadding: "0px",
     nextArrow: <NextArrow />,
     prevArrow: <PrevArrow />,
 }
