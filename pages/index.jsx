@@ -29,6 +29,7 @@ import ReviewsSwiper from "../src/components/ReviewsSwiper/ReviewsSwiper";
 import Modal from "../src/components/Modal";
 import OrderCallFrom from "../src/components/OrderCallForm/OrederCallFrom";
 import YouTube from "react-youtube";
+import PriceSwiper from "../src/components/PriceSwiper/PriceSwiper";
 
 const ModalPortal = ({ children }) => {
     if (!process.browser) return null;
@@ -206,32 +207,22 @@ export default function Home() {
             </section>
 
             <section className="section section-reviews" id="reviews">
-                <h2 className="reviews-title">Отзывы</h2>
+                <h2 className="section-title reviews-title">Отзывы</h2>
                 <ReviewsSwiper />
             </section>
 
             <section className="section section-price">
                     <h2 className="section-title price-title">Стоимость</h2>
                     <div className="price-wrapper">
-                        {PRICE.map((item) => (
-                            <PriceTab
-                                key={item.price}
-                                type={item.type}
-                                format={item.format}
-                                duration={item.duration}
-                                list={item.items}
-                                price={item.price}
-                                note={item.note}
-                            />
-                        ))}
+                        <PriceSwiper />
                     </div>
             </section>
 
             <section className="section section-promotion">
                 <div className="section-wrapper promotion-wrapper">
                     <div className="promotion-pics">
-                        <Image src={FirstPromotionImage} />
-                        <Image src={SecondPromotionImage} />
+                        <img className="promotion-image" src="/assets/img/promotion-1.png" alt="promo picture" />
+                        <img className="promotion-image" src="/assets/img/promotion-2.png" alt="promo picture" />
                     </div>
                     <div className="promotion-text">
                         <h2 className="section-title promotion-title">Акция</h2>
@@ -284,7 +275,7 @@ export default function Home() {
                             <div className="social-links-item"><WhatsappIcon /></div>
                             <div className="social-links-item"><TelegramIcon /></div>
                         </div>
-                        <button className="button-orange contacts-button">Задать вопрос</button>
+                        <button className="button-orange contacts-button">Записаться</button>
                         <p className="contacts-address">Москва, ул. Новоостаповская д5с2</p>
                         <p className="contacts-requisites">ИП Гришатов Егор Александрович
                             ИНН 771894183640
