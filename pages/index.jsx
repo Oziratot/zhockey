@@ -49,13 +49,23 @@ export default function Home() {
     const [modalActive, setModalActive] = useState(false);
     const [orderCallModalActive, setlOrderCallModalActive] = useState(false);
     const [clientWindowWidth, setClientWindowWidth] = useState(false);
+    const [videoWidth, setVideoWidth] = useState(688);
     const handleMapModalOpen = useCallback(() => setModalActive(true), []);
     const handleModalClose = useCallback(() => setlOrderCallModalActive(false), []);
     const handleOrderCallClick = useCallback(() => setlOrderCallModalActive(true), []);
     const mapRef = useRef();
     useContactsMap(mapRef, true);
 
+    const opts = {
+        width: videoWidth.toString(),
+    }
+
+    console.log(videoWidth);
+
     const handleWidthChange = () => {
+        if (window.innerWidth < 769) {
+            setVideoWidth(window.innerWidth - 40);
+        }
         setClientWindowWidth(window.innerWidth);
     };
 
@@ -87,7 +97,7 @@ export default function Home() {
             </section>
 
             <section className="section section-advantages" id="about">
-                <div className="section-wrapper">
+                <div className="section-wrapper advantages-container">
                     <h2  className="section-title advantages-title">Преимущества тренировок в Z-hockey</h2>
                     <div className="advantages-wrapper">
                         <div className="advantages">
@@ -106,7 +116,7 @@ export default function Home() {
             <section className="section section-methodology">
                 <div className="section-wrapper">
                     <div className="methodology-wrap">
-                        <img className="methodology-image" src="/assets/img/methodology-height.jpeg" />
+                        <div className="methodology-image" />
                         <div className="methodology-wrapper">
                             <h2 className="section-title methodology-title">О методике</h2>
                             <p className="methodology-text">Меня зовут Егор Гришатов — я хоккейный тренер и агент, работаю с лигами США, Канады и Европы.</p>
