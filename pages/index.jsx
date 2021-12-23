@@ -60,8 +60,6 @@ export default function Home() {
         width: videoWidth.toString(),
     }
 
-    console.log(videoWidth);
-
     const handleWidthChange = () => {
         if (window.innerWidth < 769) {
             setVideoWidth(window.innerWidth - 40);
@@ -134,7 +132,7 @@ export default function Home() {
             <BookBar text="Запишитесь на первую тренировку со скидкой 50%" buttonText="Записаться" />
 
             <section className="section section-directions">
-                <div className="section-wrapper">
+                <div className="section-wrapper directions-container">
                     <div className="directions-wrapper">
                         <h2 className="section-title directions-title">Направленность тренировок</h2>
                         <ul className="directions-list">
@@ -167,6 +165,9 @@ export default function Home() {
                 <div className="section-wrapper coach-wrapper">
                     <div className="coach-text">
                         <h2 className="section-title coach-title">О тренере</h2>
+                        {clientWindowWidth <= 768 && (<div className="image-wrapper">
+                            <img className="coach-image" src="/assets/img/coach.jpeg"/>
+                        </div>)}
                         <p className="coach-paragraph coach-paragraph-bold">Гришатов Егор Александрович</p>
                         <p className="coach-paragraph">Тренерский стаж с 2016 года</p>
                         <p className="coach-paragraph">Высшее педагогическое образование РГСУ, специальность «Физическая культура и спорт»</p>
@@ -177,23 +178,26 @@ export default function Home() {
                             ))}
                         </ul>
                     </div>
-                    <div className="image-wrapper">
-                        <img className="coach-image" src="/assets/img/coach.jpeg" />
-                    </div>
+                    {clientWindowWidth > 768 && (<div className="image-wrapper">
+                        <img className="coach-image" src="/assets/img/coach.jpeg"/>
+                    </div>)}
                 </div>
             </section>
 
             <BookBar text="Получить консультацию тренера" buttonText="Получить" />
 
             <section className="section section-schedule" id="schedule">
-                <div className="section-wrapper">
+                <div className="section-wrapper schedule-container">
                     <h2 className="section-title schedule-title">Расписание</h2>
                     <div className="schedule-wrapper">
-                        <div className="schedule-image-container">
-                            <img className="schedule-image" src="/assets/img/schedule.jpeg" alt="hockey field" />
-                        </div>
+                        {clientWindowWidth > 768 && (<div className="schedule-image-container">
+                            <img className="schedule-image" src="/assets/img/schedule.jpeg" alt="hockey field"/>
+                        </div>)}
                         <div className="schedule-text">
                             <p className="schedule-paragraph">Тренировки проходят по адресу г. Москва, ул. Новоостаповская д5с2, ЛД «Морозово», каждую субботу и воскресенье</p>
+                            {clientWindowWidth <= 768 && (<div className="schedule-image-container">
+                                <img className="schedule-image" src="/assets/img/schedule.jpeg" alt="hockey field"/>
+                            </div>)}
                             <div className="schedule-table">
                                 <div className="table-column highlighted">
                                     <p className="table-header">День недели</p>
