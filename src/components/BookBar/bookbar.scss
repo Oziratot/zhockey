@@ -17,6 +17,14 @@
     padding: 30px 60px;
   }
 
+  @include mobile-small {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 30px;
+    height: auto;
+  }
+
   .bookbar-text {
     font-size: 30px;
     line-height: 1.2;
@@ -34,6 +42,12 @@
     @include mobile {
       max-width: 300px;
     }
+
+    @include mobile-small {
+      margin: 0 auto 20px;
+      text-align: center;
+      max-width: 100%;
+    }
   }
 
   .bookbar-button {
@@ -47,6 +61,10 @@
 
     @include mobile {
       width: 265px;
+    }
+
+    @include mobile-small {
+      width: 100%;
     }
   }
 }

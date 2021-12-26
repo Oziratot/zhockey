@@ -63,6 +63,14 @@ body {
     padding: 80px 40px;
   }
 
+  @include mobile-small {
+    padding: 80px 30px;
+  }
+
+  @include mobile-smallest {
+    padding: 50px 16px;
+  }
+
   .section-wrapper {
     max-width: 75%;
     width: 100%;
@@ -95,6 +103,16 @@ body {
     line-height: 39px;
     max-width: 540px;
     margin-bottom: 40px;
+  }
+
+  @include mobile-small {
+    margin-bottom: 40px;
+  }
+
+  @include mobile-smallest {
+    font-size: 22px;
+    line-height: 27px;
+    margin-bottom: 30px;
   }
 }
 

@@ -114,9 +114,10 @@ export default function Home() {
             <section className="section section-methodology">
                 <div className="section-wrapper">
                     <div className="methodology-wrap">
-                        <div className="methodology-image" />
+                        {clientWindowWidth > 768 && <div className="methodology-image"/>}
                         <div className="methodology-wrapper">
                             <h2 className="section-title methodology-title">О методике</h2>
+                            {clientWindowWidth <= 768 && <div className="methodology-image"/>}
                             <p className="methodology-text">Меня зовут Егор Гришатов — я хоккейный тренер и агент, работаю с лигами США, Канады и Европы.</p>
                             <p className="methodology-text">Моя авторская методика основана на актуальных требованиях современного хоккея — упор на игровые упражнения и комплексное развитие навыков как для защитников, так и для нападающих.</p>
                             <ul className="methodology-list">
@@ -234,13 +235,17 @@ export default function Home() {
 
             <section className="section section-promotion">
                 <div className="section-wrapper promotion-wrapper">
-                    <div className="promotion-pics">
-                        <img className="promotion-image" src="/assets/img/promotion-1.png" alt="promo picture" />
-                        <img className="promotion-image" src="/assets/img/promotion-2.png" alt="promo picture" />
-                    </div>
+                    {clientWindowWidth > 480 && <div className="promotion-pics">
+                        <img className="promotion-image" src="/assets/img/promotion-1.png" alt="promo picture"/>
+                        <img className="promotion-image" src="/assets/img/promotion-2.png" alt="promo picture"/>
+                    </div>}
                     <div className="promotion-text">
                         <h2 className="section-title promotion-title">Акция</h2>
                         <p className="promotion-paragraph">Получи в подарок майку и гамаши при покупке абонемента на 8 тренировок</p>
+                        {clientWindowWidth <= 480 && <div className="promotion-pics">
+                            <img className="promotion-image" src="/assets/img/promotion-1.png" alt="promo picture"/>
+                            <img className="promotion-image" src="/assets/img/promotion-2.png" alt="promo picture"/>
+                        </div>}
                         <button className="button-orange promotion-button">Получить</button>
                     </div>
                 </div>
@@ -289,18 +294,21 @@ export default function Home() {
                             <div className="social-links-item"><WhatsappIcon /></div>
                             <div className="social-links-item"><TelegramIcon /></div>
                         </div>
-                        <button className="button-orange contacts-button">Записаться</button>
+                        <button className="button-orange contacts-button">Задать вопрос</button>
                         <p className="contacts-address">Москва, ул. Новоостаповская д5с2</p>
+                        {clientWindowWidth <= 480 && <div className="contacts-ymap">
+                            <div className="static-map" ref={mapRef}/>
+                        </div>}
                         <p className="contacts-requisites">ИП Гришатов Егор Александрович
-                            ИНН 771894183640
+                            ИНН 771894183640<br />
                             ОГРН 317774600057720</p>
                         <Link href="#">
                             <a className="contacts-policy">Политика конфиденциальности</a>
                         </Link>
                     </div>
-                    <div className="contacts-ymap">
-                        <div className="static-map" ref={mapRef} />
-                    </div>
+                    {clientWindowWidth > 480 && <div className="contacts-ymap">
+                        <div className="static-map" ref={mapRef}/>
+                    </div>}
                     <ModalPortal>
                         <CSSTransition
                             classNames="contacts-map-modal"
