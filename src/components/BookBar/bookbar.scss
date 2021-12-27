@@ -25,6 +25,10 @@
     height: auto;
   }
 
+  @include mobile-smallest {
+    padding: 30px 16px
+  }
+
   .bookbar-text {
     font-size: 30px;
     line-height: 1.2;
@@ -48,6 +52,10 @@
       text-align: center;
       max-width: 100%;
     }
+
+    @include mobile-smallest {
+      font-size: 18px;
+    }
   }
 
   .bookbar-button {
@@ -65,6 +73,11 @@
 
     @include mobile-small {
       width: 100%;
+    }
+
+    @include mobile-smallest {
+      height: 55px;
+      font-size: 18px;
     }
   }
 }

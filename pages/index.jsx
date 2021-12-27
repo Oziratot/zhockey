@@ -6,7 +6,6 @@ import classnames from 'classnames';
 import { ADVANTAGES } from "../src/constants/advantages";
 import { METHODOLOGY } from "../src/constants/methodology";
 import { DIRECTIONS } from "../src/constants/directions";
-import { PRICE } from "../src/constants/price";
 import { FAQ } from "../src/constants/faq";
 import MarkerIcon from '../src/assets/svg/marker.svg'
 import CheckIcon from "../src/assets/svg/check.svg"
@@ -56,13 +55,9 @@ export default function Home() {
     const mapRef = useRef();
     useContactsMap(mapRef, true);
 
-    const opts = {
-        width: videoWidth.toString(),
-    }
-
     const handleWidthChange = () => {
-        if (window.innerWidth < 769) {
-            setVideoWidth(window.innerWidth - 40);
+        if (window.innerWidth <= 768) {
+            setVideoWidth(window.innerWidth - 80);
         }
         setClientWindowWidth(window.innerWidth);
     };
@@ -106,7 +101,7 @@ export default function Home() {
                                 </div>
                             ))}
                         </div>
-                        <YouTube className="advantages-video" videoId="IWTvgZVWeB4" opts={{ }} />
+                        <YouTube className="advantages-video" containerClassName={"advantages-video-container"} videoId="IWTvgZVWeB4" />
                     </div>
                 </div>
             </section>
@@ -118,11 +113,11 @@ export default function Home() {
                         <div className="methodology-wrapper">
                             <h2 className="section-title methodology-title">О методике</h2>
                             {clientWindowWidth <= 768 && <div className="methodology-image"/>}
-                            <p className="methodology-text">Меня зовут Егор Гришатов — я хоккейный тренер и агент, работаю с лигами США, Канады и Европы.</p>
-                            <p className="methodology-text">Моя авторская методика основана на актуальных требованиях современного хоккея — упор на игровые упражнения и комплексное развитие навыков как для защитников, так и для нападающих.</p>
+                            <p className="section-text methodology-text">Меня зовут Егор Гришатов — я хоккейный тренер и агент, работаю с лигами США, Канады и Европы.</p>
+                            <p className="section-text methodology-text">Моя авторская методика основана на актуальных требованиях современного хоккея — упор на игровые упражнения и комплексное развитие навыков как для защитников, так и для нападающих.</p>
                             <ul className="methodology-list">
                                 {METHODOLOGY.map((item) => (
-                                    <li className="methodology-item" key={item}>{item}</li>
+                                    <li className="section-text methodology-item" key={item}>{item}</li>
                                 ))}
                             </ul>
                         </div>
@@ -150,7 +145,7 @@ export default function Home() {
 
                                         <ul className="directions-item">
                                             {items.map((item) => (
-                                                <li className={classnames('direction-item', { _active: activeDirectionsItems[i] })} key={item} >
+                                                <li className={classnames('section-text direction-item', { _active: activeDirectionsItems[i] })} key={item} >
                                                     {item}
                                                 </li>
                                             ))}
@@ -169,13 +164,13 @@ export default function Home() {
                         {clientWindowWidth <= 768 && (<div className="image-wrapper">
                             <img className="coach-image" src="/assets/img/coach.jpeg"/>
                         </div>)}
-                        <p className="coach-paragraph coach-paragraph-bold">Гришатов Егор Александрович</p>
-                        <p className="coach-paragraph">Тренерский стаж с 2016 года</p>
-                        <p className="coach-paragraph">Высшее педагогическое образование РГСУ, специальность «Физическая культура и спорт»</p>
-                        <p className="coach-paragraph">Выступал за команды:</p>
+                        <p className="section-text coach-paragraph coach-paragraph-bold">Гришатов Егор Александрович</p>
+                        <p className="section-text coach-paragraph">Тренерский стаж с 2016 года</p>
+                        <p className="section-text coach-paragraph">Высшее педагогическое образование РГСУ, специальность «Физическая культура и спорт»</p>
+                        <p className="section-text coach-paragraph">Выступал за команды:</p>
                         <ul className="coach-teams">
                             {TEAMS.map((team) => (
-                                <li key={team} className="coach-team">{team}</li>
+                                <li key={team} className="section-text coach-team">{team}</li>
                             ))}
                         </ul>
                     </div>
@@ -195,7 +190,7 @@ export default function Home() {
                             <img className="schedule-image" src="/assets/img/schedule.jpeg" alt="hockey field"/>
                         </div>)}
                         <div className="schedule-text">
-                            <p className="schedule-paragraph">Тренировки проходят по адресу г. Москва, ул. Новоостаповская д5с2, ЛД «Морозово», каждую субботу и воскресенье</p>
+                            <p className="section-text schedule-paragraph">Тренировки проходят по адресу г. Москва, ул. Новоостаповская д5с2, ЛД «Морозово», каждую субботу и воскресенье</p>
                             {clientWindowWidth <= 768 && (<div className="schedule-image-container">
                                 <img className="schedule-image" src="/assets/img/schedule.jpeg" alt="hockey field"/>
                             </div>)}
@@ -241,7 +236,7 @@ export default function Home() {
                     </div>}
                     <div className="promotion-text">
                         <h2 className="section-title promotion-title">Акция</h2>
-                        <p className="promotion-paragraph">Получи в подарок майку и гамаши при покупке абонемента на 8 тренировок</p>
+                        <p className="section-text promotion-paragraph">Получи в подарок майку и гамаши при покупке абонемента на 8 тренировок</p>
                         {clientWindowWidth <= 480 && <div className="promotion-pics">
                             <img className="promotion-image" src="/assets/img/promotion-1.png" alt="promo picture"/>
                             <img className="promotion-image" src="/assets/img/promotion-2.png" alt="promo picture"/>

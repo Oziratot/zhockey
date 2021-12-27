@@ -82,6 +82,36 @@ body {
     @include mobile {
       max-width: 100%;
     }
+
+    .section-text.section-text.section-text.section-text {
+      @include mobile-smallest {
+        font-size: 18px;
+        line-height: 1.3;
+      }
+    }
+
+    .button-orange {
+      cursor: pointer;
+      background-color: #E16428;
+      border: none;
+      font-size: 24px;
+      line-height: 1.3;
+      color: #FFFFFF;
+      transition: background-color $trans;
+
+      @include mobile-smallest {
+        height: 55px;
+        font-size: 18px;
+      }
+
+      &:hover {
+        background-color: #FD8618;
+      }
+
+      &:active {
+        background-color: #9F3A0A;
+      }
+    }
   }
 }
 
@@ -116,20 +146,3 @@ body {
   }
 }
 
-.button-orange {
-  cursor: pointer;
-  background-color: #E16428;
-  border: none;
-  font-size: 24px;
-  line-height: 1.3;
-  color: #FFFFFF;
-  transition: background-color $trans;
-
-  &:hover {
-    background-color: #FD8618;
-  }
-
-  &:active {
-    background-color: #9F3A0A;
-  }
-}
