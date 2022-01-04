@@ -5,7 +5,6 @@ import "slick-carousel/slick/slick-theme.css";
 import NextIcon from "../../assets/svg/slider-arrow-right.svg";
 import PrevIcon from "../../assets/svg/slider-arrow-left.svg";
 
-
 const settings = {
     className: "photo-slider",
     centerMode: true,
@@ -15,6 +14,80 @@ const settings = {
     centerPadding: "0px",
     nextArrow: <NextArrow />,
     prevArrow: <PrevArrow />,
+    responsive: [
+        {
+            breakpoint: 1024,
+            settings: {
+                slidesToShow: 1,
+                centerMode: true,
+                centerPadding: "300px",
+            }
+        },
+        {
+            breakpoint: 900,
+            settings: {
+                slidesToShow: 1,
+                centerMode: true,
+                centerPadding: "220px",
+            }
+        },
+        {
+            breakpoint: 768,
+            settings: {
+                customPaging: function () {
+                    return (
+                        <div className="custom-dot" />
+                    )
+                },
+                dots: true,
+                slidesToShow: 1,
+                centerMode: true,
+                centerPadding: "150px",
+            }
+        },
+        {
+            breakpoint: 624,
+            settings: {
+                customPaging: function () {
+                    return (
+                        <div className="custom-dot" />
+                    )
+                },
+                dots: true,
+                slidesToShow: 1,
+                centerMode: true,
+                centerPadding: "100px",
+            }
+        },
+        {
+            breakpoint: 480,
+            settings: {
+                customPaging: function () {
+                    return (
+                        <div className="custom-dot" />
+                    )
+                },
+                dots: true,
+                slidesToShow: 1,
+                centerMode: true,
+                centerPadding: "80px",
+            }
+        },
+        {
+            breakpoint: 320,
+            settings: {
+                customPaging: function () {
+                    return (
+                        <div className="custom-dot" />
+                    )
+                },
+                dots: true,
+                slidesToShow: 1,
+                centerMode: true,
+                centerPadding: "50px",
+            }
+        },
+    ]
 }
 
 function NextArrow(props) {
@@ -45,7 +118,7 @@ function PhotoSwiper() {
     return (
             <Slider {...settings}>
                 {PHOTOS.map((item) => (
-                    <img src={item.src} key={item.photo} />
+                    <img className="photo-item" src={item.src} key={item.photo} />
                 ))}
             </Slider>
     )

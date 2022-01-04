@@ -1,12 +1,23 @@
 @import "./styles/variables";
+@import "./styles/mixins";
 
 .pricetab {
   width: 345px;
   height: 625px;
-  box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.15);
-  margin-right: 20px;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.15);
+  margin: 10px;
   display: flex;
   flex-direction: column;
+
+  @include tablet {
+    height: 558px;
+  }
+
+  @include mobile-smallest {
+    height: 390px;
+    width: 244px;
+    margin: 0;
+  }
 
   .pricetab-type {
     height: 100px;
@@ -18,6 +29,16 @@
     line-height: 1.3;
     font-weight: 400;
     color: #222222;
+
+    @include tablet {
+      height: 70px;
+      font-size: 24px;
+    }
+
+    @include mobile-smallest {
+      height: 50px;
+      font-size: 18px;
+    }
   }
 
   .pricetab-info {
@@ -26,6 +47,15 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+
+    @include tablet {
+      padding-top: 30px;
+      padding-bottom: 68px;
+    }
+
+    @include mobile-smallest {
+      padding: 15px 39px 36px 49px;
+    }
   }
 
   .pricetab-format {
@@ -33,6 +63,10 @@
     line-height: 1.3;
     font-weight: 400;
     color: #222222;
+
+    @include mobile-smallest {
+      font-size: 18px;
+    }
   }
 
   .pricetab-duration {
@@ -41,17 +75,40 @@
     font-size: 18px;
     line-height: 1.3;
     font-weight: 300;
+
+    @include mobile-smallest {
+      font-size: 12px;
+      margin-top: 5px;
+      margin-bottom: -22px;
+    }
   }
 
   .pricetab-items {
     list-style-type: disc;
     padding: 70px 0 38px 0;
 
+    @include tablet {
+      padding-bottom: 30px;
+    }
+
+    @include mobile-smallest {
+      padding: 36px 0 27px;
+    }
+
     .pricetab-item {
       font-size: 24px;
       line-height: 1.3;
       font-weight: 300;
       color: #222222;
+
+      @include mobile-smallest {
+        font-size: 18px;
+        margin-bottom: 15px;
+
+        &:last-of-type {
+          margin-bottom: 0;
+        }
+      }
     }
   }
 
@@ -61,6 +118,10 @@
     font-size: 36px;
     line-height: 1.3;
     font-weight: 600;
+
+    @include mobile-smallest {
+      font-size: 24px;
+    }
   }
 
   .pricetab-note {
@@ -68,6 +129,11 @@
     font-size: 18px;
     line-height: 1.3;
     font-weight: 300;
+
+    @include mobile-smallest {
+      font-size: 12px;
+      margin: 5px -20px -22px -20px;
+    }
   }
 
   .pricetab-btn {
@@ -80,6 +146,28 @@
     font-weight: 400;
     color: #222222;
     transition: background-color $trans;
+
+    @include tablet {
+      height: 70px;
+      font-size: 24px;
+      background-color: #E16428;
+      color: #FFFFFF;
+
+      &:hover {
+        background-color: #FD8618;
+        color: #FFFFFF;
+      }
+
+      &:active {
+        background-color: #9F3A0A;
+        color: #FFFFFF;
+      }
+    }
+
+    @include mobile-smallest {
+      height: 50px;
+      font-size: 18px;
+    }
 
     &:hover {
       background-color: #FD8618;

@@ -1,4 +1,3 @@
-import Head from 'next/head';
 import Link from "next/link";
 import Image from 'next/image'
 import Header from "../src/components/Header/Header";
@@ -48,7 +47,6 @@ export default function Home() {
     const [modalActive, setModalActive] = useState(false);
     const [orderCallModalActive, setlOrderCallModalActive] = useState(false);
     const [clientWindowWidth, setClientWindowWidth] = useState(false);
-    const [videoWidth, setVideoWidth] = useState(688);
     const handleMapModalOpen = useCallback(() => setModalActive(true), []);
     const handleModalClose = useCallback(() => setlOrderCallModalActive(false), []);
     const handleOrderCallClick = useCallback(() => setlOrderCallModalActive(true), []);
@@ -56,9 +54,6 @@ export default function Home() {
     useContactsMap(mapRef, true);
 
     const handleWidthChange = () => {
-        if (window.innerWidth <= 768) {
-            setVideoWidth(window.innerWidth - 80);
-        }
         setClientWindowWidth(window.innerWidth);
     };
 
@@ -145,7 +140,7 @@ export default function Home() {
 
                                         <ul className="directions-item">
                                             {items.map((item) => (
-                                                <li className={classnames('section-text direction-item', { _active: activeDirectionsItems[i] })} key={item} >
+                                                <li className={classnames('direction-item', { _active: activeDirectionsItems[i] })} key={item} >
                                                     {item}
                                                 </li>
                                             ))}
@@ -275,7 +270,7 @@ export default function Home() {
 
             <section className="section section-photo">
                 <h2 className="section-title photo-title">Фотогалерея</h2>
-                <PhotoSwiper />
+                <PhotoSwiper currentWidth={clientWindowWidth} />
             </section>
 
             <section className="section section-contacts" id="contacts">

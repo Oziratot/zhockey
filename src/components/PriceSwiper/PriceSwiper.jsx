@@ -1,44 +1,89 @@
 import Slider from "react-slick";
 import { PRICE } from "../../constants/price";
 import PriceTab from "../PriceTab/PriceTab";
+import NextIcon from "../../assets/svg/slider-arrow-right.svg";
+import PrevIcon from "../../assets/svg/slider-arrow-left.svg";
 
 const settings = {
-    dots: true,
     infinite: false,
     speed: 300,
     slidesToShow: 4,
     slidesToScroll: 4,
     responsive: [
         {
+            breakpoint: 1440,
+            settings: {
+                customPaging: function () {
+                    return (
+                        <div className="custom-dot" />
+                    )
+                },
+                dots: true,
+                slidesToShow: 2,
+                slidesToScroll: 1,
+                infinite: false,
+                nextArrow: <NextArrow />,
+                prevArrow: <PrevArrow />,
+            }
+        },
+        {
             breakpoint: 1024,
             settings: {
+                customPaging: function () {
+                    return (
+                        <div className="custom-dot" />
+                    )
+                },
+                dots: true,
                 slidesToShow: 2,
-                slidesToScroll: 2,
-                infinite: true,
-                dots: true
+                slidesToScroll: 1,
+                infinite: false,
+                nextArrow: <NextArrow />,
+                prevArrow: <PrevArrow />,
             }
         },
         {
-            breakpoint: 600,
+            breakpoint: 767,
             settings: {
-                slidesToShow: 2,
-                slidesToScroll: 2
-            }
-        },
-        {
-            breakpoint: 480,
-            settings: {
+                customPaging: function () {
+                    return (
+                        <div className="custom-dot" />
+                    )
+                },
+                dots: true,
                 slidesToShow: 1,
-                slidesToScroll: 1
+                slidesToScroll: 1,
+                infinite: false,
+                nextArrow: <NextArrow />,
+                prevArrow: <PrevArrow />,
             }
         }
-        // You can unslick at a given breakpoint now by adding:
-        // settings: "unslick"
-        // instead of a settings object
     ]
-    // nextArrow: <NextArrow />,
-    // prevArrow: <PrevArrow />,
 };
+
+function NextArrow(props) {
+    const { className, style, onClick } = props;
+    return (
+        <div
+            className={className}
+            onClick={onClick}
+        >
+            <NextIcon />
+        </div>
+    );
+}
+
+function PrevArrow(props) {
+    const { className, style, onClick } = props;
+    return (
+        <div
+            className={className}
+            onClick={onClick}
+        >
+            <PrevIcon />
+        </div>
+    );
+}
 
 function PriceSwiper() {
     return (

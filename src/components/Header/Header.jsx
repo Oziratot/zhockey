@@ -1,7 +1,6 @@
 import React, { useCallback, useEffect, useMemo, useState } from 'react';
 import HeaderLogo from '../../assets/svg/header-logo.svg';
 import PhoneIcon from "../../assets/svg/phone.svg";
-
 import Nav from "../Nav/Nav";
 import classnames from "classnames";
 import { CSSTransition } from "react-transition-group";
@@ -39,8 +38,8 @@ function Header({ windowWidth }) {
                 height: `${windowWidth >= 1024 ? height : 80}px`,
         }}>
             {(windowWidth >= 1024) ? (<div className="header-wrapper">
-                <div className="header-logo">
-                    <HeaderLogo/>
+                <div className="container">
+                    <HeaderLogo className="header-logo"/>
                 </div>
                 <Nav/>
                 <div className="header-contacts">
@@ -53,7 +52,7 @@ function Header({ windowWidth }) {
                         <div className="header-logo">
                             <HeaderLogo />
                         </div>
-                        <div className="mobile-icons">ч
+                        <div className="mobile-icons">
                             <div className={classnames('phone-icon', { invisible: menuOpened })}>
                                 <PhoneIcon />
                             </div>

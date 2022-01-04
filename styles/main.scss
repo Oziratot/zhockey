@@ -8,17 +8,22 @@ html {
 .section-main.section-main {
   display: flex;
   justify-content: center;
-  min-height: 800px;
   width: 100%;
   background-color: #222222;
   background-image: url('../src/assets/images/main-section-backround.jpeg');
   background-position: right;
   background-repeat: no-repeat;
 
+  @include tablet {
+    padding-top: 181px;
+    background-size: contain;
+  }
+
   @include mobile {
+    padding-top: 370px;
     align-items: flex-end;
-    min-height: 890px;
-    background: linear-gradient(0deg, #222222 12.48%, rgba(0, 0, 0, 0) 80.84%), url('../src/assets/images/main-section-backround.jpeg');
+    background-position: top;
+    background-image: url("../src/assets/images/main-section-backround-mobile.jpeg");
   }
 
   @include mobile-small {
@@ -385,12 +390,12 @@ html {
 
         @include tablet {
           margin-bottom: 30px;
-          margin-left: 30px;
+          padding-left: 25px;
         }
 
         @include mobile-small {
           margin-bottom: 40px;
-          margin-left: 18px;
+          padding-left: 18px;
         }
 
         @include mobile-smallest {
@@ -406,14 +411,17 @@ html {
           left: -25px;
           height: 100%;
 
+          @include tablet {
+            left: 0;
+          }
+
           @include mobile-small {
             border-left: 8px solid #ED652C;
-            left: -18px;
+            left: 0;
           }
 
           @include mobile-smallest {
             border-left: 6px solid #ED652C;
-            left: 0;
           }
         }
       }
@@ -490,6 +498,12 @@ html {
     background-size: 100% 332px;
   }
 
+  @include mobile-smallest {
+    padding-top: 181px;
+    background-size: contain;
+    min-height: auto;
+  }
+
   .directions-container {
     display: flex;
     align-items: flex-end;
@@ -522,6 +536,10 @@ html {
         padding-left: 18px;
       }
 
+      @include mobile-smallest {
+        padding-left: 11px;
+      }
+
       &::before {
         position: absolute;
         content: '';
@@ -531,6 +549,11 @@ html {
 
         @include mobile-small {
           border-left: 8px solid #ED652C;
+          left: 0;
+        }
+
+        @include mobile-smallest {
+          border-left: 6px solid #ED652C;
           left: 0;
         }
       }
@@ -545,6 +568,14 @@ html {
         color: #FFFFFF;
         cursor: pointer;
         margin-bottom: 50px;
+
+        &:last-of-type {
+          margin-bottom: 0;
+        }
+
+        @include mobile-smallest {
+          margin-bottom: 40px;
+        }
 
         .direction-wrap {
           display: flex;
@@ -563,6 +594,10 @@ html {
 
             @include mobile-small {
               font-size: 22px;
+            }
+
+            @include mobile-smallest {
+              font-size: 16px;
             }
           }
 
@@ -623,6 +658,10 @@ html {
             @include mobile-small {
               font-size: 22px;
               font-weight: normal;
+            }
+
+            @include mobile-smallest {
+              font-size: 16px;
             }
           }
 
@@ -697,8 +736,17 @@ html {
     .coach-title {
       position: relative;
 
+      @include tablet {
+        margin-bottom: 30px;
+        padding-left: 25px;
+      }
+
       @include mobile-small {
         padding-left: 18px;
+      }
+
+      @include mobile-smallest {
+        padding-left: 11px;
       }
 
       &::before {
@@ -708,9 +756,18 @@ html {
         height: 100%;
         position: absolute;
 
+        @include tablet {
+          left: 0;
+        }
+
         @include mobile-small {
           left: 0;
           border-left: 8px solid #ED652C;
+        }
+
+        @include mobile-smallest {
+          border-left: 6px solid #ED652C;
+          left: 0;
         }
       }
     }
@@ -720,6 +777,10 @@ html {
       font-size: 24px;
       line-height: 1.3;
       font-weight: 300;
+
+      @include tablet {
+        margin-bottom: 20px;
+      }
 
       @include mobile-small {
         margin-bottom: 20px;
@@ -796,6 +857,11 @@ html {
         max-height: 223px;
       }
 
+      @include mobile-smallest {
+        max-height: 153px;
+        margin-bottom: 30px;
+      }
+
       .schedule-image {
         width: 100%;
       }
@@ -822,6 +888,10 @@ html {
           text-align: center;
           margin-bottom: 40px;
         }
+
+        @include mobile-smallest {
+          margin-bottom: 30px;
+        }
       }
 
       .schedule-table {
@@ -834,6 +904,10 @@ html {
         @include mobile-small {
           padding: 0;
           height: 168px;
+        }
+
+        @include mobile-smallest {
+          height: 104px;
         }
 
         .table-column {
@@ -856,6 +930,11 @@ html {
                 border-left: 8px solid #ED652C;
                 left: -18px;
               }
+
+              @include mobile-smallest {
+                border-left: 6px solid #ED652C;
+                left: -11px;
+              }
             }
           }
 
@@ -871,6 +950,10 @@ html {
             @include tablet {
               font-size: 24px;
             }
+
+            @include mobile-smallest {
+              font-size: 16px;
+            }
           }
 
           .table-text {
@@ -881,6 +964,10 @@ html {
             @include tablet {
               font-size: 24px;
             }
+
+            @include mobile-smallest {
+              font-size: 16px;
+            }
           }
         }
       }
@@ -890,7 +977,15 @@ html {
 
 .section-reviews.section-reviews {
   background-color: #F5F3F1;
-  display: block;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-bottom: 104px;
+
+  @include mobile-small {
+    padding-right: 0;
+    padding-left: 0;
+  }
 
   .reviews-title {
     text-align: center;
@@ -1044,6 +1139,12 @@ html {
     background-image: url("../src/assets/images/ faq-mobile-s.jpeg");
   }
 
+  @include mobile-smallest {
+    background-image: url("../src/assets/images/faq-mobile-xs.jpeg");
+    background-size: contain;
+    padding: 169px 16px 50px;
+  }
+
   .faq-wrapper {
     display: flex;
     flex-direction: column;
@@ -1116,6 +1217,11 @@ html {
             border-left: 8px solid #ED652C;
             left: -18px;
           }
+
+          @include mobile-smallest {
+            border-left: 6px solid #ED652C;
+            left: -11px;
+          }
         }
 
         .question-wrapper {
@@ -1138,6 +1244,10 @@ html {
               padding-left: 0;
               font-size: 18px;
               max-width: 350px;
+            }
+
+            @include mobile-smallest {
+              max-width: 241px;
             }
           }
 
@@ -1167,6 +1277,10 @@ html {
             font-size: 18px;
             max-width: 350px;
           }
+
+          @include mobile-smallest {
+            max-width: 241px;
+          }
         }
       }
     }
@@ -1176,11 +1290,21 @@ html {
 .section-photo.section-photo {
   background-color: #F5F3F1;
   display: block;
-  padding-bottom: 232px;
+  //padding-bottom: 232px;
+  padding-left: 0;
+  padding-right: 0;
 
   .photo-title {
     text-align: center;
-    margin-bottom: 142px;
+    margin-bottom: 60px;
+
+    @include mobile-small {
+      margin-bottom: 40px;
+    }
+
+    @include mobile-smallest {
+      margin-bottom: 30px;
+    }
   }
 }
 
@@ -1199,6 +1323,10 @@ html {
 
   @include mobile-small {
     padding: 80px 30px;
+  }
+
+  @include mobile-smallest {
+    padding: 50px 16px;
   }
 
   .contacts-wrapper {
@@ -1254,6 +1382,10 @@ html {
         padding-left: 20px;
       }
 
+      @include mobile-smallest {
+        margin-bottom: 30px;
+      }
+
       &::before {
         position: absolute;
         content: '';
@@ -1280,6 +1412,10 @@ html {
 
       @include mobile-small {
         font-weight: normal;
+      }
+
+      @include mobile-smallest {
+        margin-bottom: 30px;
       }
     }
 
@@ -1328,6 +1464,10 @@ html {
         width: 320px;
       }
 
+      @include tablet {
+        margin-bottom: 50px;
+      }
+
       @include mobile {
         width: 265px;
         margin: 30px 0;
@@ -1336,6 +1476,11 @@ html {
       @include mobile-small {
         width: 100%;
         margin: 40px 0 80px;
+      }
+
+      @include mobile-smallest {
+        height: 55px;
+        margin: 30px 0 50px;
       }
     }
 
@@ -1359,6 +1504,11 @@ html {
 
       @include mobile-small {
         margin-bottom: 40px;
+      }
+
+      @include mobile-smallest {
+        font-size: 16px;
+        margin-bottom: 50px;
       }
     }
 
@@ -1386,6 +1536,10 @@ html {
         margin: 40px 0;
         text-align: center;
       }
+
+      @include mobile-smallest {
+        margin: 50px 0 30px;
+      }
     }
 
     .contacts-policy {
@@ -1396,6 +1550,10 @@ html {
       font-weight: normal;
       margin-top: auto;
       text-decoration: underline;
+
+      @include tablet {
+        font-size: 18px;
+      }
 
       @include mobile {
         font-size: 15px;
@@ -1423,6 +1581,10 @@ html {
     @include mobile-small {
       width: 100%;
       height: 241px;
+    }
+
+    @include mobile-smallest {
+      height: 165px;
     }
 
     .static-map {
