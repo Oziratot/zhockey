@@ -123,8 +123,19 @@
   box-shadow: 0 16px 32px 0 rgba($black, 0.09);
   will-change: transform;
 
-  @include mobile {
-    padding: 16px 16px 0;
+  @media screen and (max-width: 900px) {
+    max-width: 510px;
+    padding: 60px 55px;
+  }
+
+  @include mobile-small {
+    max-width: 420px;
+    padding: 46px 50px 60px;
+  }
+
+  @include mobile-smallest {
+    max-width: 288px;
+    padding: 50px 34px;
   }
 
   &:focus {
@@ -140,9 +151,20 @@
   font-weight: 600;
   margin: 0 50px 30px 50px;
 
-  @include mobile {
+  @media screen and (max-width: 900px) {
+    font-size: 20px;
+    line-height: 1.2;
+    margin: 0 0 40px 0;
+  }
+
+  @include mobile-small {
+    margin-bottom: 20px;
+  }
+
+  @include mobile-smallest {
     font-size: 16px;
-    margin-bottom: 30px;
+    line-height: 19px;
+    margin-bottom: 15px;
   }
 }
 
@@ -165,16 +187,15 @@
   right: 16px;
   padding: 10px;
 
+  @include mobile-smallest {
+    display: none;
+  }
+
   &:hover {
     .close-icon {
       opacity: .5;
       transform: rotate(90deg);
     }
-  }
-
-  @include mobile {
-    top: 5px;
-    right: 6px;
   }
 
   .close-icon {

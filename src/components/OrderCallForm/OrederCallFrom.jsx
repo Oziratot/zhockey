@@ -62,7 +62,7 @@ const OnlyTextInputComponent = ({
     );
 };
 
-function OrderCallFrom() {
+function OrderCallFrom({ clientWindowWidth }) {
     const [successfullySent, setSuccessfullySent] = useState(false);
     const formRef = useRef(null);
     const firstNameRef = useRef('');
@@ -78,8 +78,6 @@ function OrderCallFrom() {
         if (formRef.current['gha-a-n-t-i-s-p-a-m-f-i-e-l-d'].checked) {
             safeValues['gha-a-n-t-i-s-p-a-m-f-i-e-l-d'] = 1;
         }
-
-        console.log(formRef.current);
 
         firstNameRef.current = values.firstName;
 
@@ -136,13 +134,16 @@ function OrderCallFrom() {
                             <input type="checkbox" name="gha-a-n-t-i-s-p-a-m-f-i-e-l-d" value="1" style={{ display: 'none' }} tabIndex="-1" autoComplete="none" />
 
                             <div className="form-row consent-and-submit">
+                                {clientWindowWidth < 900 && <button className="form-button button-orange" disabled={!isValid || successfullySent}
+                                                                     type="submit">Записаться</button>}
                                 <div className="consent-personal-data-processing">
                                     <span>Нажимая на кнопку, вы даете согласие на обработку </span>
                                     <Link href="#">
                                         <a className="blue-link">персональных&nbsp;данных</a>
                                     </Link>
                                 </div>
-                                <button className="form-button button-orange" disabled={!isValid || successfullySent} type="submit">Записаться</button>
+                                {clientWindowWidth >= 900 && <button className="form-button button-orange" disabled={!isValid || successfullySent}
+                                         type="submit">Записаться</button>}
                             </div>
                         </form>
                     )}

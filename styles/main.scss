@@ -606,6 +606,10 @@ html {
             margin-left: auto;
             transform: rotate(0deg);
             transition: transform $trans;
+
+            @include mobile-smallest {
+              margin-top: 0;
+            }
           }
         }
 

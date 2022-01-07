@@ -52,7 +52,6 @@ export default function Home() {
     const handleOrderCallClick = useCallback(() => setlOrderCallModalActive(true), []);
     const mapRef = useRef();
     useContactsMap(mapRef, true);
-
     const handleWidthChange = () => {
         setClientWindowWidth(window.innerWidth);
     };
@@ -216,7 +215,7 @@ export default function Home() {
                 <ReviewsSwiper />
             </section>
 
-            <section className="section section-price">
+            <section className="section section-price" id="price">
                     <h2 className="section-title price-title">Стоимость</h2>
                     <div className="price-wrapper">
                         <PriceSwiper />
@@ -316,9 +315,9 @@ export default function Home() {
                         onClose={handleModalClose}
                         active={orderCallModalActive}
                         header="Оставьте ваш контакт — мы перезвоним и ответим на все вопросы"
-                        className="sdasd">
+                    >
                         <div>
-                            <OrderCallFrom />
+                            <OrderCallFrom clientWindowWidth={clientWindowWidth} />
                         </div>
                     </Modal>
                 </div>

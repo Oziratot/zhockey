@@ -102,6 +102,7 @@ function MyApp({ Component, pageProps }) {
             <title>Хоккейная школа Z-Hockey</title>
             <link rel="preload" href="/fonts/GillSans.woff2" as="font" crossOrigin="" />
             <link rel="preload" href="/fonts/GillSans-Light.woff2" as="font" crossOrigin="" />
+            <link rel="preload" href="/fonts/GillSans-SemiBold.woff2" as="font" crossOrigin="" />
             <link rel="preload" href="/fonts/montserrat-v14-latin_cyrillic-regular.woff2" as="font" crossOrigin="" />
             <link rel="preload" href="/fonts/montserrat-v14-latin_cyrillic-italic.woff2" as="font" crossOrigin="" />
             <link rel="preload" href="/fonts/montserrat-v14-latin_cyrillic-500.woff2" as="font" crossOrigin="" />
