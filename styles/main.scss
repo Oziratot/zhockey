@@ -1001,7 +1001,10 @@ html {
   flex-direction: column;
   align-items: center;
   background-color: #FFFFFF;
-  padding-bottom: 237px;
+
+  @include landscape {
+    padding-bottom: 237px;
+  }
 
   @include mobile {
     padding-bottom: 140px;
