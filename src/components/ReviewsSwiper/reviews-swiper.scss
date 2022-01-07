@@ -140,6 +140,8 @@
         height: 10px;
         background-color: #222222;
         margin-right: 20px;
+        transition: $trans;
+        transition-property: width, height, background-color;
 
         @include mobile-smallest {
           width: 7px;

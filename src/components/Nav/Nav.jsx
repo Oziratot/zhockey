@@ -5,14 +5,18 @@ import InstagramIcon from '../../assets/svg/social/instagram-logo.svg';
 import WhatsappIcon from '../../assets/svg/social/whatsapp-logo.svg';
 import TelegramIcon from '../../assets/svg/social/telegram-logo.svg';
 
-function Nav({ mobile }) {
+function Nav({ mobile, setMenuOpened }) {
+
+  const handleCloseClick = () => {
+    setMenuOpened(false);
+  };
 
     return (
         <>
             <nav className="navigation">
                 {NAVLINKS.map((link) => (
                     <Link href={`/${link.path}`} key={link.title}>
-                        <a className="nav-link">{link.title}</a>
+                        <a onClick={handleCloseClick} className="nav-link">{link.title}</a>
                     </Link>
                 ))}
             </nav>

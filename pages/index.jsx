@@ -13,7 +13,7 @@ import ScheduleImage from '../src/assets/images/schedule.jpeg';
 import FirstPromotionImage from '../src/assets/images/promotion-1.png';
 import SecondPromotionImage from '../src/assets/images/promotion-2.png';
 import BookBar from "../src/components/BookBar/BookBar";
-import { forwardRef, useCallback, useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import PhotoSwiper from "../src/components/PhotoSwiper/PhotoSwiper";
 import InstagramIcon from '../src/assets/svg/social/instagram-logo.svg';
 import WhatsappIcon from '../src/assets/svg/social/whatsapp-logo.svg';
@@ -94,8 +94,14 @@ export default function Home() {
                                 </div>
                             ))}
                         </div>
-                        <YouTube className="advantages-video" containerClassName={"advantages-video-container"} videoId="gmz0pxezzdA" />
-                        <div>жжж</div>
+                      <YouTube
+                        className="advantages-video"
+                        containerClassName={"advantages-video-container"}
+                        videoId="gmz0pxezzdA"
+                        opts={{ playerVars: { autohide: 0, showinfo: 0, rel: 0, modestbranding: 1, disablekb: 1, controls: 2, wmode: 'transparent', mode: 'opaque' } }}
+                      >
+                        <div className="custom-play-button">эээ</div>
+                      </YouTube>
                     </div>
                 </div>
             </section>

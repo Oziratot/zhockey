@@ -296,20 +296,12 @@ html {
          }
        }
 
-      //
-      //  @include tablet {
-      //    height: 307px;
-      //  }
-      //
-      //  @include mobile {
-      //    width: 100%;
-      //  }
-      //
-      //  @include mobile-smallest {
-      //    width: 100%;
-      //    height: 184px;
-      //  }
-      //}
+      .custom-play-button {
+        width: 100px;
+        height: 100px;
+        background-color: #00B6F0;
+        position: absolute;
+      }
     }
   }
 }

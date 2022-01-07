@@ -8,13 +8,24 @@ import InstagramIcon from "../../assets/svg/social/instagram-logo.svg";
 import WhatsappIcon from "../../assets/svg/social/whatsapp-logo.svg";
 import TelegramIcon from "../../assets/svg/social/telegram-logo.svg";
 import Link from 'next/link';
+import useYMetrika from '../../utils/hooks/useYMetrika';
+import useGTag from '../../utils/hooks/useGTag';
+import useFbPixel from '../../utils/hooks/useFbPixel';
 
 function Header({ windowWidth, orderCallClick }) {
 
     const [clientWindowHeight, setClientWindowHeight] = useState(false);
     const [menuOpened, setMenuOpened] = useState(false);
     const [height, setHeight] = useState(100);
+    const ym = useYMetrika();
+    const gtag = useGTag();
+    const fbq = useFbPixel();
 
+  const handlePhoneClick = useCallback(() => {
+    ym('reachGoal', 'TEL_CLICKED');
+    gtag('event', 'TEL_CLICKED');
+    fbq('track', 'TEL_CLICKED');
+  }, []);
 
     const handleScroll = () => {
         setClientWindowHeight(window.scrollY);
@@ -42,7 +53,7 @@ function Header({ windowWidth, orderCallClick }) {
                 <div className="container">
                     <HeaderLogo className="header-logo"/>
                 </div>
-                <Nav/>
+                <Nav setMenuOpened={setMenuOpened} />
                 <div className="header-contacts">
                     <a href="tel:79160791214" className="phone-number">+7 916 079-12-14</a>
                     <button onClick={orderCallClick} type="button" className="header-button">Заказать звонок</button>
@@ -55,7 +66,7 @@ function Header({ windowWidth, orderCallClick }) {
                         </div>
                         <div className="mobile-icons">
                             <div className={classnames('phone-icon', { invisible: menuOpened })}>
-                                <a href="tel:79160791214">
+                                <a onClick={handlePhoneClick} href="tel:79160791214">
                                   <PhoneIcon />
                                 </a>
                             </div>
@@ -79,11 +90,11 @@ function Header({ windowWidth, orderCallClick }) {
                         <div className="mobile-nav">
                             <div className="container">
                                 <div className="nav-container">
-                                    <Nav mobile />
+                                    <Nav mobile setMenuOpened={setMenuOpened} />
                                 </div>
                                 <div className="contacts-container">
                                     <div className="header-contacts">
-                                        <a href="tel:79160791214" className="phone-number">+7 916 079-12-14</a>
+                                        <a onClick={handlePhoneClick} href="tel:79160791214" className="phone-number">+7 916 079-12-14</a>
                                         <button onClick={orderCallClick} type="button" className="header-button">Заказать звонок</button>
                                     </div>
                                     <div className="social-links">
