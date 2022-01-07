@@ -7,8 +7,9 @@ import { CSSTransition } from "react-transition-group";
 import InstagramIcon from "../../assets/svg/social/instagram-logo.svg";
 import WhatsappIcon from "../../assets/svg/social/whatsapp-logo.svg";
 import TelegramIcon from "../../assets/svg/social/telegram-logo.svg";
+import Link from 'next/link';
 
-function Header({ windowWidth }) {
+function Header({ windowWidth, orderCallClick }) {
 
     const [clientWindowHeight, setClientWindowHeight] = useState(false);
     const [menuOpened, setMenuOpened] = useState(false);
@@ -43,8 +44,8 @@ function Header({ windowWidth }) {
                 </div>
                 <Nav/>
                 <div className="header-contacts">
-                    <p className="phone-number">+7 916 079-12-14</p>
-                    <button type="button" className="header-button">Заказать звонок</button>
+                    <a href="tel:79160791214" className="phone-number">+7 916 079-12-14</a>
+                    <button onClick={orderCallClick} type="button" className="header-button">Заказать звонок</button>
                 </div>
             </div>) : (
                 <>
@@ -54,7 +55,9 @@ function Header({ windowWidth }) {
                         </div>
                         <div className="mobile-icons">
                             <div className={classnames('phone-icon', { invisible: menuOpened })}>
-                                <PhoneIcon />
+                                <a href="tel:79160791214">
+                                  <PhoneIcon />
+                                </a>
                             </div>
                             <div
                                 className={classnames('header-burger-menu', { open: menuOpened})}
@@ -80,13 +83,19 @@ function Header({ windowWidth }) {
                                 </div>
                                 <div className="contacts-container">
                                     <div className="header-contacts">
-                                        <p className="phone-number">+7 916 079-12-14</p>
-                                        <button type="button" className="header-button">Заказать звонок</button>
+                                        <a href="tel:79160791214" className="phone-number">+7 916 079-12-14</a>
+                                        <button onClick={orderCallClick} type="button" className="header-button">Заказать звонок</button>
                                     </div>
                                     <div className="social-links">
-                                        <div className="social-links-item"><InstagramIcon /></div>
-                                        <div className="social-links-item"><WhatsappIcon /></div>
-                                        <div className="social-links-item"><TelegramIcon /></div>
+                                      <Link href="https://www.instagram.com/z_hockey_/" target="_blank">
+                                        <div className="social-links-item"><InstagramIcon/></div>
+                                      </Link>
+                                      <Link href="https://wa.me/79160791214">
+                                        <div className="social-links-item"><WhatsappIcon/></div>
+                                      </Link>
+                                      <Link href="https://t.me/GHA_hockey">
+                                        <div className="social-links-item"><TelegramIcon/></div>
+                                      </Link>
                                     </div>
                                 </div>
                             </div>

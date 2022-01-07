@@ -85,11 +85,12 @@ function PrevArrow(props) {
     );
 }
 
-function PriceSwiper() {
+function PriceSwiper({ orderCallClick }) {
     return (
         <Slider {...settings}>
             {PRICE.map((item) => (
                 <PriceTab
+                    orderCallClick={orderCallClick}
                     key={item.price}
                     type={item.type}
                     format={item.format}

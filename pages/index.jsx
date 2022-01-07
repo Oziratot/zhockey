@@ -14,7 +14,6 @@ import FirstPromotionImage from '../src/assets/images/promotion-1.png';
 import SecondPromotionImage from '../src/assets/images/promotion-2.png';
 import BookBar from "../src/components/BookBar/BookBar";
 import { forwardRef, useCallback, useEffect, useRef, useState } from "react";
-import PriceTab from "../src/components/PriceTab/PriceTab";
 import PhotoSwiper from "../src/components/PhotoSwiper/PhotoSwiper";
 import InstagramIcon from '../src/assets/svg/social/instagram-logo.svg';
 import WhatsappIcon from '../src/assets/svg/social/whatsapp-logo.svg';
@@ -69,7 +68,7 @@ export default function Home() {
 
     return (
     <>
-        <Header windowWidth={clientWindowWidth}/>
+        <Header orderCallClick={handleOrderCallClick} windowWidth={clientWindowWidth}/>
         <main>
             <section className="section section-main">
                 <div className="section-wrapper main-wrapper">
@@ -85,7 +84,7 @@ export default function Home() {
 
             <section className="section section-advantages" id="about">
                 <div className="section-wrapper advantages-container">
-                    <h2  className="section-title advantages-title">Преимущества тренировок в Z-hockey</h2>
+                    <h2  className="section-title advantages-title">Преимущества тренировок в Z-Hockey</h2>
                     <div className="advantages-wrapper">
                         <div className="advantages">
                             {ADVANTAGES.map((item) => (
@@ -95,7 +94,8 @@ export default function Home() {
                                 </div>
                             ))}
                         </div>
-                        <YouTube className="advantages-video" containerClassName={"advantages-video-container"} videoId="IWTvgZVWeB4" />
+                        <YouTube className="advantages-video" containerClassName={"advantages-video-container"} videoId="gmz0pxezzdA" />
+                        <div>жжж</div>
                     </div>
                 </div>
             </section>
@@ -119,7 +119,7 @@ export default function Home() {
                 </div>
             </section>
 
-            <BookBar text="Запишитесь на первую тренировку со скидкой 50%" buttonText="Записаться" />
+            <BookBar orderCallClick={handleOrderCallClick} text="Запишитесь на первую тренировку со скидкой 50%" buttonText="Записаться" />
 
             <section className="section section-directions">
                 <div className="section-wrapper directions-container">
@@ -174,7 +174,7 @@ export default function Home() {
                 </div>
             </section>
 
-            <BookBar text="Получить консультацию тренера" buttonText="Получить" />
+            <BookBar orderCallClick={handleOrderCallClick} text="Получить консультацию тренера" buttonText="Получить" />
 
             <section className="section section-schedule" id="schedule">
                 <div className="section-wrapper schedule-container">
@@ -218,7 +218,7 @@ export default function Home() {
             <section className="section section-price" id="price">
                     <h2 className="section-title price-title">Стоимость</h2>
                     <div className="price-wrapper">
-                        <PriceSwiper />
+                        <PriceSwiper orderCallClick={handleOrderCallClick} />
                     </div>
             </section>
 
@@ -235,7 +235,7 @@ export default function Home() {
                             <img className="promotion-image" src="/assets/img/promotion-1.png" alt="promo picture"/>
                             <img className="promotion-image" src="/assets/img/promotion-2.png" alt="promo picture"/>
                         </div>}
-                        <button className="button-orange promotion-button">Получить</button>
+                        <button onClick={handleOrderCallClick} className="button-orange promotion-button">Получить</button>
                     </div>
                 </div>
             </section>
@@ -279,11 +279,17 @@ export default function Home() {
                         <p className="contacts-text">Свяжитесь с нами</p>
                         <p className="contacts-tel">+7 916 079-12-14</p>
                         <div className="social-links">
+                          <Link href="https://www.instagram.com/z_hockey_/" target="_blank">
                             <div className="social-links-item"><InstagramIcon /></div>
+                          </Link>
+                          <Link href="https://wa.me/79160791214">
                             <div className="social-links-item"><WhatsappIcon /></div>
+                          </Link>
+                          <Link href="https://t.me/GHA_hockey">
                             <div className="social-links-item"><TelegramIcon /></div>
+                          </Link>
                         </div>
-                        <button className="button-orange contacts-button">Задать вопрос</button>
+                        <button onClick={handleOrderCallClick} className="button-orange contacts-button">Задать вопрос</button>
                         <p className="contacts-address">Москва, ул. Новоостаповская д5с2</p>
                         {clientWindowWidth <= 480 && <div className="contacts-ymap">
                             <div className="static-map" ref={mapRef}/>

@@ -1,6 +1,6 @@
 import React from 'react';
 
-function PriceTab({ type, format, duration, list, price, note }) {
+function PriceTab({ type, format, duration, list, price, note, orderCallClick }) {
     return (
         <div className="pricetab">
             <div className="pricetab-type">{type}</div>
@@ -15,7 +15,7 @@ function PriceTab({ type, format, duration, list, price, note }) {
                 <div className="pricetab-price">{price}</div>
                 {note && <div className="pricetab-note">{note}</div> }
             </div>
-            <button className="pricetab-btn">Записаться</button>
+            <button onClick={orderCallClick} className="pricetab-btn">Записаться</button>
         </div>
     )
 }

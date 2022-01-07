@@ -5,8 +5,8 @@ import InstagramIcon from '../../assets/svg/social/instagram-logo.svg';
 import WhatsappIcon from '../../assets/svg/social/whatsapp-logo.svg';
 import TelegramIcon from '../../assets/svg/social/telegram-logo.svg';
 
-
 function Nav({ mobile }) {
+
     return (
         <>
             <nav className="navigation">
@@ -17,9 +17,15 @@ function Nav({ mobile }) {
                 ))}
             </nav>
             {!mobile && (<div className="social-links">
-                <div className="social-links-item"><InstagramIcon/></div>
-                <div className="social-links-item"><WhatsappIcon/></div>
-                <div className="social-links-item"><TelegramIcon/></div>
+                <Link href="https://www.instagram.com/z_hockey_/" target="_blank">
+                  <div className="social-links-item"><InstagramIcon/></div>
+                </Link>
+                <Link href="https://wa.me/79160791214">
+                  <div className="social-links-item"><WhatsappIcon/></div>
+                </Link>
+                <Link href="https://t.me/GHA_hockey">
+                  <div className="social-links-item"><TelegramIcon/></div>
+                </Link>
             </div>)}
         </>
     );
