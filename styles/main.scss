@@ -996,12 +996,20 @@ html {
   }
 }
 
-.section-price {
+.section-price.section-price {
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 150px 0;
   background-color: #FFFFFF;
+  padding-bottom: 237px;
+
+  @include mobile {
+    padding-bottom: 140px;
+  }
+
+  @include mobile-smallest {
+    padding-bottom: 94px;
+  }
 
   .price-title {
     text-align: center;

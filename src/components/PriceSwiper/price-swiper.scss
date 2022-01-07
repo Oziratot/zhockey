@@ -43,6 +43,11 @@
       @include tablet {
         width: 60px;
         height: 60px;
+      }
+
+      @include mobile-small {
+        width: 60px;
+        height: 60px;
 
         svg {
           transform: scale(0.8);
@@ -84,7 +89,7 @@
     }
 
     .slick-dots {
-      position: relative;
+      //position: relative;
       bottom: auto;
       margin-top: 115px;
       display: flex !important;
