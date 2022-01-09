@@ -62,7 +62,7 @@ const OnlyTextInputComponent = ({
     );
 };
 
-function OrderCallFrom({ clientWindowWidth }) {
+function OrderCallFrom({ clientWindowWidth, handleModalClose }) {
     const [successfullySent, setSuccessfullySent] = useState(false);
     const formRef = useRef(null);
     const firstNameRef = useRef('');
@@ -138,8 +138,8 @@ function OrderCallFrom({ clientWindowWidth }) {
                                                                      type="submit">Записаться</button>}
                                 <div className="consent-personal-data-processing">
                                     <span>Нажимая на кнопку, вы даете согласие на обработку </span>
-                                    <Link href="#">
-                                        <a className="blue-link">персональных&nbsp;данных</a>
+                                    <Link href="/legal/agreement">
+                                        <a onClick={handleModalClose} className="blue-link">персональных&nbsp;данных</a>
                                     </Link>
                                 </div>
                                 {clientWindowWidth >= 900 && <button className="form-button button-orange" disabled={!isValid || successfullySent}

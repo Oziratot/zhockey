@@ -1,6 +1,5 @@
 import Link from "next/link";
 import Image from 'next/image'
-import Header from "../src/components/Header/Header";
 import classnames from 'classnames';
 import { ADVANTAGES } from "../src/constants/advantages";
 import { METHODOLOGY } from "../src/constants/methodology";
@@ -40,36 +39,16 @@ const TEAMS = [
     "Colborne Chiefs GMHL, Канада",
 ];
 
-export default function Home() {
+export default function Home({ clientWindowWidth, handleModalClose, orderCallModalActive, handleOrderCallClick }) {
     const [activeDirectionsItems, setActiveDirectionsItems] = useState({ 0: true });
     const [activeFaqItem, setActiveFaqItem] = useState({ 0: true });
     const [modalActive, setModalActive] = useState(false);
-    const [orderCallModalActive, setlOrderCallModalActive] = useState(false);
-    const [clientWindowWidth, setClientWindowWidth] = useState(false);
     const handleMapModalOpen = useCallback(() => setModalActive(true), []);
-    const handleModalClose = useCallback(() => setlOrderCallModalActive(false), []);
-    const handleOrderCallClick = useCallback(() => setlOrderCallModalActive(true), []);
     const mapRef = useRef();
     useContactsMap(mapRef, true);
-    const handleWidthChange = () => {
-        setClientWindowWidth(window.innerWidth);
-    };
-
-    useEffect(() => {
-        if (typeof window !== 'undefined') {
-            setClientWindowWidth(window.innerWidth);
-        }
-    },[]);
-
-    useEffect(() => {
-        window.addEventListener("resize", handleWidthChange);
-        return () => window.removeEventListener("resize", handleWidthChange);
-    });
 
     return (
-    <>
-        <Header orderCallClick={handleOrderCallClick} windowWidth={clientWindowWidth}/>
-        <main>
+        <>
             <section className="section section-main">
                 <div className="section-wrapper main-wrapper">
                     <div className="address-wrapper">
@@ -285,13 +264,13 @@ export default function Home() {
                         <p className="contacts-text">Свяжитесь с нами</p>
                         <p className="contacts-tel">+7 916 079-12-14</p>
                         <div className="social-links">
-                          <Link href="https://www.instagram.com/z_hockey_/" target="_blank">
+                          <Link passHref href="https://www.instagram.com/z_hockey_/" target="_blank">
                             <div className="social-links-item"><InstagramIcon /></div>
                           </Link>
-                          <Link href="https://wa.me/79160791214">
+                          <Link passHref href="https://wa.me/79160791214">
                             <div className="social-links-item"><WhatsappIcon /></div>
                           </Link>
-                          <Link href="https://t.me/GHA_hockey">
+                          <Link passHref href="https://t.me/GHA_hockey">
                             <div className="social-links-item"><TelegramIcon /></div>
                           </Link>
                         </div>
@@ -303,7 +282,7 @@ export default function Home() {
                         <p className="contacts-requisites">ИП Гришатов Егор Александрович
                             ИНН 771894183640<br />
                             ОГРН 317774600057720</p>
-                        <Link href="#">
+                        <Link href="/legal/policy">
                             <a className="contacts-policy">Политика конфиденциальности</a>
                         </Link>
                     </div>
@@ -329,13 +308,11 @@ export default function Home() {
                         header="Оставьте ваш контакт — мы перезвоним и ответим на все вопросы"
                     >
                         <div>
-                            <OrderCallFrom clientWindowWidth={clientWindowWidth} />
+                            <OrderCallFrom handleModalClose={handleModalClose} clientWindowWidth={clientWindowWidth} />
                         </div>
                     </Modal>
                 </div>
             </section>
-
-        </main>
-    </>
+        </>
   )
 }

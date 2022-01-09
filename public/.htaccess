@@ -34,10 +34,10 @@ RewriteCond %{HTTP_HOST} ^([^www].*)$
 RewriteRule ^(.*)\/$ https://%1/$1 [L,R=301]
 
 RewriteCond %{THE_REQUEST} ^[A-Z]{3,9}\ /index\.(php|html|htm)\ HTTP/
-RewriteRule ^(.*)index\.(php|html|htm)$ https://ghockeyagency.ru [R=301,L]
+RewriteRule ^(.*)index\.(php|html|htm)$ https://zhockey.ru/ [R=301,L]
 
 RewriteCond %{HTTP:X-SSL} !^yes$
-RewriteRule (.*) https://ghockeyagency.ru/$1 [R=301]
+RewriteRule (.*) https://zhockey.ru/$1 [R=301]
 
 RewriteCond %{THE_REQUEST} /([^.]+)\.html [NC]
 RewriteRule ^ /%1 [NC,R=301]

@@ -21,13 +21,13 @@ function Nav({ mobile, setMenuOpened }) {
                 ))}
             </nav>
             {!mobile && (<div className="social-links">
-                <Link href="https://www.instagram.com/z_hockey_/" target="_blank">
+                <Link passHref href="https://www.instagram.com/z_hockey_/" target="_blank">
                   <div className="social-links-item"><InstagramIcon/></div>
                 </Link>
-                <Link href="https://wa.me/79160791214">
+                <Link passHref href="https://wa.me/79160791214">
                   <div className="social-links-item"><WhatsappIcon/></div>
                 </Link>
-                <Link href="https://t.me/GHA_hockey">
+                <Link passHref href="https://t.me/GHA_hockey">
                   <div className="social-links-item"><TelegramIcon/></div>
                 </Link>
             </div>)}

@@ -74,7 +74,9 @@ class Modal extends PureComponent {
     this.timeoutId = setTimeout(() => {
       document.body.classList.remove('ui-modal-open');
       document.body.style.paddingRight = '';
-      this.element.current.style.paddingRight = '';
+      if (this.element.current) {
+        this.element.current.style.paddingRight = '';
+      }
 
       if (this.prevActiveElement) {
         try {

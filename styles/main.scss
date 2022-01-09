@@ -2,7 +2,7 @@
 @import "mixins";
 
 html {
-  scroll-behavior: smooth;
+  //scroll-behavior: smooth;
 }
 
 .section-main.section-main {
@@ -295,13 +295,6 @@ html {
            left: 0;
          }
        }
-
-      .custom-play-button {
-        width: 100px;
-        height: 100px;
-        background-color: #00B6F0;
-        position: absolute;
-      }
     }
   }
 }

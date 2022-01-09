@@ -1,0 +1,107 @@
+@import "./variables";
+@import "./mixins";
+
+.page-policy,
+.page-agreement {
+  font-size: 16px;
+  line-height: 22px;
+  @include mobile {
+    font-size: 14px;
+    line-height: 18px;
+  }
+
+  .section-policy,
+  .section-agreement {
+    padding-bottom: 80px;
+
+    @include laptop {
+      padding-bottom: 60px;
+    }
+    @include tablet {
+      padding-bottom: 40px;
+    }
+  }
+
+  .h2 {
+    position: relative;
+    padding-left: 25px;
+    &::before {
+      position: absolute;
+      content: '';
+      border-left: 10px solid #ED652C;
+      left: 0;
+      height: 100%;
+
+      @include mobile-small {
+        border-left: 8px solid #ED652C;
+        left: 0;
+      }
+
+      @include mobile-smallest {
+        border-left: 6px solid #ED652C;
+        left: 0;
+      }
+    }
+  }
+
+  .h3 {
+    font-size: 26px;
+    font-weight: bold;
+    line-height: 1.2;
+    padding: 20px 0 40px;
+
+    @include tablet {
+      font-size: 20px;
+      padding: 15px 0 30px;
+    }
+
+    @include mobile {
+      font-size: 16px;
+      padding: 10px 0 20px;
+    }
+  }
+
+  p {
+    margin-bottom: 16px;
+  }
+
+  .classic-list {
+    margin-bottom: 20px;
+    padding-left: 30px;
+
+    > li {
+      position: relative;
+      padding: 4px 0;
+
+      &:before {
+        content: '';
+        position: absolute;
+        top: 14px;
+        height: 2px;
+        width: 10px;
+        left: -30px;
+        background-color: $primary;
+
+        @include mobile {
+          top: 12px;
+        }
+      }
+    }
+  }
+
+  .classic-link {
+    //display: inline-block;
+    //vertical-align: middle;
+    //line-height: 20px;
+    //color: #00B6F0;
+    color: $primary;
+    //font-weight: 500;
+    text-decoration: none;
+    //border-bottom: 1px dotted $primary;
+    transition: color $trans;
+
+    &:hover {
+      color: #00B6F0;
+    }
+  }
+}

@@ -1,4 +1,6 @@
 import Slider from "react-slick";
+import Image from 'next/image';
+import { REVIEWS } from '../../constants/reviews';
 import NextIcon from "../../assets/svg/slider-arrow-right.svg";
 import PrevIcon from "../../assets/svg/slider-arrow-left.svg";
 

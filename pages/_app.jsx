@@ -3,6 +3,8 @@ import Head from 'next/head';
 import "../styles/app.scss";
 import "slick-carousel/slick/slick.scss";
 import "slick-carousel/slick/slick-theme.scss";
+import Header from '../src/components/Header/Header';
+import Root from '../src/components/Root';
 
 
 
@@ -50,8 +52,8 @@ const LogoStructuredData = {
     {
       "@context": "https://schema.org",
       "@type": "Organization",
-      "url": "https://ghockeyagency.ru/",
-      "logo": "https://ghockeyagency.ru/assets/img/GHA-og-logo.png"
+      "url": "https://zhockey.ru/",
+      "logo": "https://zhockey.ru/assets/img/GHA-og-logo.png"
     }
   `,
 };
@@ -61,8 +63,8 @@ const OrganizationStructuredData = {
     {
       "@context": "https://schema.org",
       "@type": "SportsOrganization",
-      "image": ["https://ghockeyagency.ru/assets/img/GHA-og-logo.png"],
-      "@id": "https://ghockeyagency.ru/#organization",
+      "image": ["https://zhockey.ru/assets/img/GHA-og-logo.png"],
+      "@id": "https://zhockey.ru/#organization",
       "name": "Grishatov Hockey Agency",
       "address": {
         "@type": "PostalAddress",
@@ -72,7 +74,7 @@ const OrganizationStructuredData = {
         "postalCode": "115088",
         "addressCountry": "Russia"
       },
-      "url": "https://ghockeyagency.ru/contacts",
+      "url": "https://zhockey.ru/contacts",
       "telephone": "+79160791214",
       "openingHoursSpecification": [
         {
@@ -108,7 +110,7 @@ function MyApp({ Component, pageProps }) {
             <link rel="preload" href="/fonts/montserrat-v14-latin_cyrillic-500.woff2" as="font" crossOrigin="" />
             <link rel="preload" href="/fonts/montserrat-v14-latin_cyrillic-600.woff2" as="font" crossOrigin="" />
         </Head>
-        <Component {...pageProps} />
+        <Root Component={Component} pageProps={pageProps} />
       </>
   )
 }

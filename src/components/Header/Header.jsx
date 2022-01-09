@@ -51,7 +51,11 @@ function Header({ windowWidth, orderCallClick }) {
         }}>
             {(windowWidth >= 1024) ? (<div className="header-wrapper">
                 <div className="container">
-                    <HeaderLogo className="header-logo"/>
+                  <Link passHref href="/">
+                    <a>
+                        <HeaderLogo className="header-logo"/>
+                    </a>
+                  </Link>
                 </div>
                 <Nav setMenuOpened={setMenuOpened} />
                 <div className="header-contacts">
@@ -61,9 +65,13 @@ function Header({ windowWidth, orderCallClick }) {
             </div>) : (
                 <>
                     <div className="header-wrapper">
-                        <div className="header-logo">
-                            <HeaderLogo />
-                        </div>
+                      <Link passHref href="/">
+                        <a>
+                            <div className="header-logo">
+                                <HeaderLogo />
+                            </div>
+                        </a>
+                      </Link>
                         <div className="mobile-icons">
                             <div className={classnames('phone-icon', { invisible: menuOpened })}>
                                 <a onClick={handlePhoneClick} href="tel:79160791214">
@@ -98,13 +106,13 @@ function Header({ windowWidth, orderCallClick }) {
                                         <button onClick={orderCallClick} type="button" className="header-button">Заказать звонок</button>
                                     </div>
                                     <div className="social-links">
-                                      <Link href="https://www.instagram.com/z_hockey_/" target="_blank">
+                                      <Link passHref href="https://www.instagram.com/z_hockey_/" target="_blank">
                                         <div className="social-links-item"><InstagramIcon/></div>
                                       </Link>
-                                      <Link href="https://wa.me/79160791214">
+                                      <Link passHref href="https://wa.me/79160791214">
                                         <div className="social-links-item"><WhatsappIcon/></div>
                                       </Link>
-                                      <Link href="https://t.me/GHA_hockey">
+                                      <Link passHref href="https://t.me/GHA_hockey">
                                         <div className="social-links-item"><TelegramIcon/></div>
                                       </Link>
                                     </div>

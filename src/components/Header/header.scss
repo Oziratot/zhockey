@@ -41,6 +41,7 @@
     .header-logo {
       width: 167px;
       height: 76px;
+      cursor: pointer;
 
       @include tablet {
         width: 118px;
