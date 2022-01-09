@@ -4,7 +4,6 @@ import Lightbox from 'react-spring-lightbox';
 import LightboxArrowButton from './LightboxArrowButton';
 import LightboxFooter from './LightboxFooter';
 import LightboxHeader from './LightboxHeader';
-// import Footer from './Footer';
 
 /**
  * Double click + pinch to zoom

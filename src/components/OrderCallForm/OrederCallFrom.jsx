@@ -91,6 +91,7 @@ function OrderCallFrom({ clientWindowWidth, handleModalClose }) {
             .catch(() => {
                 setSubmitting(false);
             });
+        handleModalClose();
     }, [successfullySent]);
 
     return (

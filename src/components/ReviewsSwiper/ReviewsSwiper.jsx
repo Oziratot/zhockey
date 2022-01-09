@@ -1,67 +1,65 @@
 import React, { useCallback, useRef, useState } from 'react';
-import Slider from "react-slick";
+import Slider from 'react-slick';
 import Image from 'next/image';
 import { REVIEWS } from '../../constants/reviews';
-import NextIcon from "../../assets/svg/slider-arrow-right.svg";
-import PrevIcon from "../../assets/svg/slider-arrow-left.svg";
+import NextIcon from '../../assets/svg/slider-arrow-right.svg';
+import PrevIcon from '../../assets/svg/slider-arrow-left.svg';
 import CustomLightbox from '../Lightbox';
 
-const items = REVIEWS.map((item) => {
-  return {
+const items = REVIEWS.map((item) => ({
     src: item.src,
     alt: item.photo,
-  }
-});
+  }));
+
+const NextArrow = function (props) {
+  const { className, style, onClick } = props;
+  return (
+    <div
+      className={className}
+      onClick={onClick}
+    >
+      <NextIcon />
+    </div>
+  );
+};
+
+const PrevArrow = function (props) {
+  const { className, style, onClick } = props;
+  return (
+    <div
+      className={className}
+      onClick={onClick}
+    >
+      <PrevIcon />
+    </div>
+  );
+};
 
 const settings = {
-    className: "reviews-slider",
+    className: 'reviews-slider',
     centerMode: true,
     infinite: true,
     slidesToShow: 3,
     speed: 500,
-    centerPadding: "0px",
+    centerPadding: '0px',
     nextArrow: <NextArrow />,
     prevArrow: <PrevArrow />,
     responsive: [
         {
             breakpoint: 1024,
             settings: {
-                customPaging: function () {
+                customPaging() {
                     return (
-                        <div className="custom-dot" />
-                    )
+                      <div className="custom-dot" />
+                    );
                 },
                 dots: true,
-            }
-        }
-    ]
-}
+            },
+        },
+    ],
+};
 
-function NextArrow(props) {
-    const { className, style, onClick } = props;
-    return (
-        <div
-            className={className}
-            onClick={onClick}
-        >
-            <NextIcon />
-        </div>
-    );
-}
-
-function PrevArrow(props) {
-    const { className, style, onClick } = props;
-    return (
-        <div
-            className={className}
-            onClick={onClick}
-        >
-            <PrevIcon />
-        </div>
-    );
-}
-
-function ReviewsSwiper() {
+const ReviewsSwiper = function () {
   const [isLightboxOpen, setIsLightboxOpen] = useState(false);
   const [currentImageIndex, setCurrentIndex] = useState(0);
   const handleLightboxClose = useCallback(() => {
@@ -101,39 +99,36 @@ function ReviewsSwiper() {
   }, []);
 
   return (
-        <div className="reviews-wrapper">
-            <Slider {...settings}>
-              {items.map((item, i) => (
-                <div key={item.alt}>
-                  <img
-                    data-index={i}
-                    className="review-item"
-                    src={item.src}
-                    onMouseDown={handleMouseDown}
-                    onMouseMove={handleMouseMove}
-                    onMouseUp={handleSwipeEnd}
-                    onTouchStart={handleTouchStart}
-                    onTouchMove={handleTouchMove}
-                    onTouchEnd={handleSwipeEnd}
-                    onTouchCancel={handleSwipeEnd}
-                  />
-                </div>
-              ))}
-            </Slider>
-            <CustomLightbox
-              albumTitle="Отзывы"
-              currentImageIndex={currentImageIndex}
-              setCurrentIndex={setCurrentIndex}
-              isOpen={isLightboxOpen}
-              onClose={handleLightboxClose}
-              images={items}
-              withCaptions
+    <div className="reviews-wrapper">
+      <Slider {...settings}>
+        {items.map((item, i) => (
+          <div key={item.alt}>
+            <img
+              data-index={i}
+              className="review-item"
+              src={item.src}
+              onMouseDown={handleMouseDown}
+              onMouseMove={handleMouseMove}
+              onMouseUp={handleSwipeEnd}
+              onTouchStart={handleTouchStart}
+              onTouchMove={handleTouchMove}
+              onTouchEnd={handleSwipeEnd}
+              onTouchCancel={handleSwipeEnd}
             />
-            {/*<Modal onClose={handleModalClose} active={reviewModalActive}>*/}
-            {/*  <img className="image-full" src={currentReview} />*/}
-            {/*</Modal>*/}
-        </div>
-    )
-}
+          </div>
+              ))}
+      </Slider>
+      <CustomLightbox
+        albumTitle="Отзывы"
+        currentImageIndex={currentImageIndex}
+        setCurrentIndex={setCurrentIndex}
+        isOpen={isLightboxOpen}
+        onClose={handleLightboxClose}
+        images={items}
+        withCaptions
+      />
+    </div>
+    );
+};
 
 export default ReviewsSwiper;
