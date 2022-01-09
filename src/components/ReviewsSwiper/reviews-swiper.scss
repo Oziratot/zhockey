@@ -55,7 +55,6 @@
 
       &.slick-current {
         transform: scale(1);
-        padding-bottom: 46px;
 
         @include tablet {
           padding-bottom: 0;
@@ -169,7 +168,9 @@
 }
 
 .review-item {
+  max-width: 337px;
   margin: 0 20px;
+  cursor: zoom-in;
 
   @include tablet {
     margin: 0;

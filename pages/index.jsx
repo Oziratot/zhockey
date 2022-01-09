@@ -1,3 +1,4 @@
+import React from 'react';
 import Link from "next/link";
 import Image from 'next/image'
 import classnames from 'classnames';
@@ -12,7 +13,7 @@ import ScheduleImage from '../src/assets/images/schedule.jpeg';
 import FirstPromotionImage from '../src/assets/images/promotion-1.png';
 import SecondPromotionImage from '../src/assets/images/promotion-2.png';
 import BookBar from "../src/components/BookBar/BookBar";
-import { useCallback, useEffect, useRef, useState } from "react";
+import { useCallback, useRef, useState } from "react";
 import PhotoSwiper from "../src/components/PhotoSwiper/PhotoSwiper";
 import InstagramIcon from '../src/assets/svg/social/instagram-logo.svg';
 import WhatsappIcon from '../src/assets/svg/social/whatsapp-logo.svg';
@@ -27,7 +28,7 @@ import OrderCallFrom from "../src/components/OrderCallForm/OrederCallFrom";
 import YouTube from "react-youtube";
 import PriceSwiper from "../src/components/PriceSwiper/PriceSwiper";
 
-const ModalPortal = ({ children }) => {
+export const ModalPortal = ({ children }) => {
     if (!process.browser) return null;
     return createPortal(children, window.document.body);
 };
