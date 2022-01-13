@@ -27,7 +27,7 @@
       margin: 25px 0;
     }
 
-    &:after {
+    &::after {
       position: absolute;
       top: 0;
       left: 0;
@@ -42,22 +42,23 @@
       transform: scale(1.18);
       max-height: none;
       z-index: 3;
+      cursor: zoom-in;
 
-      div {
-
-      }
-
-      &:after {
-        background: transparent;
+      img {
         border-top: 10px solid #ED652C;
 
         @include mobile-small {
           border-top: 7px solid #ED652C;
         }
 
-        @include mobile-small {
+        @include mobile-smallest {
           border-top: 5px solid #ED652C;
         }
+      }
+
+      &:after {
+        width: 0;
+        height: 0;
       }
     }
   }

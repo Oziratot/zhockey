@@ -194,7 +194,7 @@ export default function Home({
           </div>
           {clientWindowWidth > 768 && (
           <div className="image-wrapper">
-            <img className="coach-image" src="/assets/img/coach.jpeg" />
+            <img className="coach-image" src="/assets/img/coach.jpeg" alt="coach" />
           </div>
           )}
         </div>

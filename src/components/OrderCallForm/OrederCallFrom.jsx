@@ -111,57 +111,57 @@ const OrderCallFrom = function ({ clientWindowWidth, handleModalClose }) {
             <form className="feedback-form" onSubmit={handleSubmit} onReset={handleReset} ref={formRef}>
               <div className="form-row">
                 <div className="field-wrap width-50">
-                      <Field name="firstName" component={OnlyTextInputComponent} placeholder="Ваше имя" className={classnames({ invalid: errors.firstName && touched.firstName })} />
-                      <ErrorMessage name="firstName" component="div" className="field-error" />
-                    </div>
+                  <Field name="firstName" component={OnlyTextInputComponent} placeholder="Ваше имя" className={classnames({ invalid: errors.firstName && touched.firstName })} />
+                  <ErrorMessage name="firstName" component="div" className="field-error" />
+                </div>
                 <div className="field-wrap width-50">
-                      <Field name="phone" component={PhoneInputComponent} placeholder="Телефон" className={classnames({ invalid: errors.phone && touched.phone })} />
-                      <ErrorMessage name="phone" component="div" className="field-error" />
-                    </div>
+                  <Field name="phone" component={PhoneInputComponent} placeholder="Телефон" className={classnames({ invalid: errors.phone && touched.phone })} />
+                  <ErrorMessage name="phone" component="div" className="field-error" />
+                </div>
               </div>
 
               <div className="form-row">
                 <div className="field-wrap">
-                      <textarea
-                        rows="1"
-                        name="comment"
-                        onChange={(e) => {
+                  <textarea
+                    rows="1"
+                    name="comment"
+                    onChange={(e) => {
                                 handleChange(e);
                               }}
-                        onBlur={handleBlur}
-                        placeholder="Комментарий"
-                        value={values.comment}
-                      />
-                      <ErrorMessage name="comment" component="div" className="field-error" />
-                    </div>
+                    onBlur={handleBlur}
+                    placeholder="Комментарий"
+                    value={values.comment}
+                  />
+                  <ErrorMessage name="comment" component="div" className="field-error" />
+                </div>
               </div>
 
               <input type="checkbox" name="gha-a-n-t-i-s-p-a-m-f-i-e-l-d" value="1" style={{ display: 'none' }} tabIndex="-1" autoComplete="none" />
 
               <div className="form-row consent-and-submit">
                 {clientWindowWidth < 900 && (
-                    <button
-                      className="form-button button-orange"
-                      disabled={!isValid || successfullySent}
-                      type="submit"
-                    >
-Записаться
-                    </button>
+                <button
+                  className="form-button button-orange"
+                  disabled={!isValid || successfullySent}
+                  type="submit"
+                >
+                  Записаться
+                </button>
                     )}
                 <div className="consent-personal-data-processing">
-                      <span>Нажимая на кнопку, вы даете согласие на обработку </span>
-                      <Link href="/legal/agreement">
-                        <a onClick={handleModalClose} className="blue-link">персональных&nbsp;данных</a>
-                      </Link>
-                    </div>
+                  <span>Нажимая на кнопку, вы даете согласие на обработку </span>
+                  <Link href="/legal/agreement">
+                    <a onClick={handleModalClose} className="blue-link">персональных&nbsp;данных</a>
+                  </Link>
+                </div>
                 {clientWindowWidth >= 900 && (
-                    <button
-                      className="form-button button-orange"
-                      disabled={!isValid || successfullySent}
-                      type="submit"
-                    >
-Записаться
-                    </button>
+                <button
+                  className="form-button button-orange"
+                  disabled={!isValid || successfullySent}
+                  type="submit"
+                >
+                  Записаться
+                </button>
                     )}
               </div>
             </form>
