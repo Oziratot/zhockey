@@ -1,7 +1,7 @@
 import React, { useCallback, useEffect, useState } from 'react';
 import Header from './Header/Header';
 
-function Root({ Component, pageProps }) {
+const Root = function ({ Component, pageProps }) {
   const [clientWindowWidth, setClientWindowWidth] = useState(false);
   const [orderCallModalActive, setlOrderCallModalActive] = useState(false);
   const handleOrderCallClick = useCallback(() => setlOrderCallModalActive(true), []);
@@ -15,13 +15,13 @@ function Root({ Component, pageProps }) {
     if (typeof window !== 'undefined') {
       setClientWindowWidth(window.innerWidth);
     }
-  },[]);
+  }, []);
 
   pageProps['clientWindowWidth'] = clientWindowWidth;
 
   useEffect(() => {
-    window.addEventListener("resize", handleWidthChange);
-    return () => window.removeEventListener("resize", handleWidthChange);
+    window.addEventListener('resize', handleWidthChange);
+    return () => window.removeEventListener('resize', handleWidthChange);
   });
 
   return (
@@ -33,10 +33,11 @@ function Root({ Component, pageProps }) {
           orderCallModalActive={orderCallModalActive}
           handleOrderCallClick={handleOrderCallClick}
           clientWindowWidth={clientWindowWidth}
-          {...pageProps} />
+          {...pageProps}
+        />
       </main>
     </>
   );
-}
+};
 
 export default Root;

@@ -21,13 +21,14 @@ $laptopMinWidth: 1279px;
 $tabletMaxWidth: 1023px;
 $mobileMaxWidth: 768px;
 $mobileSmallMaxWidth: 480px;
+$iphoneMaxWidth: 390px;
 $mobileSmallestMaxWidth: 320px;
 
 $media-desktop: '(min-width: #{$laptopMaxWidth + 1})';
-$media-laptop-landscape: '(max-width: #{$tabletLandscapeMaxWidth + 1})';
-//$media-laptop: '(max-width: #{$laptopMinWidth + 1})';
+$media-laptop-landscape: '(min-width: #{$tabletMaxWidth + 1}) and (max-width: #{$tabletLandscapeMaxWidth + 1})';
+$media-laptop: '(max-width: #{$laptopMinWidth + 1})';
 $media-laptop-desktop: '(min-width: #{$tabletMaxWidth + 1})';
-$media-laptop: '(max-width: #{$laptopMaxWidth})';
+//$media-laptop: '(max-width: #{$laptopMaxWidth})';
 $media-laptop-only: '(min-width: #{$tabletMaxWidth + 1}) and (max-width: #{$laptopMaxWidth})';
 $media-tablet-laptop-desktop: '(min-width: #{$mobileMaxWidth + 1})';
 $media-tablet-laptop: '(min-width: #{$mobileMaxWidth + 1}) and (max-width: #{$laptopMinWidth})';
@@ -35,6 +36,7 @@ $media-tablet: '(max-width: #{$tabletMaxWidth})';
 $media-tablet-only: '(min-width: #{$mobileMaxWidth + 1}) and (max-width: #{$tabletMaxWidth})';
 $media-mobile: '(max-width: #{$mobileMaxWidth})';
 $media-mobile-small: '(max-width: #{$mobileSmallMaxWidth})';
+$media-iphone: '(max-width: #{$iphoneMaxWidth})';
 $media-mobile-smallest: '(max-width: #{$mobileSmallestMaxWidth})';
 
 $sidebarWidth: 270px;

@@ -133,6 +133,11 @@
     padding: 46px 50px 60px;
   }
 
+  @include iphone {
+    max-width: 330px;
+    padding: 30px 45px;
+  }
+
   @include mobile-smallest {
     max-width: 288px;
     padding: 50px 34px;
@@ -161,6 +166,10 @@
     margin-bottom: 20px;
   }
 
+  @include iphone {
+    font-size: 18px;
+  }
+
   @include mobile-smallest {
     font-size: 16px;
     line-height: 19px;
@@ -186,6 +195,11 @@
   top: 10px;
   right: 16px;
   padding: 10px;
+
+  @include iphone {
+    top: 5px;
+    right: 5px;
+  }
 
   @include mobile-smallest {
     display: none;

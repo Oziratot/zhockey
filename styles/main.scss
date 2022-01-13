@@ -9,18 +9,30 @@ html {
   display: flex;
   justify-content: center;
   width: 100%;
+  padding-top: 154px;
+  padding-bottom: 200px;
   background-color: #222222;
   background-image: url('../src/assets/images/main-section-backround.jpeg');
-  background-position: right;
+  background-position: bottom right;
   background-repeat: no-repeat;
+  background-size: contain;
+
+  @include landscape {
+    padding-top: 110px;
+    padding-bottom: 104px;
+    background-image: url("../src/assets/images/main-section-backround-landscape.jpeg");
+  }
 
   @include tablet {
+    background-image: url("../src/assets/images/main-section-backround-tablet.jpeg");
     padding-top: 181px;
     background-size: contain;
+    padding-bottom: 177px;
   }
 
   @include mobile {
     padding-top: 370px;
+    padding-bottom: 80px;
     align-items: flex-end;
     background-position: top;
     background-image: url("../src/assets/images/main-section-backround-mobile.jpeg");
@@ -31,7 +43,13 @@ html {
     background-repeat: no-repeat;
     background-color: #222222;
     padding-top: 274px;
+    padding-bottom: 80px;
     min-height: auto;
+  }
+
+  @include iphone {
+    padding-top: 220px;
+    padding-bottom: 60px;
   }
 
   @include mobile-smallest {
@@ -45,11 +63,20 @@ html {
       display: flex;
       margin-left: -4px;
       align-items: center;
+
+      svg {
+        overflow: visible !important;
+      }
     }
 
     .marker-icon {
+
       @include tablet {
         transform: scale(0.75);
+      }
+
+      @include iphone {
+        margin-left: -10px;
       }
 
       @include mobile-smallest {
@@ -80,6 +107,11 @@ html {
         margin-left: 5px;
       }
 
+      @include iphone {
+        font-size: 14px;
+        white-space: nowrap;
+      }
+
       @include mobile-smallest {
         font-size: 13px;
         margin-left: 0;
@@ -98,6 +130,12 @@ html {
       position: relative;
       text-transform: uppercase;
 
+      @include landscape {
+        margin: 40px 0;
+        font-size: 40px;
+        padding-left: 30px;
+      }
+
       &::before {
         position: absolute;
         content: '';
@@ -108,6 +146,11 @@ html {
         @include mobile-small {
           left: -18px;
           border-left: 8px solid #ED652C;
+        }
+
+        @include iphone {
+          border-left: 6px solid #ED652C;
+          left: 0;
         }
 
         @include mobile-smallest {
@@ -125,9 +168,18 @@ html {
         margin: 30px 0;
       }
 
-      @include mobile-small {
+      @media screen and (max-width: 600px) {
         font-size: 28px;
+      }
+
+      @include mobile-small {
+        font-size: 26px;
         padding-left: 0;
+      }
+
+      @include iphone {
+        font-size: 22px;
+        padding-left: 13px;
       }
 
       @include mobile-smallest {
@@ -144,6 +196,12 @@ html {
       font-weight: 600;
       padding-left: 35px;
 
+      @include landscape {
+        font-size: 24px;
+        line-height: 29px;
+        padding: 0;
+      }
+
       @include tablet {
         font-size: 24px;
         line-height: 29px;
@@ -152,6 +210,10 @@ html {
       @include mobile-small {
         padding-left: 0;
         font-size: 24px;
+      }
+
+      @include iphone {
+        font-size: 18px;
       }
 
       @include mobile-smallest {
@@ -166,9 +228,18 @@ html {
        margin-top: 30px;
        margin-left: 35px;
 
+       @include landscape {
+         margin: 40px 0 0 0;
+       }
+
        @include mobile-small {
          width: 100%;
          margin-left: 0;
+       }
+
+       @include iphone {
+         font-size: 22px;
+         height: 60px;
        }
 
        @include mobile-smallest {
@@ -204,6 +275,7 @@ html {
       justify-content: center;
 
       @include mobile {
+        width: 100%;
         flex-direction: column;
         align-items: center;
       }
@@ -214,6 +286,10 @@ html {
         justify-content: space-around;
         padding-right: 100px;
         max-width: 486px;
+
+        @include landscape {
+          padding-right: 40px;
+        }
 
         @include tablet {
           padding-right: 20px;
@@ -234,11 +310,12 @@ html {
           display: flex;
           align-items: center;
 
+
           @include mobile {
             margin-bottom: 50px;
           }
 
-          @include mobile-smallest {
+          @include iphone {
             margin-bottom: 30px;
           }
 
@@ -247,7 +324,11 @@ html {
             line-height: 1.3;
             font-weight: 300;
 
-            @include mobile-smallest {
+            @include landscape {
+              width: 317px;
+            }
+
+            @include iphone {
               font-size: 18px;
             }
           }
@@ -256,6 +337,10 @@ html {
             margin-right: 40px;
             overflow: visible;
 
+            @include landscape {
+              margin-right: 20px;
+            }
+
             @include mobile-smallest {
               margin-right: 22px;
             }
@@ -263,15 +348,25 @@ html {
         }
       }
 
-       .advantages-video-container {
+       .video-preview {
          position: relative;
          width: 710px;
          height: 473px;
+         object-fit: cover;
+         display: flex;
+         justify-content: center;
+         align-items: center;
+         overflow: hidden;
+
+         @include landscape {
+           width: 552px;
+           height: 367px;
+         }
 
          @include tablet-laptop {
            width: 408px;
            height: 307px;
-           flex-shrink: 0;
+           //flex-shrink: 1;
          }
 
          @include mobile {
@@ -281,6 +376,55 @@ html {
 
          @include mobile-small {
            height: 268px;
+         }
+
+         @include iphone {
+           height: 211px;
+         }
+
+         @include mobile-smallest {
+           height: 184px;
+         }
+
+         .cover {
+           min-width: 100%;
+           min-height: 100%
+         }
+
+         .youtube-play-button {
+           position: absolute;
+           top: 50%;
+           left: 50%;
+           transform: translate(-50%, -50%) !important;
+         }
+       }
+       .advantages-video-container {
+         position: relative;
+         width: 710px;
+         height: 473px;
+
+         @include landscape {
+           width: 552px;
+           height: 367px;
+         }
+
+         @include tablet-laptop {
+           width: 408px;
+           height: 307px;
+           //flex-shrink: 1;
+         }
+
+         @include mobile {
+           width: 100%;
+           height: 408px;
+         }
+
+         @include mobile-small {
+           height: 268px;
+         }
+
+         @include iphone {
+           height: 211px;
          }
 
          @include mobile-smallest {
@@ -299,12 +443,32 @@ html {
   }
 }
 
-.section-methodology {
-  min-height: 942px;
+.section-methodology.section-methodology {
   background-color: #FFFFFF;
   display: flex;
   justify-content: center;
   align-items: center;
+  padding-top: 96px;
+  padding-bottom: 96px;
+
+  @include landscape {
+    padding-top: 100px;
+    padding-bottom: 100px;
+  }
+
+  @include mobile {
+    padding-top: 80px;
+    padding-bottom: 80px;
+  }
+
+  @include iphone {
+    padding-top: 60px;
+    padding-bottom: 60px;
+  }
+  @include mobile-smallest {
+    padding-top: 50px;
+    padding-bottom: 50px;
+  }
 
   .methodology-wrap {
     display: flex;
@@ -323,6 +487,13 @@ html {
       background-repeat: no-repeat;
       object-position: top;
       background-position: center;
+
+      @include landscape {
+        background-image: url("../src/assets/images/methodology-laptop.jpeg");
+        width: 470px;
+        height: 470px;
+        //background-size: cover;
+      }
 
       @include tablet {
         background-image: url("../src/assets/images/methodology-height.jpeg");
@@ -348,6 +519,11 @@ html {
         margin-bottom: 40px;
       }
 
+      @include iphone {
+        height: 270px;
+        margin-bottom: 30px;;
+      }
+
       @include mobile-smallest {
         height: 235px;
         margin-bottom: 30px;
@@ -359,6 +535,13 @@ html {
       flex-direction: column;
       width: 637px;
       padding-left: 75px;
+
+      @include landscape {
+        padding-left: 20px;
+        width: 470px;
+        justify-content: space-between;
+        height: 470px;
+      }
 
       @include tablet {
         padding-left: 20px;
@@ -373,6 +556,11 @@ html {
         position: relative;
         margin-bottom: 40px;
 
+        @include landscape {
+          margin-bottom: 0px;
+          padding-left: 25px;
+        }
+
         @include tablet {
           margin-bottom: 30px;
           padding-left: 25px;
@@ -381,6 +569,11 @@ html {
         @include mobile-small {
           margin-bottom: 40px;
           padding-left: 18px;
+        }
+
+        @include iphone {
+          margin-bottom: 30px;
+          padding-left: 13px;
         }
 
         @include mobile-smallest {
@@ -396,6 +589,10 @@ html {
           left: -25px;
           height: 100%;
 
+          @include landscape {
+            left: 0;
+          }
+
           @include tablet {
             left: 0;
           }
@@ -403,6 +600,10 @@ html {
           @include mobile-small {
             border-left: 8px solid #ED652C;
             left: 0;
+          }
+
+          @include iphone {
+            border-left: 6px solid #ED652C;
           }
 
           @include mobile-smallest {
@@ -418,6 +619,11 @@ html {
         line-height: 1.3;
         font-weight: 300;
 
+        @include landscape {
+          font-size: 18px;
+          margin-bottom: 0px;
+        }
+
         @include tablet {
           margin-bottom: 20px;
         }
@@ -426,7 +632,7 @@ html {
           max-width: 100%;
         }
 
-        @include  mobile-smallest {
+        @include  iphone {
           font-size: 18px;
         }
       }
@@ -434,6 +640,7 @@ html {
       .methodology-list {
         list-style-type: disc;
         list-style-position: inside;
+        padding-left: 20px;
 
         .methodology-item {
           margin-bottom: 30px;
@@ -442,11 +649,16 @@ html {
           font-weight: 300;
           max-width: 466px;
 
+          @include landscape {
+            font-size: 18px;
+            margin-bottom: 20px;
+          }
+
           @include tablet {
             margin-bottom: 20px;
           }
 
-          @include mobile-smallest {
+          @include iphone {
             font-size: 18px;
           }
 
@@ -468,11 +680,18 @@ html {
   display: flex;
   align-items: flex-end;
 
+  @include landscape {
+    background-image: url("../src/assets/images/directions-laptop.jpeg");
+  }
+
   @include tablet {
+    background-image: url("../src/assets/images/directions-tablet.jpeg");
     min-height: 1020px;
+    background-size: contain;
   }
 
   @include mobile {
+    min-height: auto;
     background-image: url("../src/assets/images/directions-mobile.jpeg");
     background-position: top;
     padding-top: 350px;
@@ -480,7 +699,13 @@ html {
 
   @include mobile-small {
     padding-top: 300px;
-    background-size: 100% 332px;
+    background-size: 100% 268px;
+  }
+
+  @include iphone {
+    padding-top: 227px;
+    padding-bottom: 60px;
+    background-image: url("../src/assets/images/directions-iphone.jpeg");
   }
 
   @include mobile-smallest {
@@ -503,6 +728,10 @@ html {
     max-height: 963px;
     width: 613px;
 
+    @include landscape {
+      width: 554px;
+    }
+
     @include tablet {
       width: 537px;
     }
@@ -517,8 +746,16 @@ html {
       max-width: 500px;
       position: relative;
 
+      @include landscape {
+        margin-bottom: 40px;
+      }
+
       @include mobile-small {
         padding-left: 18px;
+      }
+
+      @include iphone {
+        padding-left: 13px;
       }
 
       @include mobile-smallest {
@@ -537,7 +774,7 @@ html {
           left: 0;
         }
 
-        @include mobile-smallest {
+        @include iphone {
           border-left: 6px solid #ED652C;
           left: 0;
         }
@@ -554,11 +791,15 @@ html {
         cursor: pointer;
         margin-bottom: 50px;
 
+        @include landscape {
+          margin-bottom: 30px;
+        }
+
         &:last-of-type {
           margin-bottom: 0;
         }
 
-        @include mobile-smallest {
+        @include iphone {
           margin-bottom: 40px;
         }
 
@@ -573,12 +814,20 @@ html {
             margin-bottom: 0;
             transition: margin-bottom $trans;
 
+            @include landscape {
+              font-size: 24px;
+            }
+
             @include tablet {
               font-size: 24px;
             }
 
             @include mobile-small {
               font-size: 22px;
+            }
+
+            @include iphone {
+              font-size: 18px;
             }
 
             @include mobile-smallest {
@@ -609,6 +858,14 @@ html {
 
           .directions-direction {
             margin-bottom: 30px;
+
+            @include landscape {
+              margin-bottom: 20px;
+            }
+
+            @include iphone {
+              margin-bottom: 20px;
+            }
           }
 
           .directions-icon {
@@ -626,6 +883,10 @@ html {
           transition: max-height $trans;
           max-width: 518px;
 
+          @include landscape {
+            max-width: 470px;
+          }
+
           @include tablet {
             max-width: 400px;
           }
@@ -634,8 +895,16 @@ html {
             font-size: 30px;
             line-height: 1.3;
             font-weight: 300;
-            margin-bottom: 30px;
+            margin-bottom: 20px;
             transform: translateY(350%);
+
+            &:last-of-type {
+              margin-bottom: 0;
+            }
+
+            @include landscape {
+              font-size: 24px;
+            }
 
             @include tablet {
               font-size: 24px;
@@ -647,6 +916,10 @@ html {
             @include mobile-small {
               font-size: 22px;
               font-weight: normal;
+            }
+
+            @include iphone {
+              font-size: 18px;
             }
 
             @include mobile-smallest {
@@ -664,9 +937,30 @@ html {
   }
 }
 
-.section-coach {
+.section-coach.section-coach {
   background-color: #F5F3F1;
-  padding: 74px 0;
+  padding-top: 74px;
+  padding-bottom: 74px;
+
+  @include landscape {
+    padding-top: 100px;
+    padding-bottom: 100px;
+  }
+
+  @include tablet {
+    padding-top: 80px;
+    padding-bottom: 80px;
+  }
+
+  @include iphone {
+    padding-top: 60px;
+    padding-bottom: 60px;
+  }
+
+  @include mobile-smallest {
+    padding-top: 50px;
+    padding-bottom: 50px;
+  }
 
   .coach-wrapper {
     display: flex;
@@ -680,6 +974,13 @@ html {
     .image-wrapper {
       position: relative;
       flex-shrink: 1;
+      max-height: 710px;
+      max-width: 710px;
+
+      @include landscape {
+        width: 470px;
+        height: 470px;
+      }
 
       @include mobile {
         overflow: hidden;
@@ -690,6 +991,11 @@ html {
 
       @include mobile-small {
         max-height: 343px;
+      }
+
+      @include iphone {
+        max-height: 270px;
+        margin-bottom: 30px;
       }
 
       .coach-image {
@@ -706,6 +1012,10 @@ html {
           max-width: 100%;
           max-height: 100%;
         }
+
+        @include iphone {
+          object-fit: contain;
+        }
       }
     }
   }
@@ -717,6 +1027,11 @@ html {
     justify-content: center;
     padding-right: 20px;
 
+    @include landscape {
+      justify-content: space-between;
+      max-width: 400px;
+    }
+
     @include mobile {
       max-width: 100%;
       padding-right: 0;
@@ -725,6 +1040,10 @@ html {
     .coach-title {
       position: relative;
 
+      @include landscape {
+        margin-bottom: 0;
+      }
+
       @include tablet {
         margin-bottom: 30px;
         padding-left: 25px;
@@ -732,6 +1051,10 @@ html {
 
       @include mobile-small {
         padding-left: 18px;
+      }
+
+      @include iphone {
+        padding-left: 13px;
       }
 
       @include mobile-smallest {
@@ -754,7 +1077,7 @@ html {
           border-left: 8px solid #ED652C;
         }
 
-        @include mobile-smallest {
+        @include iphone {
           border-left: 6px solid #ED652C;
           left: 0;
         }
@@ -767,12 +1090,21 @@ html {
       line-height: 1.3;
       font-weight: 300;
 
+      @include landscape {
+        font-size: 18px;
+        margin-bottom: 0;
+      }
+
       @include tablet {
         margin-bottom: 20px;
       }
 
       @include mobile-small {
         margin-bottom: 20px;
+      }
+
+      @include iphone {
+        font-size: 18px;
       }
 
       &.coach-paragraph-bold {
@@ -794,6 +1126,16 @@ html {
         line-height: 1.3;
         font-weight: 300;
         margin-bottom: 30px;
+
+        @include landscape {
+          margin-bottom: 20px;
+          font-size: 18px;
+        }
+
+        @include iphone {
+          font-size: 18px;
+          margin-bottom: 20px;
+        }
       }
     }
   }
@@ -816,18 +1158,35 @@ html {
 
   .schedule-title {
     text-align: center;
+
+    @include landscape{
+      margin-bottom: 40px;
+    }
   }
 
   .schedule-wrapper {
     display: flex;
     align-items: center;
 
+    @include landscape{
+      max-height: 300px;
+    }
+
     @include mobile {
+      width: 100%;
       flex-direction: column;
     }
 
     .schedule-image-container {
-      width: 35.4%;
+      max-width: 680px;
+      max-height: 473px;
+
+      @include landscape {
+        height: 100%;
+        //max-width: 436px;
+        //max-height: 302px;
+        object-fit: cover;
+      }
 
       @include tablet-laptop {
         width: 50%;
@@ -861,7 +1220,15 @@ html {
       max-height: 387px;
       align-self: center;
 
+      @include landscape {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        margin-left: 20px;
+      }
+
       @include mobile {
+        width: 100%;
         margin-left: 0;
         max-height: 976px;
       }
@@ -873,9 +1240,19 @@ html {
         max-width: 710px;
         margin-bottom: 60px;
 
+        @include landscape {
+          font-size: 18px;
+          margin-bottom: 40px;
+        }
+
         @include mobile {
           text-align: center;
           margin-bottom: 40px;
+        }
+
+        @include iphone {
+          font-size: 18px;
+          margin-bottom: 30px;
         }
 
         @include mobile-smallest {
@@ -890,9 +1267,18 @@ html {
         height: 225px;
         padding-left: 35px;
 
+        @include landscape{
+          padding: 0 20px;
+          height: 208px;
+        }
+
         @include mobile-small {
           padding: 0;
           height: 168px;
+        }
+
+        @include iphone {
+          height: 141px;
         }
 
         @include mobile-smallest {
@@ -920,6 +1306,11 @@ html {
                 left: -18px;
               }
 
+              @include iphone {
+                border-left: 6px solid #ED652C;
+                left: -13px;
+              }
+
               @include mobile-smallest {
                 border-left: 6px solid #ED652C;
                 left: -11px;
@@ -935,9 +1326,19 @@ html {
             font-size: 30px;
             line-height: 1.5;
             font-weight: 400;
+            margin-right: 10px;
+
+            @include landscape {
+              font-size: 24px;
+            }
 
             @include tablet {
               font-size: 24px;
+            }
+
+            @include iphone {
+              font-size: 18px;
+              white-space: nowrap;
             }
 
             @include mobile-smallest {
@@ -949,9 +1350,19 @@ html {
             font-size: 30px;
             line-height: 1.5;
             font-weight: 300;
+            white-space: nowrap;
+            margin-right: 10px;
+
+            @include landscape {
+              font-size: 24px;
+            }
 
             @include tablet {
               font-size: 24px;
+            }
+
+            @include iphone {
+              font-size: 18px;
             }
 
             @include mobile-smallest {
@@ -971,6 +1382,10 @@ html {
   align-items: center;
   padding-bottom: 104px;
 
+  @include landscape {
+
+  }
+
   @include mobile-small {
     padding-right: 0;
     padding-left: 0;
@@ -978,6 +1393,10 @@ html {
 
   .reviews-title {
     text-align: center;
+
+    @include landscape {
+      margin-bottom: 40px;
+    }
   }
 }
 
@@ -988,11 +1407,15 @@ html {
   background-color: #FFFFFF;
 
   @include landscape {
-    padding-bottom: 237px;
+    padding-bottom: 100px
   }
 
   @include mobile {
     padding-bottom: 140px;
+  }
+
+  @include iphone {
+    padding-bottom: 104px;
   }
 
   @include mobile-smallest {
@@ -1032,6 +1455,10 @@ html {
     display: flex;
     justify-content: space-between;
 
+    @include landscape {
+      width: 50%;
+    }
+
     @include mobile {
       flex-direction: column;
     }
@@ -1042,8 +1469,12 @@ html {
       justify-content: space-around;
     }
 
+    @include iphone {
+      margin-top: 30px;
+    }
+
     .promotion-image {
-      padding-right: 30px;
+      margin-right: 30px;
       width: 50%;
       height: auto;
 
@@ -1053,8 +1484,12 @@ html {
         width: 150px;
       }
 
+      @include iphone {
+        padding-bottom: 0;
+      }
+
       @include mobile-small {
-        padding: 0;
+        margin: 0;
         width: 132px;
       }
 
@@ -1068,6 +1503,10 @@ html {
   .promotion-text {
     padding-left: 50px;
 
+    @include landscape {
+      max-width: 388px;
+    }
+
     @include mobile {
       max-width: 295px;
       padding-left: 0;
@@ -1080,6 +1519,14 @@ html {
     .promotion-title {
       margin-bottom: 30px;
 
+      @include landscape {
+        margin-bottom: 20px;
+      }
+
+      @include iphone {
+        margin-bottom: 20px;
+      }
+
       @include mobile-small {
         text-align: center;
       }
@@ -1091,8 +1538,16 @@ html {
       font-weight: 300;
       max-width: 467px;
 
+      @include landscape {
+        font-size: 24px;
+      }
+
       @include tablet {
         font-size: 24px;
+      }
+
+      @include iphone {
+        font-size: 18px;
       }
 
       @include mobile-small {
@@ -1125,6 +1580,12 @@ html {
   background-image: url("../src/assets/images/faq.jpeg");
   background-repeat: no-repeat;
 
+  @include landscape {
+    background-size: contain;
+    height: 1186px;
+    background-image: url("../src/assets/images/ faq-laptop.jpeg");
+  }
+
   @include mobile {
     height: auto;
     padding: 310px 40px 80px;
@@ -1137,6 +1598,11 @@ html {
   @include mobile-small {
     padding-top: 328px;
     background-image: url("../src/assets/images/ faq-mobile-s.jpeg");
+  }
+
+  @include iphone {
+    background-image: url("../src/assets/images/faq-iphone.jpeg");
+    padding: 214px 30px 60px;
   }
 
   @include mobile-smallest {
@@ -1152,6 +1618,10 @@ html {
     margin-left: auto;
     max-width: 735px;
 
+    @include landscape {
+      width: 658px;
+    }
+
     @include tablet {
       max-width: 690px;
       justify-content: center;
@@ -1164,6 +1634,10 @@ html {
 
     .faq-title {
       color: #FFFFFF;
+
+      @include landscape {
+        margin-bottom: 40px;
+      }
     }
 
     .faq-list {
@@ -1179,6 +1653,14 @@ html {
         position: relative;
         color: #FFFFFF;
 
+        @include landscape {
+          margin-bottom: 40px;
+        }
+
+        @include iphone {
+          margin-bottom: 40px;
+        }
+
         &:last-of-type {
           margin-bottom: 0;
         }
@@ -1187,6 +1669,10 @@ html {
         &._opened {
           .question-wrapper {
             margin-bottom: 30px;
+
+            @include landscape {
+              margin-bottom: 20px;
+            }
 
             @include mobile-small {
               margin-bottom: 20px;
@@ -1218,6 +1704,11 @@ html {
             left: -18px;
           }
 
+          @include iphone {
+            border-left: 6px solid #ED652C;
+            left: -13px;
+          }
+
           @include mobile-smallest {
             border-left: 6px solid #ED652C;
             left: -11px;
@@ -1235,6 +1726,10 @@ html {
             line-height: 1.5;
             font-weight: 600;
             max-width: 640px;
+
+            @include landscape {
+              font-size: 24px;
+            }
 
             @include mobile {
               padding-left: 25px;
@@ -1268,6 +1763,10 @@ html {
           font-weight: 300;
           max-width: 640px;
 
+          @include landscape {
+            font-size: 24px;
+          }
+
           @include mobile {
             padding-left: 25px;
           }
@@ -1290,19 +1789,39 @@ html {
 .section-photo.section-photo {
   background-color: #F5F3F1;
   display: block;
-  //padding-bottom: 232px;
+  padding-bottom: 150px;
   padding-left: 0;
   padding-right: 0;
 
+  @include landscape {
+    padding-bottom: 100px;
+  }
+
+  @include tablet {
+    padding-bottom: 100px;
+  }
+
+  @include mobile {
+    padding-bottom: 140px;
+  }
+
+  @include mobile-smallest {
+    padding-bottom: 94px;
+  }
+
   .photo-title {
     text-align: center;
-    margin-bottom: 60px;
+    margin: 0 auto 60px;
+
+    @include landscape {
+      margin-bottom: 40px;
+    }
 
     @include mobile-small {
       margin-bottom: 40px;
     }
 
-    @include mobile-smallest {
+    @include iphone {
       margin-bottom: 30px;
     }
   }
@@ -1323,6 +1842,10 @@ html {
 
   @include mobile-small {
     padding: 80px 30px;
+  }
+
+  @include iphone {
+    padding: 60px 30px;
   }
 
   @include mobile-smallest {
@@ -1368,6 +1891,10 @@ html {
       color: #FFFFFF;
       position: relative;
 
+      @include landscape {
+        margin-bottom: 40px;
+      }
+
       @include tablet {
         padding-left: 30px;
         margin-bottom: 40px;
@@ -1380,6 +1907,11 @@ html {
       @include mobile-small {
         margin-bottom: 40px;
         padding-left: 20px;
+      }
+
+      @include iphone {
+        margin-bottom: 30px;
+        padding-left: 13px;
       }
 
       @include mobile-smallest {
@@ -1396,6 +1928,10 @@ html {
         @include tablet {
           left: 0;
         }
+
+        @include iphone {
+          border-left: 6px solid #ED652C;
+        }
       }
     }
 
@@ -1405,6 +1941,11 @@ html {
       font-size: 24px;
       font-weight: 500;
       line-height: 1.3;
+
+      @include landscape {
+        font-size: 18px;
+
+      }
 
       @include mobile {
         font-size: 18px;
@@ -1427,6 +1968,11 @@ html {
       font-weight: 500;
       margin: 30px 0;
 
+      @include landscape {
+        font-size: 24px;
+        margin: 20px 0 40px;
+      }
+
       @include tablet-laptop {
         font-size: 24px;
       }
@@ -1437,6 +1983,10 @@ html {
 
       @include mobile-small {
         margin: 20px 0 40px;
+      }
+
+      @include iphone {
+        margin-bottom: 30px;
       }
     }
 
@@ -1458,6 +2008,10 @@ html {
       margin-top: 40px;
       margin-bottom: 60px;
 
+      @include landscape {
+        margin: 40px 0;
+      }
+
       @include tablet-laptop {
         margin-top: 30px;
         margin-bottom: 60px;
@@ -1478,6 +2032,11 @@ html {
         margin: 40px 0 80px;
       }
 
+      @include iphone {
+        height: 60px;
+        margin: 60px 0;
+      }
+
       @include mobile-smallest {
         height: 55px;
         margin: 30px 0 50px;
@@ -1493,6 +2052,10 @@ html {
       line-height: 1.3;
       white-space: nowrap;
 
+      @include landscape {
+        font-size: 24px;
+      }
+
       @include tablet-laptop {
         font-size: 18px;
         white-space: nowrap;
@@ -1504,6 +2067,10 @@ html {
 
       @include mobile-small {
         margin-bottom: 40px;
+      }
+
+      @include iphone {
+        margin-bottom: 30px;
       }
 
       @include mobile-smallest {
@@ -1521,6 +2088,11 @@ html {
       font-weight: normal;
       margin: 60px 0 30px;
 
+      @include landscape {
+        margin: 40px 0 0;
+        font-size: 18px;
+      }
+
       @include tablet-laptop {
         margin: 50px 0 30px;
         font-size: 18px;
@@ -1537,6 +2109,10 @@ html {
         text-align: center;
       }
 
+      @include iphone {
+        margin-bottom: 30px;
+      }
+
       @include mobile-smallest {
         margin: 50px 0 30px;
       }
@@ -1550,6 +2126,10 @@ html {
       font-weight: normal;
       margin-top: auto;
       text-decoration: underline;
+
+      @include landscape {
+        font-size: 18px;
+      }
 
       @include tablet {
         font-size: 18px;
@@ -1570,6 +2150,10 @@ html {
     height: 750px;
     position: relative;
 
+    @include landscape {
+      height: 605px;
+    }
+
     @include tablet-laptop {
       height: 620px;
     }
@@ -1581,6 +2165,10 @@ html {
     @include mobile-small {
       width: 100%;
       height: 241px;
+    }
+
+    @include iphone {
+      height: 190px;
     }
 
     @include mobile-smallest {

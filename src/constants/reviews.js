@@ -83,4 +83,4 @@ export const REVIEWS = [
     photo: '21',
     src: '/assets/img/reviews/21.jpg',
   },
-]
+];

@@ -86,6 +86,12 @@
   }
 }
 
+@mixin iphone {
+  @media #{$media-iphone} {
+    @content;
+  }
+}
+
 @mixin mobile-smallest {
   @media #{$media-mobile-smallest} {
     @content;

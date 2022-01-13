@@ -1,8 +1,8 @@
 module.exports = {
-  images: {
-    loader: 'imgix',
-    path: '/',
-  },
+  // images: {
+  //   loader: 'imgix',
+  //   path: '/',
+  // },
 
   eslint: {
     ignoreDuringBuilds: true,

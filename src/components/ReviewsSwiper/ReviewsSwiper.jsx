@@ -7,9 +7,9 @@ import PrevIcon from '../../assets/svg/slider-arrow-left.svg';
 import CustomLightbox from '../Lightbox';
 
 const items = REVIEWS.map((item) => ({
-    src: item.src,
-    alt: item.photo,
-  }));
+  src: item.src,
+  alt: item.photo,
+}));
 
 const NextArrow = function (props) {
   const { className, style, onClick } = props;
@@ -36,27 +36,46 @@ const PrevArrow = function (props) {
 };
 
 const settings = {
-    className: 'reviews-slider',
-    centerMode: true,
-    infinite: true,
-    slidesToShow: 3,
-    speed: 500,
-    centerPadding: '0px',
-    nextArrow: <NextArrow />,
-    prevArrow: <PrevArrow />,
-    responsive: [
-        {
-            breakpoint: 1024,
-            settings: {
-                customPaging() {
-                    return (
-                      <div className="custom-dot" />
-                    );
-                },
-                dots: true,
-            },
+  className: 'reviews-slider',
+  centerMode: true,
+  infinite: true,
+  slidesToShow: 3,
+  speed: 500,
+  centerPadding: '0px',
+  initialSlide: 4,
+  lazyLoad: 'ondemand',
+  nextArrow: <NextArrow />,
+  prevArrow: <PrevArrow />,
+  responsive: [
+    {
+      breakpoint: 1440,
+      settings: {
+        customPaging() {
+          return (
+            <div className="custom-dot" />
+          );
         },
-    ],
+        dots: true,
+        lazyLoad: 'ondemand',
+        nextArrow: <NextArrow />,
+        prevArrow: <PrevArrow />,
+      },
+    },
+    {
+      breakpoint: 1024,
+      settings: {
+        customPaging() {
+          return (
+            <div className="custom-dot" />
+          );
+        },
+        dots: true,
+        lazyLoad: 'ondemand',
+        nextArrow: <NextArrow />,
+        prevArrow: <PrevArrow />,
+      },
+    },
+  ],
 };
 
 const ReviewsSwiper = function () {
@@ -66,9 +85,13 @@ const ReviewsSwiper = function () {
     setIsLightboxOpen(false);
   }, []);
 
-  const swipeRef = useRef({ startTime: 0, startX: 0, startY: 0, newX: 0, newY: 0 });
+  const swipeRef = useRef({
+    startTime: 0, startX: 0, startY: 0, newX: 0, newY: 0,
+  });
   const handleSwipeEnd = useCallback((e) => {
-    const { newX, startX, newY, startY } = swipeRef.current;
+    const {
+      newX, startX, newY, startY,
+    } = swipeRef.current;
     const deltaX = newX - startX;
     const deltaY = newY - startY;
     if (Math.abs(deltaX) < 10 && Math.abs(deltaY) < 10) {
@@ -107,6 +130,7 @@ const ReviewsSwiper = function () {
               data-index={i}
               className="review-item"
               src={item.src}
+              alt={item.alt}
               onMouseDown={handleMouseDown}
               onMouseMove={handleMouseMove}
               onMouseUp={handleSwipeEnd}
@@ -116,7 +140,7 @@ const ReviewsSwiper = function () {
               onTouchCancel={handleSwipeEnd}
             />
           </div>
-              ))}
+        ))}
       </Slider>
       <CustomLightbox
         albumTitle="Отзывы"
@@ -128,7 +152,7 @@ const ReviewsSwiper = function () {
         withCaptions
       />
     </div>
-    );
+  );
 };
 
 export default ReviewsSwiper;

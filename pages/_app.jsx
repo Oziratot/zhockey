@@ -1,12 +1,10 @@
+import React from 'react';
 import 'react-phone-input-2/lib/bootstrap.css';
 import Head from 'next/head';
-import "../styles/app.scss";
-import "slick-carousel/slick/slick.scss";
-import "slick-carousel/slick/slick-theme.scss";
-import Header from '../src/components/Header/Header';
+import '../styles/app.scss';
+import 'slick-carousel/slick/slick.scss';
+import 'slick-carousel/slick/slick-theme.scss';
 import Root from '../src/components/Root';
-
-
 
 const YMetrikaScript = {
   __html: `
@@ -88,31 +86,33 @@ const OrganizationStructuredData = {
   `,
 };
 
-function MyApp({ Component, pageProps }) {
+const MyApp = function ({ Component, pageProps }) {
   return (
-      <>
-        <Head>
-          {process.env.NODE_ENV === 'production' && (
-              <>
-                <meta name="yandex-verification" content="02bb13a9cb19fdbc" />
-                <script async src="https://www.googletagmanager.com/gtag/js?id=UA-171685923-1" />
-                <script type="text/javascript" dangerouslySetInnerHTML={GTagScript} />
-                <script type="text/javascript" dangerouslySetInnerHTML={YMetrikaScript} />
-                <script type="text/javascript" dangerouslySetInnerHTML={FbPixelScript} />
-              </>
-          )}
-            <title>Хоккейная школа Z-Hockey</title>
-            <link rel="preload" href="/fonts/GillSans.woff2" as="font" crossOrigin="" />
-            <link rel="preload" href="/fonts/GillSans-Light.woff2" as="font" crossOrigin="" />
-            <link rel="preload" href="/fonts/GillSans-SemiBold.woff2" as="font" crossOrigin="" />
-            <link rel="preload" href="/fonts/montserrat-v14-latin_cyrillic-regular.woff2" as="font" crossOrigin="" />
-            <link rel="preload" href="/fonts/montserrat-v14-latin_cyrillic-italic.woff2" as="font" crossOrigin="" />
-            <link rel="preload" href="/fonts/montserrat-v14-latin_cyrillic-500.woff2" as="font" crossOrigin="" />
-            <link rel="preload" href="/fonts/montserrat-v14-latin_cyrillic-600.woff2" as="font" crossOrigin="" />
-        </Head>
-        <Root Component={Component} pageProps={pageProps} />
-      </>
-  )
-}
+    <>
+      <Head>
+        {process.env.NODE_ENV === 'production' && (
+          <>
+            <meta name="yandex-verification" content="02bb13a9cb19fdbc" />
+            <script async src="https://www.googletagmanager.com/gtag/js?id=UA-171685923-1" />
+            <script type="text/javascript" dangerouslySetInnerHTML={GTagScript} />
+            <script type="text/javascript" dangerouslySetInnerHTML={YMetrikaScript} />
+            <script type="text/javascript" dangerouslySetInnerHTML={FbPixelScript} />
+          </>
+        )}
+        <title>Хоккейная школа Z-Hockey</title>
+        <link rel="preload" href="/fonts/GillSansC.woff2" as="font" crossOrigin="" />
+        <link rel="preload" href="/fonts/GillSans-Light.woff2" as="font" crossOrigin="" />
+        <link rel="preload" href="/fonts/GillSans-SemiBold.woff2" as="font" crossOrigin="" />
+        <link rel="preload" href="/fonts/montserrat-v14-latin_cyrillic-regular.woff2" as="font" crossOrigin="" />
+        <link rel="preload" href="/fonts/montserrat-v14-latin_cyrillic-italic.woff2" as="font" crossOrigin="" />
+        <link rel="preload" href="/fonts/montserrat-v14-latin_cyrillic-500.woff2" as="font" crossOrigin="" />
+        <link rel="preload" href="/fonts/montserrat-v14-latin_cyrillic-600.woff2" as="font" crossOrigin="" />
+        <link rel="preload" href="/fonts/montserrat-v18-latin_cyrillic-800.woff2" as="font" crossOrigin="" />
+        <link rel="preload" href="/fonts/montserrat-black.woff2" as="font" crossOrigin="" />
+      </Head>
+      <Root Component={Component} pageProps={pageProps} />
+    </>
+  );
+};
 
-export default MyApp
+export default MyApp;

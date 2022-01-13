@@ -72,8 +72,26 @@
     z-index: 1;
 
     @include tablet {
-      width: 80px;
-      height: 80px;
+      width: 60px;
+      height: 60px;
+    }
+
+    @include mobile-small {
+      width: 60px;
+      height: 60px;
+
+      svg {
+        transform: scale(0.8);
+      }
+    }
+
+    @include mobile-smallest {
+      width: 38px;
+      height: 38px;
+
+      svg {
+        transform: scale(0.5);
+      }
     }
 
     &.slick-next {
@@ -92,7 +110,11 @@
       }
 
       @include mobile {
-        display: none;
+        right: 10%;
+      }
+
+      @include mobile-small {
+        right: 5%;
       }
     }
 
@@ -112,7 +134,11 @@
       }
 
       @include mobile {
-        display: none;
+        left: 10%;
+      }
+
+      @include mobile-small {
+        left: 5%;
       }
     }
 
@@ -126,12 +152,12 @@
   }
 
   .slick-dots {
-    position: relative;
+    //position: relative;
+    width: 200%;
     bottom: auto;
     margin-top: 115px;
     display: flex !important;
     flex-wrap: wrap;
-    justify-content: center;
     align-items: center;
 
     @include mobile {
