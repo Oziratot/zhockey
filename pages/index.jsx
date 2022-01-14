@@ -226,13 +226,13 @@ export default function Home({
                 </div>
                 <div className="table-column centered">
                   <p className="table-header">Земля</p>
-                  <p className="table-text">18:15–19:15</p>
-                  <p className="table-text">17:30–18:30</p>
+                  <p className="table-text">18:15-19:15</p>
+                  <p className="table-text">9:30-10:30</p>
                 </div>
                 <div className="table-column centered">
                   <p className="table-header">Лёд</p>
-                  <p className="table-text">19:30–21:00</p>
-                  <p className="table-text">18:45–20:15</p>
+                  <p className="table-text">19:30-21:00</p>
+                  <p className="table-text">7:45-9:15</p>
                 </div>
               </div>
             </div>
