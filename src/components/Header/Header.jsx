@@ -22,6 +22,18 @@ const Header = function ({ windowWidth, orderCallClick }) {
   const gtag = useGTag();
   const fbq = useFbPixel();
 
+  const handleTelegramClick = useCallback(() => {
+    ym('reachGoal', 'TELEGRAM_CLICKED');
+    gtag('event', 'TELEGRAM_CLICKED');
+    fbq('track', 'TELEGRAM_CLICKED');
+  }, []);
+
+  const handleWhatsappClick = useCallback(() => {
+    ym('reachGoal', 'WHATSAPP_CLICKED');
+    gtag('event', 'WHATSAPP_CLICKED');
+    fbq('track', 'WHATSAPP_CLICKED');
+  }, []);
+
   const handlePhoneClick = useCallback(() => {
     ym('reachGoal', 'TEL_CLICKED');
     gtag('event', 'TEL_CLICKED');
@@ -59,9 +71,14 @@ const Header = function ({ windowWidth, orderCallClick }) {
               </a>
             </Link>
           </div>
-          <Nav setMenuOpened={setMenuOpened} />
+          <Nav
+            setMenuOpened={setMenuOpened}
+            handleTelegramClick={handleTelegramClick}
+            handleWhatsappClick={handleWhatsappClick}
+            handlePhoneClick={handlePhoneClick}
+          />
           <div className="header-contacts">
-            <a href="tel:79160791214" className="phone-number">+7 916 079-12-14</a>
+            <a onClick={handlePhoneClick} href="tel:79160791214" className="phone-number">+7 916 079-12-14</a>
             <button onClick={orderCallClick} type="button" className="header-button">Заказать звонок</button>
           </div>
         </div>
@@ -101,7 +118,13 @@ const Header = function ({ windowWidth, orderCallClick }) {
             <div className="mobile-nav">
               <div className="container">
                 <div className="nav-container">
-                  <Nav mobile setMenuOpened={setMenuOpened} />
+                  <Nav
+                    mobile
+                    setMenuOpened={setMenuOpened}
+                    handleTelegramClick={handleTelegramClick}
+                    handleWhatsappClick={handleWhatsappClick}
+                    handlePhoneClick={handlePhoneClick}
+                  />
                 </div>
                 <div className="contacts-container">
                   <div className="header-contacts">
@@ -113,10 +136,10 @@ const Header = function ({ windowWidth, orderCallClick }) {
                       <div className="social-links-item"><InstagramIcon /></div>
                     </Link>
                     <Link passHref href="https://wa.me/79160791214">
-                      <div className="social-links-item"><WhatsappIcon /></div>
+                      <div onClick={handleWhatsappClick} className="social-links-item"><WhatsappIcon /></div>
                     </Link>
                     <Link passHref href="https://t.me/GHA_hockey">
-                      <div className="social-links-item"><TelegramIcon /></div>
+                      <div onClick={handleTelegramClick} className="social-links-item"><TelegramIcon /></div>
                     </Link>
                   </div>
                 </div>

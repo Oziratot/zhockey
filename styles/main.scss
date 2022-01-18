@@ -11,16 +11,16 @@ html {
   width: 100%;
   padding-top: 154px;
   padding-bottom: 200px;
+  background: -webkit-image-set( url('../src/assets/images/main-section-backround.jpeg') 1x, url('../src/assets/images/main-section-backround 2x.jpeg') 2x ) no-repeat bottom right;
   background-color: #222222;
-  background-image: url('../src/assets/images/main-section-backround.jpeg');
-  background-position: bottom right;
-  background-repeat: no-repeat;
   background-size: contain;
 
   @include landscape {
     padding-top: 110px;
     padding-bottom: 104px;
-    background-image: url("../src/assets/images/main-section-backround-landscape.jpeg");
+    background: -webkit-image-set( url('../src/assets/images/main-section-backround-landscape.jpeg') 1x, url('../src/assets/images/main-section-backround-landscape 2x.jpeg') 2x ) no-repeat bottom right;
+    background-size: contain;
+    background-color: #222222;
   }
 
   @include tablet {

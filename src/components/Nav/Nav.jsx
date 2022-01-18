@@ -1,11 +1,11 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 import Link from 'next/link';
 import { NAVLINKS } from '../../constants/navLinks';
 import InstagramIcon from '../../assets/svg/social/instagram-logo.svg';
 import WhatsappIcon from '../../assets/svg/social/whatsapp-logo.svg';
 import TelegramIcon from '../../assets/svg/social/telegram-logo.svg';
 
-const Nav = function ({ mobile, setMenuOpened }) {
+const Nav = function ({ mobile, setMenuOpened, handleTelegramClick, handleWhatsappClick, handlePhoneClick }) {
   const handleCloseClick = () => {
     setMenuOpened(false);
   };
@@ -25,10 +25,10 @@ const Nav = function ({ mobile, setMenuOpened }) {
           <div className="social-links-item"><InstagramIcon /></div>
         </Link>
         <Link passHref href="https://wa.me/79160791214">
-          <div className="social-links-item"><WhatsappIcon /></div>
+          <div onClick={handleWhatsappClick} className="social-links-item"><WhatsappIcon /></div>
         </Link>
         <Link passHref href="https://t.me/GHA_hockey">
-          <div className="social-links-item"><TelegramIcon /></div>
+          <div onClick={handleTelegramClick} className="social-links-item"><TelegramIcon /></div>
         </Link>
       </div>
       )}

@@ -11,7 +11,7 @@ const YMetrikaScript = {
     (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
      m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})
      (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
-     ym(65395597, "init", {
+     ym(48349664, "init", {
           clickmap:true,
           trackLinks:true,
           accurateTrackBounce:true,
@@ -26,7 +26,7 @@ const GTagScript = {
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
 
-    gtag('config', 'UA-171685923-1');
+    gtag('config', 'UA-116931678-1');
   `,
 };
 
@@ -40,7 +40,7 @@ const FbPixelScript = {
     t.src=v;s=b.getElementsByTagName(e)[0];
     s.parentNode.insertBefore(t,s)}(window,document,'script',
     'https://connect.facebook.net/en_US/fbevents.js');
-     fbq('init', '1750567085095416');
+     fbq('init', '309390946541081');
      fbq('track', 'PageView');
   `,
 };
@@ -93,7 +93,7 @@ const MyApp = function ({ Component, pageProps }) {
         {process.env.NODE_ENV === 'production' && (
           <>
             <meta name="yandex-verification" content="02bb13a9cb19fdbc" />
-            <script async src="https://www.googletagmanager.com/gtag/js?id=UA-171685923-1" />
+            <script async src="https://www.googletagmanager.com/gtag/js?id=UA-116931678-1" />
             <script type="text/javascript" dangerouslySetInnerHTML={GTagScript} />
             <script type="text/javascript" dangerouslySetInnerHTML={YMetrikaScript} />
             <script type="text/javascript" dangerouslySetInnerHTML={FbPixelScript} />

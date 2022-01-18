@@ -85,9 +85,9 @@ const OrderCallFrom = function ({ clientWindowWidth, handleModalClose }) {
 
     axios.post('/feedback-form.php', stringify(safeValues), { 'Content-Type': 'application/x-www-form-urlencoded', headers: { 'Access-Control-Allow-Origin': '*' } })
       .then(() => {
-        ym('reachGoal', 'FORM_FIRST_STEP_SUBMITTED');
-        gtag('event', 'FORM_FIRST_STEP_SUBMITTED');
-        fbq('track', 'FORM_FIRST_STEP_SUBMITTED');
+        ym('reachGoal', 'FILLED_AND_SUCCESSFULLY_SUBMITTED');
+        gtag('event', 'FILLED_AND_SUCCESSFULLY_SUBMITTED');
+        fbq('track', 'FILLED_AND_SUCCESSFULLY_SUBMITTED');
         setSubmitting(false);
       })
       .catch(() => {

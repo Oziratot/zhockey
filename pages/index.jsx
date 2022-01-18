@@ -27,6 +27,9 @@ import ReviewsSwiper from '../src/components/ReviewsSwiper/ReviewsSwiper';
 import Modal from '../src/components/Modal';
 import OrderCallFrom from '../src/components/OrderCallForm/OrederCallFrom';
 import PriceSwiper from '../src/components/PriceSwiper/PriceSwiper';
+import useYMetrika from '../src/utils/hooks/useYMetrika';
+import useGTag from '../src/utils/hooks/useGTag';
+import useFbPixel from '../src/utils/hooks/useFbPixel';
 
 export var ModalPortal = function ({ children }) {
   if (!process.browser) return null;
@@ -51,6 +54,10 @@ export default function Home({
   const videoRef = useRef();
   const mapRef = useRef();
 
+  const ym = useYMetrika();
+  const gtag = useGTag();
+  const fbq = useFbPixel();
+
   const handleVideoClick = useCallback((e) => {
     setLazyLoadedVideo(true);
     // console.log(e);
@@ -59,6 +66,25 @@ export default function Home({
   const handleReady = useCallback((e) => {
     e.target.playVideo();
   }, []);
+
+  const handleTelegramClick = useCallback(() => {
+    ym('reachGoal', 'TELEGRAM_CLICKED');
+    gtag('event', 'TELEGRAM_CLICKED');
+    fbq('track', 'TELEGRAM_CLICKED');
+  }, []);
+
+  const handleWhatsappClick = useCallback(() => {
+    ym('reachGoal', 'WHATSAPP_CLICKED');
+    gtag('event', 'WHATSAPP_CLICKED');
+    fbq('track', 'WHATSAPP_CLICKED');
+  }, []);
+
+  const handlePhoneClick = useCallback(() => {
+    ym('reachGoal', 'TEL_CLICKED');
+    gtag('event', 'TEL_CLICKED');
+    fbq('track', 'TEL_CLICKED');
+  }, []);
+
   useContactsMap(mapRef, true);
 
   return (
@@ -314,16 +340,16 @@ export default function Home({
           <div className="contacts-content">
             <h2 className="section-title contacts-title">Контакты</h2>
             <p className="contacts-text">Свяжитесь с нами</p>
-            <p className="contacts-tel">+7 916 079-12-14</p>
+            <a className="contacts-tel" onClick={handlePhoneClick} href="tel:79160791214">+7 916 079-12-14</a>
             <div className="social-links">
               <Link passHref href="https://www.instagram.com/z_hockey_/" target="_blank">
                 <div className="social-links-item"><InstagramIcon /></div>
               </Link>
               <Link passHref href="https://wa.me/79160791214">
-                <div className="social-links-item"><WhatsappIcon /></div>
+                <div onClick={handleWhatsappClick} className="social-links-item"><WhatsappIcon /></div>
               </Link>
               <Link passHref href="https://t.me/GHA_hockey">
-                <div className="social-links-item"><TelegramIcon /></div>
+                <div onClick={handleTelegramClick} className="social-links-item"><TelegramIcon /></div>
               </Link>
             </div>
             <button type="button" onClick={handleOrderCallClick} className="button-orange contacts-button">Задать вопрос</button>
