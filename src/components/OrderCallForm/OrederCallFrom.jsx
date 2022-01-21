@@ -149,7 +149,7 @@ const OrderCallFrom = function ({ clientWindowWidth, handleModalClose }) {
                 </button>
                     )}
                 <div className="consent-personal-data-processing">
-                  <span>Нажимая на кнопку, вы даете согласие на обработку </span>
+                  <span>Нажимая на кнопку, вы даете согласие на&nbsp;обработку </span>
                   <Link href="/legal/agreement">
                     <a onClick={handleModalClose} className="blue-link">персональных&nbsp;данных</a>
                   </Link>

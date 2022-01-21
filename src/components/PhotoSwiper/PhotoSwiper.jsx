@@ -45,11 +45,11 @@ const settings = {
   prevArrow: <PrevArrow />,
   responsive: [
     {
-      breakpoint: 1024,
+      breakpoint: 1025,
       settings: {
         slidesToShow: 1,
         centerMode: true,
-        centerPadding: '300px',
+        centerPadding: '280px',
       },
     },
     {
@@ -63,12 +63,6 @@ const settings = {
     {
       breakpoint: 768,
       settings: {
-        customPaging() {
-          return (
-            <div className="custom-dot" />
-          );
-        },
-        dots: true,
         slidesToShow: 1,
         centerMode: true,
         centerPadding: '150px',
@@ -77,12 +71,6 @@ const settings = {
     {
       breakpoint: 624,
       settings: {
-        customPaging() {
-          return (
-            <div className="custom-dot" />
-          );
-        },
-        dots: true,
         slidesToShow: 1,
         centerMode: true,
         centerPadding: '100px',
@@ -91,26 +79,22 @@ const settings = {
     {
       breakpoint: 480,
       settings: {
-        customPaging() {
-          return (
-            <div className="custom-dot" />
-          );
-        },
-        dots: true,
         slidesToShow: 1,
         centerMode: true,
         centerPadding: '80px',
       },
     },
     {
+      breakpoint: 390,
+      settings: {
+        slidesToShow: 1,
+        centerMode: true,
+        centerPadding: '55px',
+      },
+    },
+    {
       breakpoint: 320,
       settings: {
-        customPaging() {
-          return (
-            <div className="custom-dot" />
-          );
-        },
-        dots: true,
         slidesToShow: 1,
         centerMode: true,
         centerPadding: '50px',

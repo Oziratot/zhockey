@@ -92,7 +92,6 @@ const PriceSwiper = function ({ orderCallClick, clientWindowWidth }) {
 
   useEffect(() => {
     if (clientWindowWidth < 768 && prevWidth === false) {
-      console.log(1);
       sliderRef.current.slickGoTo(1);
     }
   }, [clientWindowWidth]);

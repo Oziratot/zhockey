@@ -13,39 +13,55 @@
       width: 960px;
     }
 
+    @include mobile {
+      width: 850px;
+    }
+
     @include mobile-small {
       width: 816px;
     }
 
     @include iphone {
-      width: 700px;
+      width: 750px;
     }
 
     @include mobile-smallest {
-      width: 620px;
+      //width: 620px;
+    }
+
+    .slick-list {
+      transition: height $trans;
     }
 
     .slick-track {
       display: flex;
-      align-items: center;
-      justify-content: center;
+      //align-items: center;
+      //justify-content: center;
 
       @include mobile-small {
-        height: 500px;
+        //height: 500px;
       }
 
       @include iphone {
-        height: 450px;
+        //height: 450px;
       }
 
       @include mobile-smallest {
-        height: 400px;
+        //height: 400px;
       }
     }
 
     .slick-slide {
-      transform: scale(0.94);
+      //transform: scale(0.94);
       transition: transform $trans;
+
+      img {
+        transition: border-top $trans;
+
+        @include iphone {
+          max-width: 240px;
+        }
+      }
 
       @include landscape {
         display: flex;
@@ -59,47 +75,47 @@
       }
 
       @include tablet {
-        transform: scale(0.78);
+        //transform: scale(0.78);
       }
 
       @include mobile-small {
-        transform: scale(0.72);
+        //transform: scale(0.72);
       }
 
       @include iphone {
-        transform: scale(0.65);
+        //transform: scale(0.65);
       }
 
       @include mobile-smallest {
-        transform: scale(0.554);
+        //transform: scale(0.554);
       }
 
       &.slick-current {
-        transform: scale(1);
+        //transform: scale(1);
 
         @include tablet {
           padding-bottom: 0;
-          transform: scale(0.98);
+          //transform: scale(0.98);
         }
 
         @include mobile {
-          transform: scale(0.94);
+          //transform: scale(0.94);
         }
 
         @include mobile-small {
-          transform: scale(0.81);
+          //transform: scale(0.81);
         }
 
         @include iphone {
-          transform: scale(0.68);
+          //transform: scale(0.68);
         }
 
         @include mobile-smallest {
-          transform: scale(0.63);
+          //transform: scale(0.63);
         }
 
         img {
-          border-top: 10px solid #E16428;
+          //border-top: 10px solid #E16428;
         }
       }
     }
@@ -190,60 +206,12 @@
         background-color: #FFFFFF;
       }
     }
-
-    .slick-dots {
-      position: relative;
-      bottom: auto;
-      margin-top: 20px;
-      display: flex !important;
-      justify-content: center;
-      align-items: center;
-
-      @include mobile {
-        margin-top: 20px;
-      }
-
-      @include mobile-smallest {
-        margin-top: 20px;
-      }
-
-      li {
-        width: 10px;
-        height: 10px;
-        background-color: #222222;
-        margin-right: 20px;
-        transition: $trans;
-        transition-property: width, height, background-color;
-
-        @include mobile-smallest {
-          width: 7px;
-          height: 7px;
-          margin-right: 15px;
-        }
-
-        &.slick-active {
-          width: 20px;
-          height: 20px;
-          background-color: #E16428;
-
-          @include mobile-smallest {
-            width: 14px;
-            height: 14px;
-          }
-        }
-
-        &:last-of-type {
-          margin-right: 0;
-        }
-      }
-    }
   }
 }
 
 .review-wrapper {
   position: relative;
   width: 337px;
-  height: 600px;
 
   @include landscape {
     width: 261px;
@@ -251,13 +219,13 @@
 
   @include mobile-small {
     width: 273px;
-    height: 493px;
+    //height: 493px;
   }
 }
 
 .review-item {
   max-width: 337px;
-  margin: 0 20px;
+  //margin: 0 20px;
   cursor: zoom-in;
   object-fit: contain;
 

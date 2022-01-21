@@ -1,6 +1,5 @@
 import React, { useCallback, useRef, useState } from 'react';
 import Slider from 'react-slick';
-import Image from 'next/image';
 import { REVIEWS } from '../../constants/reviews';
 import NextIcon from '../../assets/svg/slider-arrow-right.svg';
 import PrevIcon from '../../assets/svg/slider-arrow-left.svg';
@@ -39,6 +38,7 @@ const settings = {
   className: 'reviews-slider',
   centerMode: true,
   infinite: true,
+  adaptiveHeight: true,
   slidesToShow: 3,
   speed: 500,
   centerPadding: '0px',
@@ -50,12 +50,6 @@ const settings = {
     {
       breakpoint: 1440,
       settings: {
-        customPaging() {
-          return (
-            <div className="custom-dot" />
-          );
-        },
-        dots: true,
         lazyLoad: 'ondemand',
         nextArrow: <NextArrow />,
         prevArrow: <PrevArrow />,
@@ -64,12 +58,6 @@ const settings = {
     {
       breakpoint: 1024,
       settings: {
-        customPaging() {
-          return (
-            <div className="custom-dot" />
-          );
-        },
-        dots: true,
         lazyLoad: 'ondemand',
         nextArrow: <NextArrow />,
         prevArrow: <PrevArrow />,

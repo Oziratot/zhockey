@@ -91,6 +91,11 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    transition: transform $trans;
+
+    &:hover {
+      transform: scale(1.1);
+    }
 
     @include landscape {
       margin-right: 10px;

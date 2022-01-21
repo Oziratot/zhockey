@@ -1,6 +1,5 @@
 import React, { useCallback, useRef, useState } from 'react';
 import Link from 'next/link';
-import Image from 'next/image';
 import classnames from 'classnames';
 import { createPortal } from 'react-dom';
 import { CSSTransition } from 'react-transition-group';
@@ -12,9 +11,6 @@ import { FAQ } from '../src/constants/faq';
 import MarkerIcon from '../src/assets/svg/marker.svg';
 import CheckIcon from '../src/assets/svg/check.svg';
 import ArrowIcon from '../src/assets/svg/arrow.svg';
-import ScheduleImage from '../public/assets/schedule.jpeg';
-import FirstPromotionImage from '../src/assets/images/promotion-1.png';
-import SecondPromotionImage from '../src/assets/images/promotion-2.png';
 import BookBar from '../src/components/BookBar/BookBar';
 import PhotoSwiper from '../src/components/PhotoSwiper/PhotoSwiper';
 import InstagramIcon from '../src/assets/svg/social/instagram-logo.svg';
@@ -42,6 +38,9 @@ const TEAMS = [
   'Orangeville Ice Crushers GMHL, Канада',
   'Colborne Chiefs GMHL, Канада',
 ];
+
+const modalHeader = <p>Оставьте ваш контакт — мы&nbsp;перезвоним и&nbsp;ответим на&nbsp;все&nbsp;вопросы</p>;
+const firstBookBarText = <p>Запишитесь на первую тренировку со&nbsp;скидкой 50%</p>;
 
 export default function Home({
   clientWindowWidth, handleModalClose, orderCallModalActive, handleOrderCallClick,
@@ -109,7 +108,7 @@ export default function Home({
 
       <section className="section section-advantages" id="about">
         <div className="section-wrapper advantages-container">
-          <h2 className="section-title advantages-title">Преимущества тренировок в Z-Hockey</h2>
+          <h2 className="section-title advantages-title">Преимущества тренировок в&nbsp;Z-Hockey</h2>
           <div className="advantages-wrapper">
             <div className="advantages">
               {ADVANTAGES.map((item) => (
@@ -125,6 +124,7 @@ export default function Home({
                 <div onClick={handleVideoClick} className="video-preview" data-video-id="gmz0pxezzdA">
                   <YouTubePlay className="youtube-play-button" />
                   <img className="cover" src="https://img.youtube.com/vi/gmz0pxezzdA/sddefault.jpg" alt="youtube-video-gmz0pxezzdA" />
+                  <div className="overlay" />
                 </div>
               </>
 
@@ -156,7 +156,7 @@ export default function Home({
               <h2 className="section-title methodology-title">О методике</h2>
               {clientWindowWidth <= 768 && <div className="methodology-image" />}
               <p className="section-text methodology-text">Меня зовут Егор Гришатов — я хоккейный тренер и агент, работаю с лигами США, Канады и Европы.</p>
-              <p className="section-text methodology-text">Моя авторская методика основана на актуальных требованиях современного хоккея — упор на игровые упражнения и комплексное развитие навыков как для защитников, так и для нападающих.</p>
+              <p className="section-text methodology-text">Моя авторская методика основана на актуальных требованиях современного хоккея — упор на игровые упражнения и&nbsp;комплексное развитие навыков как для защитников, так и для нападающих.</p>
               <ul className="methodology-list">
                 {METHODOLOGY.map((item) => (
                   <li className="section-text methodology-item" key={item}>{item}</li>
@@ -167,7 +167,7 @@ export default function Home({
         </div>
       </section>
 
-      <BookBar orderCallClick={handleOrderCallClick} text="Запишитесь на первую тренировку со скидкой 50%" buttonText="Записаться" />
+      <BookBar orderCallClick={handleOrderCallClick} text={firstBookBarText} buttonText="Записаться" />
 
       <section className="section section-directions">
         <div className="section-wrapper directions-container">
@@ -210,7 +210,7 @@ export default function Home({
             )}
             <p className="section-text coach-paragraph coach-paragraph-bold">Гришатов Егор Александрович</p>
             <p className="section-text coach-paragraph">Тренерский стаж с 2016 года</p>
-            <p className="section-text coach-paragraph">Высшее педагогическое образование РГСУ, специальность «Физическая культура и спорт»</p>
+            <p className="section-text coach-paragraph">Высшее педагогическое образование РГСУ, специальность «Физическая культура и&nbsp;спорт»</p>
             <p className="section-text coach-paragraph">Выступал за команды:</p>
             <ul className="coach-teams">
               {TEAMS.map((team) => (
@@ -232,33 +232,37 @@ export default function Home({
         <div className="section-wrapper schedule-container">
           <h2 className="section-title schedule-title">Расписание</h2>
           <div className="schedule-wrapper">
-            {clientWindowWidth > 768 && (
+            {clientWindowWidth > 1024 && (
               <div className="schedule-image-container">
                 <img className="schedule-image" src="/assets/img/schedule.jpeg" alt="hockey field" />
               </div>
             )}
             <div className="schedule-text">
-              <p className="section-text schedule-paragraph">Тренировки проходят по адресу г. Москва, ул. Новоостаповская д5с2, ЛД «Морозово», каждую субботу и воскресенье</p>
-              {clientWindowWidth <= 768 && (
+              {clientWindowWidth >= 768 ? (
+                <p className="section-text schedule-paragraph">Тренировки проходят по адресу г. Москва, ул.&nbsp;Новоостаповская&nbsp;д5с2,<br />ЛД «Морозово», каждую субботу и&nbsp;воскресенье</p>
+              ) : (
+                <p className="section-text schedule-paragraph">Тренировки проходят по адресу г. Москва, ул. Новоостаповская&nbsp;д5с2, ЛД «Морозово», каждую субботу и&nbsp;воскресенье</p>
+              )}
+              {clientWindowWidth <= 1024 && (
               <div className="schedule-image-container">
                 <img className="schedule-image" src="/assets/img/schedule.jpeg" alt="hockey field" />
               </div>
               )}
               <div className="schedule-table">
                 <div className="table-column highlighted">
-                  <p className="table-header">День недели</p>
+                  <p className="table-header">День&nbsp;недели</p>
                   <p className="table-header">Суббота</p>
                   <p className="table-header">Воскресенье</p>
                 </div>
                 <div className="table-column centered">
                   <p className="table-header">Земля</p>
-                  <p className="table-text">18:15-19:15</p>
-                  <p className="table-text">9:30-10:30</p>
+                  <p className="table-text">18:15–19:15</p>
+                  <p className="table-text">9:30–10:30</p>
                 </div>
                 <div className="table-column centered">
                   <p className="table-header">Лёд</p>
-                  <p className="table-text">19:30-21:00</p>
-                  <p className="table-text">7:45-9:15</p>
+                  <p className="table-text">19:30–21:00</p>
+                  <p className="table-text">7:45–9:15</p>
                 </div>
               </div>
             </div>
@@ -291,7 +295,7 @@ export default function Home({
           )}
           <div className="promotion-text">
             <h2 className="section-title promotion-title">Акция</h2>
-            <p className="section-text promotion-paragraph">Получи в подарок майку и гамаши при покупке абонемента на 8 тренировок</p>
+            <p className="section-text promotion-paragraph">Получи в подарок майку и гамаши при&nbsp;покупке абонемента на&nbsp;8&nbsp;тренировок</p>
             {clientWindowWidth <= 480 && (
               <div className="promotion-pics">
                 <img className="promotion-image" src="/assets/img/promotion-1.png" alt="promo" />
@@ -391,7 +395,7 @@ export default function Home({
           <Modal
             onClose={handleModalClose}
             active={orderCallModalActive}
-            header="Оставьте ваш контакт — мы перезвоним и ответим на все вопросы"
+            header={modalHeader}
           >
             <div>
               <OrderCallFrom handleModalClose={handleModalClose} clientWindowWidth={clientWindowWidth} />

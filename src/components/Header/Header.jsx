@@ -52,17 +52,21 @@ const Header = function ({ windowWidth, orderCallClick }) {
   });
 
   useEffect(() => {
-    if (clientWindowHeight <= 90) setHeight(100 - clientWindowHeight / 3);
+    if (clientWindowHeight > 100) {
+      setHeight(70);
+    } else {
+      setHeight(100);
+    }
   }, [clientWindowHeight]);
 
   return (
     <header
       className="header"
       style={{
-        height: `${windowWidth >= 1024 ? height : (windowWidth > 490 ? 80 : 60)}px`,
+        height: `${windowWidth > 1024 ? height : (windowWidth > 390 ? 80 : 60)}px`,
       }}
     >
-      {(windowWidth >= 1024) ? (
+      {(windowWidth > 1024) ? (
         <div className="header-wrapper">
           <div className="container">
             <Link passHref href="/">
