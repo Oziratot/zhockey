@@ -173,9 +173,15 @@
       -webkit-appearance: none;
       outline: 0;
       transition: border-color $trans, box-shadow $trans;
+      border-radius: 0;
 
       @include mobile-smallest {
         padding: 0 10px;
+      }
+
+      @include iphone {
+        font-size: 16px;
+        line-height: 20px;
       }
 
       &:focus {

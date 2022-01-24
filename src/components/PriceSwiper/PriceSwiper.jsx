@@ -32,7 +32,7 @@ const PrevArrow = function (props) {
 };
 
 const settings = {
-  infinite: false,
+  infinite: true,
   speed: 300,
   slidesToShow: 4,
   slidesToScroll: 4,
@@ -48,7 +48,6 @@ const settings = {
         dots: false,
         slidesToShow: 4,
         slidesToScroll: 4,
-        infinite: false,
       },
     },
     {
@@ -62,7 +61,6 @@ const settings = {
         dots: true,
         slidesToShow: 2,
         slidesToScroll: 1,
-        infinite: false,
         nextArrow: <NextArrow />,
         prevArrow: <PrevArrow />,
       },
@@ -78,7 +76,6 @@ const settings = {
         dots: true,
         slidesToShow: 1,
         slidesToScroll: 1,
-        infinite: false,
         nextArrow: <NextArrow />,
         prevArrow: <PrevArrow />,
       },

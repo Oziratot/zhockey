@@ -712,6 +712,7 @@ html {
 
   @include landscape {
     background-image: url("../src/assets/images/directions-laptop.jpeg");
+    background-size: 750px 1000px;
   }
 
   @include tablet {
@@ -888,6 +889,7 @@ html {
 
             .direction-item {
               transform: translateY(0);
+              -webkit-transform: translateY(0);
               }
             }
 
@@ -906,8 +908,8 @@ html {
           .directions-icon {
             transform: rotate(0deg);
           }
-          }
         }
+      }
 
         .directions-item {
           padding-left: 50px;
@@ -916,6 +918,10 @@ html {
           list-style-position: outside;
           max-height: 0;
           transition: max-height $trans;
+          -webkit-transition: max-height $trans;
+          -moz-transition: max-height $trans;
+          -o-transition: max-height $trans;
+          will-change: traansform;
           max-width: 518px;
 
           @include landscape {
@@ -932,6 +938,8 @@ html {
             font-weight: 300;
             margin-bottom: 20px;
             transform: translateY(350%);
+            -webkit-transform: translateY(350%);
+            will-change: transform;
 
             &:last-of-type {
               margin-bottom: 0;
@@ -965,6 +973,9 @@ html {
           @for $i from 1 through 3 {
             .direction-item:nth-child(#{$i}) {
               transition: transform 0.2s + $i * 0.1 linear;
+              -webkit-transition: transform 0.2s + $i * 0.1 linear;
+              -moz-transition: transform 0.2s + $i * 0.1 linear;
+              -o-transition: transform 0.2s + $i * 0.1 linear;
             }
           }
       }
@@ -1842,29 +1853,6 @@ html {
           margin-bottom: 0;
         }
 
-
-        &._opened {
-          .question-wrapper {
-            margin-bottom: 30px;
-
-            @include landscape {
-              margin-bottom: 20px;
-            }
-
-            @include mobile-small {
-              margin-bottom: 20px;
-            }
-
-            .faq-icon {
-              transform: rotate(180deg);
-            }
-          }
-
-          .faq-answer {
-            max-height: 351px;
-          }
-        }
-
         &::before {
           position: absolute;
           content: '';
@@ -1938,7 +1926,7 @@ html {
 
         .faq-answer {
           overflow: hidden;
-          max-height: 0;
+          max-height: 0px;
           transition: max-height $trans;
           font-size: 30px;
           line-height: 1.3;
@@ -1966,6 +1954,28 @@ html {
 
           @include mobile-smallest {
             max-width: 241px;
+          }
+        }
+
+        &._opened {
+          .question-wrapper {
+            margin-bottom: 30px;
+
+            @include landscape {
+              margin-bottom: 20px;
+            }
+
+            @include mobile-small {
+              margin-bottom: 20px;
+            }
+
+            .faq-icon {
+              transform: rotate(180deg);
+            }
+          }
+
+          .faq-answer {
+            max-height: 351px;
           }
         }
       }
