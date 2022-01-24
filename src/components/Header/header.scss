@@ -363,6 +363,7 @@
       line-height: 28px;
       transition: opacity $trans;
       padding: 0;
+      overflow: visible;
 
       @include landscape {
         font-size: 16px;

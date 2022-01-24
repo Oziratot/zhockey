@@ -1919,7 +1919,7 @@ html {
           .faq-icon {
             overflow: visible;
             margin-left: auto;
-            transform: rotate(0deg);
+            transform: rotate(180deg);
             transition: transform $trans;
           }
         }
@@ -1970,7 +1970,7 @@ html {
             }
 
             .faq-icon {
-              transform: rotate(180deg);
+              transform: rotate(0deg);
             }
           }
 

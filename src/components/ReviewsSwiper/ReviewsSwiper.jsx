@@ -10,29 +10,29 @@ const items = REVIEWS.map((item) => ({
   alt: item.photo,
 }));
 
-const NextArrow = function (props) {
-  const { className, style, onClick } = props;
-  return (
-    <div
-      className={className}
-      onClick={onClick}
-    >
-      <NextIcon />
-    </div>
-  );
-};
-
-const PrevArrow = function (props) {
-  const { className, style, onClick } = props;
-  return (
-    <div
-      className={className}
-      onClick={onClick}
-    >
-      <PrevIcon />
-    </div>
-  );
-};
+// const NextArrow = function (props) {
+//   const { className, style, onClick } = props;
+//   return (
+//     <div
+//       className={className}
+//       onClick={onClick}
+//     >
+//       <NextIcon />
+//     </div>
+//   );
+// };
+//
+// const PrevArrow = function (props) {
+//   const { className, style, onClick } = props;
+//   return (
+//     <div
+//       className={className}
+//       onClick={onClick}
+//     >
+//       <PrevIcon />
+//     </div>
+//   );
+// };
 
 const settings = {
   className: 'reviews-slider',
@@ -44,23 +44,23 @@ const settings = {
   centerPadding: '0px',
   initialSlide: 4,
   lazyLoad: 'ondemand',
-  nextArrow: <NextArrow />,
-  prevArrow: <PrevArrow />,
+  // nextArrow: <NextArrow />,
+  // prevArrow: <PrevArrow />,
   responsive: [
     {
       breakpoint: 1440,
       settings: {
         lazyLoad: 'ondemand',
-        nextArrow: <NextArrow />,
-        prevArrow: <PrevArrow />,
+        // nextArrow: <NextArrow />,
+        // prevArrow: <PrevArrow />,
       },
     },
     {
       breakpoint: 1024,
       settings: {
         lazyLoad: 'ondemand',
-        nextArrow: <NextArrow />,
-        prevArrow: <PrevArrow />,
+        // nextArrow: <NextArrow />,
+        // prevArrow: <PrevArrow />,
       },
     },
   ],
