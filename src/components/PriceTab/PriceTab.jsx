@@ -15,7 +15,7 @@ const PriceTab = function ({
           ))}
         </ul>
         <div className="pricetab-price">{`${price} `}<span className="rub">Р</span></div>
-        {note && <div className="pricetab-note">{note}</div> }
+        {note && <div className="pricetab-note">{`${note} `}<span className="rub-small">Р</span></div> }
       </div>
       <button type="button" onClick={orderCallClick} className="pricetab-btn">Записаться</button>
     </div>

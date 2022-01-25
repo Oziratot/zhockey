@@ -48,7 +48,8 @@ html {
   }
 
   @include iphone {
-    padding-top: 220px;
+    background-image: url("../src/assets/images/main-section-backround-iphone.jpeg");
+    padding-top: 232px;
     padding-bottom: 60px;
   }
 
@@ -168,6 +169,10 @@ html {
         margin: 30px 0;
       }
 
+      @include iphone {
+        margin: 30px 0 24px;
+      }
+
       @media screen and (max-width: 600px) {
         font-size: 28px;
       }
@@ -178,7 +183,7 @@ html {
       }
 
       @include iphone {
-        font-size: 22px;
+        font-size: 20px;
         padding-left: 13px;
       }
 
@@ -1384,7 +1389,7 @@ html {
 
         @include landscape{
           padding: 0 0 0 25px;
-          height: 208px;
+          height: 202px;
         }
 
         @include tablet {

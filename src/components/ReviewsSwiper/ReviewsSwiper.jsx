@@ -1,38 +1,12 @@
 import React, { useCallback, useRef, useState } from 'react';
 import Slider from 'react-slick';
 import { REVIEWS } from '../../constants/reviews';
-import NextIcon from '../../assets/svg/slider-arrow-right.svg';
-import PrevIcon from '../../assets/svg/slider-arrow-left.svg';
 import CustomLightbox from '../Lightbox';
 
 const items = REVIEWS.map((item) => ({
   src: item.src,
   alt: item.photo,
 }));
-
-// const NextArrow = function (props) {
-//   const { className, style, onClick } = props;
-//   return (
-//     <div
-//       className={className}
-//       onClick={onClick}
-//     >
-//       <NextIcon />
-//     </div>
-//   );
-// };
-//
-// const PrevArrow = function (props) {
-//   const { className, style, onClick } = props;
-//   return (
-//     <div
-//       className={className}
-//       onClick={onClick}
-//     >
-//       <PrevIcon />
-//     </div>
-//   );
-// };
 
 const settings = {
   className: 'reviews-slider',
@@ -44,23 +18,44 @@ const settings = {
   centerPadding: '0px',
   initialSlide: 4,
   lazyLoad: 'ondemand',
-  // nextArrow: <NextArrow />,
-  // prevArrow: <PrevArrow />,
   responsive: [
     {
       breakpoint: 1440,
       settings: {
         lazyLoad: 'ondemand',
-        // nextArrow: <NextArrow />,
-        // prevArrow: <PrevArrow />,
       },
     },
     {
       breakpoint: 1024,
       settings: {
         lazyLoad: 'ondemand',
-        // nextArrow: <NextArrow />,
-        // prevArrow: <PrevArrow />,
+      },
+    },
+    {
+      breakpoint: 480,
+      settings: {
+        slidesToShow: 1,
+        centerMode: true,
+        centerPadding: '100px',
+        lazyLoad: 'ondemand',
+      },
+    },
+    {
+      breakpoint: 390,
+      settings: {
+        slidesToShow: 1,
+        centerMode: true,
+        centerPadding: '60px',
+        lazyLoad: 'ondemand',
+      },
+    },
+    {
+      breakpoint: 320,
+      settings: {
+        slidesToShow: 1,
+        centerMode: true,
+        centerPadding: '25px',
+        lazyLoad: 'ondemand',
       },
     },
   ],

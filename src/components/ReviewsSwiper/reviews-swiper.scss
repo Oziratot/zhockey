@@ -18,15 +18,15 @@
     }
 
     @include mobile-small {
-      width: 816px;
+      width: 480px;
     }
 
     @include iphone {
-      width: 750px;
+      width: 390px;
     }
 
     @include mobile-smallest {
-      //width: 620px;
+      width: 320px;
     }
 
     .slick-list {
@@ -52,16 +52,6 @@
     }
 
     .slick-slide {
-      //transform: scale(0.94);
-      transition: transform $trans;
-
-      img {
-        transition: border-top $trans;
-
-        @include iphone {
-          max-width: 240px;
-        }
-      }
 
       @include landscape {
         display: flex;
@@ -118,6 +108,10 @@
           //border-top: 10px solid #E16428;
         }
       }
+    }
+
+    .slick-arrow {
+      display: none !important;
     }
   }
 }
