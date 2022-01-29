@@ -3,18 +3,18 @@
 .reviews-wrapper {
 
   .slick-slider {
-    width: 1121px;
+    width: 1171px;
 
     @include landscape {
-      width: 960px;
+      width: 830px;
     }
 
     @include tablet {
-      width: 960px;
+      width: 985px;
     }
 
     @include mobile {
-      width: 850px;
+      width: 768px;
     }
 
     @include mobile-small {
@@ -29,29 +29,57 @@
       width: 320px;
     }
 
-    .slick-list {
-      transition: height $trans;
+    .review-container {
+      height: 600px;
+      width: 337px !important;
+      background-color: #3D3D3D;
+      transform: scale(0.94);
+      transition: transform $trans-semi-slow;
+
+      @include landscape {
+        width: 261px !important;
+        height: 465px;
+        transform: scale(0.86);
+      }
+
+      @include tablet {
+        width: 334px !important;
+        height: 592px;
+        transform: scale(0.773);
+      }
+
+      @include mobile {
+        width: 320px !important;
+        height: 572px;
+        transform: scale(0.831);
+      }
+
+      @include mobile-small {
+        width: 276px !important;
+        height: 493px;
+        transform: scale(0.88);
+      }
+
+      @include iphone {
+        width: 240px !important;
+        height: 428px;
+        transform: scale(0.85);
+      }
+
+      @include mobile-smallest {
+        width: 212px !important;
+        height: 378px;
+        transform: scale(0.88);
+      }
     }
 
     .slick-track {
       display: flex;
-      //align-items: center;
-      //justify-content: center;
-
-      @include mobile-small {
-        //height: 500px;
-      }
-
-      @include iphone {
-        //height: 450px;
-      }
-
-      @include mobile-smallest {
-        //height: 400px;
-      }
     }
 
     .slick-slide {
+      display: flex;
+      justify-content: center;
 
       @include landscape {
         display: flex;
@@ -64,54 +92,63 @@
         justify-content: center;
       }
 
-      @include tablet {
-        //transform: scale(0.78);
-      }
-
-      @include mobile-small {
-        //transform: scale(0.72);
-      }
-
-      @include iphone {
-        //transform: scale(0.65);
-      }
-
-      @include mobile-smallest {
-        //transform: scale(0.554);
-      }
-
       &.slick-current {
-        //transform: scale(1);
-
-        @include tablet {
+        .review-container {
+          border-top: 10px solid #E16428;
+          transform: scale(1);
           padding-bottom: 0;
-          //transform: scale(0.98);
-        }
-
-        @include mobile {
-          //transform: scale(0.94);
-        }
-
-        @include mobile-small {
-          //transform: scale(0.81);
-        }
-
-        @include iphone {
-          //transform: scale(0.68);
-        }
-
-        @include mobile-smallest {
-          //transform: scale(0.63);
-        }
-
-        img {
-          //border-top: 10px solid #E16428;
         }
       }
     }
 
     .slick-arrow {
-      display: none !important;
+      width: 80px;
+      height: 80px;
+      background-color: #FFFFFF;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 1;
+      box-shadow: 0 3px 6px rgba(0, 0, 0, 0.15);
+
+      @include landscape {
+        width: 62px;
+        height: 62px;
+      }
+
+      @include tablet {
+        display: none !important;
+      }
+
+      svg {
+        @include landscape {
+          transform: scale(0.79);
+        }
+      }
+
+      &.slick-next {
+        right: -100px;
+
+        @include landscape {
+          right: -65px;
+        }
+      }
+
+      &.slick-prev {
+        left: -100px;
+
+        @include landscape {
+          left: -65px;
+        }
+      }
+
+      &::before {
+        content: '';
+      }
+
+      &:hover {
+        background-color: #FFFFFF;
+      }
     }
   }
 }
@@ -126,22 +163,13 @@
 
   @include mobile-small {
     width: 273px;
-    //height: 493px;
   }
 }
 
 .review-item {
-  max-width: 337px;
-  //margin: 0 20px;
+  width: 100%;
+  height: 100%;
   cursor: zoom-in;
   object-fit: contain;
-
-  @include landscape {
-    max-width: 261px;
-    margin: 0;
-  }
-
-  @include tablet {
-    margin: 0;
-  }
+  object-position: center;
 }

@@ -2,22 +2,48 @@ import React, { useCallback, useRef, useState } from 'react';
 import Slider from 'react-slick';
 import { REVIEWS } from '../../constants/reviews';
 import CustomLightbox from '../Lightbox';
+import NextIcon from '../../assets/svg/slider-arrow-right.svg';
+import PrevIcon from '../../assets/svg/slider-arrow-left.svg';
 
 const items = REVIEWS.map((item) => ({
   src: item.src,
   alt: item.photo,
 }));
 
+const NextArrow = function (props) {
+  const { className, style, onClick } = props;
+  return (
+    <div
+      className={className}
+      onClick={onClick}
+    >
+      <NextIcon />
+    </div>
+  );
+};
+
+const PrevArrow = function (props) {
+  const { className, style, onClick } = props;
+  return (
+    <div
+      className={className}
+      onClick={onClick}
+    >
+      <PrevIcon />
+    </div>
+  );
+};
+
 const settings = {
   className: 'reviews-slider',
   centerMode: true,
   infinite: true,
-  adaptiveHeight: true,
   slidesToShow: 3,
-  speed: 500,
+  speed: 600,
   centerPadding: '0px',
-  initialSlide: 4,
   lazyLoad: 'ondemand',
+  nextArrow: <NextArrow />,
+  prevArrow: <PrevArrow />,
   responsive: [
     {
       breakpoint: 1440,
@@ -32,11 +58,20 @@ const settings = {
       },
     },
     {
+      breakpoint: 768,
+      settings: {
+        slidesToShow: 1,
+        centerMode: true,
+        centerPadding: '230px',
+        lazyLoad: 'ondemand',
+      },
+    },
+    {
       breakpoint: 480,
       settings: {
         slidesToShow: 1,
         centerMode: true,
-        centerPadding: '100px',
+        centerPadding: '105px',
         lazyLoad: 'ondemand',
       },
     },
@@ -45,7 +80,7 @@ const settings = {
       settings: {
         slidesToShow: 1,
         centerMode: true,
-        centerPadding: '60px',
+        centerPadding: '80px',
         lazyLoad: 'ondemand',
       },
     },
@@ -54,7 +89,7 @@ const settings = {
       settings: {
         slidesToShow: 1,
         centerMode: true,
-        centerPadding: '25px',
+        centerPadding: '56px',
         lazyLoad: 'ondemand',
       },
     },
@@ -108,7 +143,7 @@ const ReviewsSwiper = function () {
     <div className="reviews-wrapper">
       <Slider {...settings}>
         {items.map((item, i) => (
-          <div key={item.alt}>
+          <div className="review-container" key={item.alt}>
             <img
               data-index={i}
               className="review-item"
