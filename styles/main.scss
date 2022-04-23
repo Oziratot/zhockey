@@ -11,6 +11,7 @@ html {
   width: 100%;
   padding-top: 154px;
   padding-bottom: 200px;
+  height: calc(100vh - 100px);
   background: -webkit-image-set( url('../src/assets/images/main-section-backround.jpeg') 1x, url('../src/assets/images/main-section-backround 2x.jpeg') 2x ) no-repeat bottom right;
   background-color: #222222;
   background-size: contain;
@@ -28,6 +29,7 @@ html {
     padding-top: 181px;
     background-size: contain;
     padding-bottom: 177px;
+    height: calc(100vh - 80px);
   }
 
   @include mobile {
@@ -51,6 +53,7 @@ html {
     background-image: url("../src/assets/images/main-section-backround-iphone.jpeg");
     padding-top: 232px;
     padding-bottom: 60px;
+    height: calc(100vh - 60px);
   }
 
   @include mobile-smallest {
@@ -589,57 +592,23 @@ html {
 
         @include landscape {
           margin-bottom: 20px;
-          padding-left: 25px;
         }
 
         @include tablet {
           margin-bottom: 30px;
-          padding-left: 25px;
         }
 
         @include mobile-small {
           margin-bottom: 40px;
-          padding-left: 18px;
         }
 
         @include iphone {
           margin-bottom: 30px;
-          padding-left: 13px;
         }
 
         @include mobile-smallest {
           margin-left: 0;
-          padding-left: 11px;
           margin-bottom: 30px;
-        }
-
-        &::before {
-          position: absolute;
-          content: '';
-          border-left: 10px solid #ED652C;
-          left: -25px;
-          height: 100%;
-
-          @include landscape {
-            left: 0;
-          }
-
-          @include tablet {
-            left: 0;
-          }
-
-          @include mobile-small {
-            border-left: 8px solid #ED652C;
-            left: 0;
-          }
-
-          @include iphone {
-            border-left: 6px solid #ED652C;
-          }
-
-          @include mobile-smallest {
-            border-left: 6px solid #ED652C;
-          }
         }
       }
 
@@ -797,24 +766,6 @@ html {
 
       @include mobile-smallest {
         padding-left: 11px;
-      }
-
-      &::before {
-        position: absolute;
-        content: '';
-        border-left: 10px solid #ED652C;
-        left: -25px;
-        height: 100%;
-
-        @include mobile-small {
-          border-left: 8px solid #ED652C;
-          left: 0;
-        }
-
-        @include iphone {
-          border-left: 6px solid #ED652C;
-          left: 0;
-        }
       }
     }
 
@@ -1113,28 +1064,6 @@ html {
 
       @include mobile-smallest {
         padding-left: 11px;
-      }
-
-      &::before {
-        content: '';
-        border-left: 10px solid #ED652C;
-        left: -25px;
-        height: 100%;
-        position: absolute;
-
-        @include tablet {
-          left: 0;
-        }
-
-        @include mobile-small {
-          left: 0;
-          border-left: 8px solid #ED652C;
-        }
-
-        @include iphone {
-          border-left: 6px solid #ED652C;
-          left: 0;
-        }
       }
     }
 
@@ -1574,166 +1503,6 @@ html {
   }
 }
 
-.section-promotion {
-  padding: 128px 0;
-  background-color: #F5F3F1;
-
-  .promotion-wrapper.promotion-wrapper {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-
-    @include mobile {
-      justify-content: space-around;
-      min-width: 69%;
-    }
-
-    @include mobile-small {
-      flex-direction: column;
-      justify-content: center;
-    }
-  }
-
-  .promotion-pics {
-    display: flex;
-    justify-content: space-between;
-
-    @include landscape {
-      width: 50%;
-    }
-
-    @include mobile {
-      flex-direction: column;
-      align-items: center;
-    }
-
-    @include mobile-small {
-      margin-top: 40px;
-      margin-left: auto;
-      margin-right: auto;
-      flex-direction: row;
-      justify-content: space-around;
-    }
-
-    @include iphone {
-      margin-top: 30px;
-      width: auto;
-    }
-
-    .promotion-image {
-      margin-right: 30px;
-      width: 50%;
-      height: auto;
-
-      @include mobile {
-        padding-right: 0;
-        padding-bottom: 20px;
-        width: 150px;
-      }
-
-      @include iphone {
-        padding-bottom: 0;
-      }
-
-      @include mobile-small {
-        margin: 0;
-        width: 132px;
-      }
-
-      &:last-of-type {
-        padding-right: 0;
-        padding-bottom: 0;
-      }
-    }
-  }
-
-  .promotion-text {
-    padding-left: 50px;
-
-    @include landscape {
-      max-width: 388px;
-    }
-
-    @include mobile {
-      max-width: 295px;
-      padding-left: 0;
-    }
-
-    @include mobile-small {
-      max-width: 100%;
-    }
-
-    .promotion-title {
-      margin-bottom: 30px;
-
-      @include landscape {
-        margin-bottom: 20px;
-      }
-
-      @include tablet {
-        margin-bottom: 30px;
-      }
-
-      @include iphone {
-        margin-bottom: 20px;
-      }
-
-      @include mobile-small {
-        text-align: center;
-      }
-    }
-
-    .promotion-paragraph {
-      font-size: 30px;
-      line-height: 1.3;
-      font-weight: 300;
-      max-width: 467px;
-
-      @include landscape {
-        font-size: 24px;
-      }
-
-      @include tablet {
-        font-size: 24px;
-      }
-
-      @include iphone {
-        font-size: 18px;
-      }
-
-      @include mobile-small {
-        max-width: 100%;
-        text-align: center;
-      }
-    }
-  }
-
-  .promotion-button.promotion-button.promotion-button {
-    height: 70px;
-    width: 345px;
-    margin-top: 30px;
-
-    @include landscape {
-      padding-top: 8px;
-      height: 60px;
-      width: 306px;
-    }
-
-    @include tablet {
-      width: 320px;
-    }
-
-    @include  mobile {
-      width: 295px;
-    }
-
-    @include mobile-small {
-      width: 100%;
-      margin-top: 40px;
-    }
-  }
-}
-
 .section-faq.section-faq {
   padding: 150px 0;
   width: 100%;
@@ -2101,22 +1870,6 @@ html {
 
       @include mobile-smallest {
         margin-bottom: 30px;
-      }
-
-      &::before {
-        position: absolute;
-        content: '';
-        border-left: 10px solid #ED652C;
-        left: -25px;
-        height: 100%;
-
-        @include tablet {
-          left: 0;
-        }
-
-        @include iphone {
-          border-left: 6px solid #ED652C;
-        }
       }
     }
 

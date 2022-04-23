@@ -153,7 +153,7 @@ export default function Home({
           <div className="methodology-wrap">
             {clientWindowWidth > 768 && <div className="methodology-image" />}
             <div className="methodology-wrapper">
-              <h2 className="section-title methodology-title">О методике</h2>
+              <h2 className="section-title highlighted methodology-title">О методике</h2>
               {clientWindowWidth <= 768 && <div className="methodology-image" />}
               <p className="section-text methodology-text">Меня зовут Егор Гришатов — я хоккейный тренер и агент, работаю с лигами США, Канады и Европы.</p>
               <p className="section-text methodology-text">Моя авторская методика основана на актуальных требованиях современного хоккея — упор на игровые упражнения и&nbsp;комплексное развитие навыков как для защитников, так и для нападающих.</p>
@@ -172,7 +172,7 @@ export default function Home({
       <section className="section section-directions">
         <div className="section-wrapper directions-container">
           <div className="directions-wrapper">
-            <h2 className="section-title directions-title">Направленность тренировок</h2>
+            <h2 className="section-title highlighted directions-title">Направленность тренировок</h2>
             <ul className="directions-list">
               {DIRECTIONS.map(({ direction, items }, i) => (
                 <li
@@ -202,7 +202,7 @@ export default function Home({
       <section className="section section-coach">
         <div className="section-wrapper coach-wrapper">
           <div className="coach-text">
-            <h2 className="section-title coach-title">О тренере</h2>
+            <h2 className="section-title highlighted coach-title">О тренере</h2>
             {clientWindowWidth <= 768 && (
               <div className="image-wrapper">
                 <img className="coach-image" src="/assets/img/coach.jpeg" alt="coach" />
@@ -285,28 +285,6 @@ export default function Home({
         </div>
       </section>
 
-      <section className="section section-promotion">
-        <div className="section-wrapper promotion-wrapper">
-          {clientWindowWidth > 480 && (
-          <div className="promotion-pics">
-            <img className="promotion-image" src="/assets/img/promotion-1.png" alt="promo" />
-            <img className="promotion-image" src="/assets/img/promotion-2.png" alt="promo" />
-          </div>
-          )}
-          <div className="promotion-text">
-            <h2 className="section-title promotion-title">Акция</h2>
-            <p className="section-text promotion-paragraph">Получи в подарок майку и гамаши при&nbsp;покупке абонемента на&nbsp;8&nbsp;тренировок</p>
-            {clientWindowWidth <= 480 && (
-              <div className="promotion-pics">
-                <img className="promotion-image" src="/assets/img/promotion-1.png" alt="promo" />
-                <img className="promotion-image" src="/assets/img/promotion-2.png" alt="promo" />
-              </div>
-            )}
-            <button type="button" onClick={handleOrderCallClick} className="button-orange promotion-button">Получить</button>
-          </div>
-        </div>
-      </section>
-
       <section className="section section-faq">
         <div className="section-wrapper">
           <div className="faq-wrapper">
@@ -342,7 +320,7 @@ export default function Home({
       <section className="section section-contacts" id="contacts">
         <div className="section-wrapper contacts-wrapper">
           <div className="contacts-content">
-            <h2 className="section-title contacts-title">Контакты</h2>
+            <h2 className="section-title highlighted contacts-title">Контакты</h2>
             <p className="contacts-text">Свяжитесь с нами</p>
             <a className="contacts-tel" onClick={handlePhoneClick} href="tel:79160791214">+7 916 079-12-14</a>
             <div className="social-links">

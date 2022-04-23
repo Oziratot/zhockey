@@ -3,7 +3,7 @@
 
 :root {
   --dark-gray: #222222;
-  --orange: #FA6900;
+  --orange: #E16428;
   --light-blue: #F0F1F6;
   --blue: #00B6F0;
   --dark-blue: #252D3A;
@@ -44,7 +44,6 @@ body {
   font-stretch: normal;
   letter-spacing: normal;
   color: var(--dark-gray, #474B54);
-  //background-color: #e8eaf6;
   text-rendering: optimizeLegibility;
   overflow-x: hidden;
   -webkit-overflow-scrolling: touch;
@@ -185,6 +184,59 @@ body {
     font-size: 22px;
     line-height: 27px;
     margin-bottom: 30px;
+  }
+
+  &.highlighted {
+    position: relative;
+
+    @include landscape {
+      padding-left: 25px;
+    }
+
+    @include tablet {
+      padding-left: 25px;
+    }
+
+    @include mobile-small {
+      padding-left: 18px;
+    }
+
+    @include iphone {
+      padding-left: 13px;
+    }
+
+    @include mobile-smallest {
+      padding-left: 11px;
+    }
+
+    &::before {
+      position: absolute;
+      content: '';
+      border-left: 10px solid #ED652C;
+      left: -25px;
+      height: 100%;
+
+      @include landscape {
+        left: 0;
+      }
+
+      @include tablet {
+        left: 0;
+      }
+
+      @include mobile-small {
+        border-left: 8px solid #ED652C;
+        left: 0;
+      }
+
+      @include iphone {
+        border-left: 6px solid #ED652C;
+      }
+
+      @include mobile-smallest {
+        border-left: 6px solid #ED652C;
+      }
+    }
   }
 }
 
