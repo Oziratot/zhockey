@@ -4,6 +4,10 @@ import classnames from 'classnames';
 import { createPortal } from 'react-dom';
 import { CSSTransition } from 'react-transition-group';
 import YouTube from 'react-youtube';
+import { ErrorMessage, Field, Formik } from 'formik';
+import * as Yup from 'yup';
+import axios from 'axios';
+import { stringify } from 'qs';
 import { ADVANTAGES } from '../src/constants/advantages';
 import { METHODOLOGY } from '../src/constants/methodology';
 import { DIRECTIONS } from '../src/constants/directions';
@@ -26,6 +30,10 @@ import PriceSwiper from '../src/components/PriceSwiper/PriceSwiper';
 import useYMetrika from '../src/utils/hooks/useYMetrika';
 import useGTag from '../src/utils/hooks/useGTag';
 import useFbPixel from '../src/utils/hooks/useFbPixel';
+import Button from '../src/components/Button/Button';
+import { PHOTOS } from '../src/constants/photos';
+import OnlyTextInputComponent from '../src/components/ui/OnlyTextInputComponent';
+import PhoneInputComponent from '../src/components/ui/PhoneInputComponent';
 
 export var ModalPortal = function ({ children }) {
   if (!process.browser) return null;
@@ -39,6 +47,12 @@ const TEAMS = [
   'Colborne Chiefs GMHL, Канада',
 ];
 
+const validationSchema = Yup.object({
+  firstName: Yup.string().required('Поле обязательно'),
+  phone: Yup.string().min(8, 'Телефон состоит минимум из 8 символов').matches(/^[\s\d-+()]*$/g, 'Телефон должен состоять только из цифр').required('Поле обязательно'),
+  comment: Yup.string(),
+});
+
 const modalHeader = <p>Оставьте ваш контакт — мы&nbsp;перезвоним и&nbsp;ответим на&nbsp;все&nbsp;вопросы</p>;
 const firstBookBarText = <p>Запишитесь на первую тренировку со&nbsp;скидкой 50%</p>;
 
@@ -48,23 +62,16 @@ export default function Home({
   const [activeDirectionsItems, setActiveDirectionsItems] = useState({ 0: true });
   const [activeFaqItem, setActiveFaqItem] = useState({ 0: true });
   const [modalActive, setModalActive] = useState(false);
-  const [lazyLoadedVideo, setLazyLoadedVideo] = useState(false);
+  const [successfullySent, setSuccessfullySent] = useState(false);
   const handleMapModalOpen = useCallback(() => setModalActive(true), []);
   const videoRef = useRef();
   const mapRef = useRef();
+  const formRef = useRef(null);
+  const firstNameRef = useRef('');
 
   const ym = useYMetrika();
   const gtag = useGTag();
   const fbq = useFbPixel();
-
-  const handleVideoClick = useCallback((e) => {
-    setLazyLoadedVideo(true);
-    // console.log(e);
-  }, []);
-
-  const handleReady = useCallback((e) => {
-    e.target.playVideo();
-  }, []);
 
   const handleTelegramClick = useCallback(() => {
     ym('reachGoal', 'TELEGRAM_CLICKED');
@@ -84,11 +91,35 @@ export default function Home({
     fbq('track', 'TEL_CLICKED');
   }, []);
 
+  const handleSubmit = useCallback((values, { isSubmitting, setSubmitting }) => {
+    if (isSubmitting || successfullySent) return;
+
+    const safeValues = { ...values, topic };
+
+    if (formRef.current['gha-a-n-t-i-s-p-a-m-f-i-e-l-d'].checked) {
+      safeValues['gha-a-n-t-i-s-p-a-m-f-i-e-l-d'] = 1;
+    }
+
+    firstNameRef.current = values.firstName;
+
+    axios.post('/feedback-form.php', stringify(safeValues), { 'Content-Type': 'application/x-www-form-urlencoded', headers: { 'Access-Control-Allow-Origin': '*' } })
+      .then(() => {
+        ym('reachGoal', 'FILLED_AND_SUCCESSFULLY_SUBMITTED');
+        gtag('event', 'FILLED_AND_SUCCESSFULLY_SUBMITTED');
+        fbq('track', 'FILLED_AND_SUCCESSFULLY_SUBMITTED');
+        setSubmitting(false);
+      })
+      .catch(() => {
+        setSubmitting(false);
+      });
+    handleModalClose();
+  }, [successfullySent]);
+
   useContactsMap(mapRef, true);
 
   return (
     <>
-      <section className="section section-main">
+      <section className="section section-main main">
         <div className="section-wrapper main-wrapper">
           <div className="address-wrapper">
             <MarkerIcon className="marker-icon" />
@@ -101,14 +132,14 @@ export default function Home({
             <br />
             от&nbsp;9&nbsp;лет
           </h1>
-          <p className="main-text">Запишитесь на первую тренировку со&nbsp;скидкой 50%</p>
-          <button onClick={handleOrderCallClick} className="button-orange main-button">Получить консультацию</button>
+          <p className="main-text">Запишитесь на первую тренировку<br />со&nbsp;скидкой 50%</p>
+          <Button className="main-button" onClick={handleOrderCallClick}>Забронировать</Button>
         </div>
       </section>
 
       <section className="section section-advantages" id="about">
         <div className="section-wrapper advantages-container">
-          <h2 className="section-title advantages-title">Преимущества тренировок в&nbsp;Z-Hockey</h2>
+          <h2 className="section-title advantages-title">Преимущества тренировок в&nbsp;Grishatov Hockey</h2>
           <div className="advantages-wrapper">
             <div className="advantages">
               {ADVANTAGES.map((item) => (
@@ -118,32 +149,7 @@ export default function Home({
                 </div>
               ))}
             </div>
-            {!lazyLoadedVideo && (
-              <>
-                <div className="mock" />
-                <div onClick={handleVideoClick} className="video-preview" data-video-id="gmz0pxezzdA">
-                  <YouTubePlay className="youtube-play-button" />
-                  <img className="cover" src="https://img.youtube.com/vi/gmz0pxezzdA/sddefault.jpg" alt="youtube-video-gmz0pxezzdA" />
-                  <div className="overlay" />
-                </div>
-              </>
-
-            )}
-            {lazyLoadedVideo && (
-              <YouTube
-                ref={videoRef}
-                className="advantages-video"
-                containerClassName="advantages-video-container"
-                videoId="gmz0pxezzdA"
-                onReady={handleReady}
-                opts={{
-                  autoplay: 1,
-                  playerVars: {
-                    autohide: 0, showinfo: 0, rel: 0, modestbranding: 1, disablekb: 1, controls: 2, wmode: 'transparent', mode: 'opaque',
-                  },
-                }}
-              />
-            )}
+            <img className="advantages-image" src="/assets/img/advantages.jpg" alt="hockey player" />
           </div>
         </div>
       </section>
@@ -187,7 +193,7 @@ export default function Home({
 
                   <ul className="directions-item">
                     {items.map((item) => (
-                      <li className={classnames('direction-item', { _active: activeDirectionsItems[i] })} key={item}>
+                      <li className={classnames('text-m light direction-item', { _active: activeDirectionsItems[i] })} key={item}>
                         {item}
                       </li>
                     ))}
@@ -285,6 +291,11 @@ export default function Home({
         </div>
       </section>
 
+      <section className="section section-photo">
+        <h2 className="section-title photo-title">Фотогалерея</h2>
+        <PhotoSwiper photo={PHOTOS} currentWidth={clientWindowWidth} />
+      </section>
+
       <section className="section section-faq">
         <div className="section-wrapper">
           <div className="faq-wrapper">
@@ -312,9 +323,88 @@ export default function Home({
         </div>
       </section>
 
-      <section className="section section-photo">
-        <h2 className="section-title photo-title">Фотогалерея</h2>
-        <PhotoSwiper currentWidth={clientWindowWidth} />
+      <section className="section section-contact-us">
+        <div className="section-wrapper">
+          <h2 className="section-title centered">Остались вопросы? Задайте их нам</h2>
+          <div className="contact-us-container">
+            <div className="founder">
+              <img className="founder-image" src="/assets/img/camp/coaches/egrishatov.jpg" alt="Егор Горишатов" />
+              <div className="founder-text">
+                <p className="founder-name">Егор Гришатов</p>
+                <p className="text-xl white">Основатель, тренер</p>
+              </div>
+            </div>
+
+            <Formik
+              initialValues={{ firstName: '', phone: '', comment: '' }}
+              validationSchema={validationSchema}
+              onSubmit={handleSubmit}
+              validateOnMount
+            >
+              {({
+                handleSubmit, handleReset, handleChange, handleBlur, values, errors, touched, isValid,
+              }) => (
+                <form className="feedback-form" onSubmit={handleSubmit} onReset={handleReset} ref={formRef}>
+                  <div className="form-row">
+                    <div className="field-wrap width-50">
+                      <Field name="firstName" component={OnlyTextInputComponent} placeholder="Ваше имя" className={classnames({ invalid: errors.firstName && touched.firstName })} />
+                      <ErrorMessage name="firstName" component="div" className="field-error" />
+                    </div>
+                    <div className="field-wrap width-50">
+                      <Field name="phone" component={PhoneInputComponent} placeholder="Телефон" className={classnames({ invalid: errors.phone && touched.phone })} />
+                      <ErrorMessage name="phone" component="div" className="field-error" />
+                    </div>
+                  </div>
+
+                  <div className="form-row">
+                    <div className="field-wrap">
+                      <textarea
+                        rows="1"
+                        name="comment"
+                        onChange={(e) => {
+                          handleChange(e);
+                        }}
+                        onBlur={handleBlur}
+                        placeholder="Комментарий"
+                        value={values.comment}
+                      />
+                      <ErrorMessage name="comment" component="div" className="field-error" />
+                    </div>
+                  </div>
+
+                  <input type="checkbox" name="gha-a-n-t-i-s-p-a-m-f-i-e-l-d" value="1" style={{ display: 'none' }} tabIndex="-1" autoComplete="none" />
+
+                  <div className="form-row consent-and-submit">
+                    {clientWindowWidth < 900 && (
+                      <Button
+                        className="form-button"
+                        disabled={!isValid || successfullySent}
+                        type="submit"
+                      >
+                        Записаться
+                      </Button>
+                    )}
+                    <div className="consent-personal-data-processing">
+                      <span>Нажимая на кнопку, вы даете согласие на&nbsp;обработку </span>
+                      <Link href="/legal/agreement">
+                        <a className="blue-link">персональных&nbsp;данных</a>
+                      </Link>
+                    </div>
+                    {clientWindowWidth >= 900 && (
+                      <Button
+                        className="form-button"
+                        disabled={!isValid || successfullySent}
+                        type="submit"
+                      >
+                        Получить консультацию
+                      </Button>
+                    )}
+                  </div>
+                </form>
+              )}
+            </Formik>
+          </div>
+        </div>
       </section>
 
       <section className="section section-contacts" id="contacts">
@@ -334,7 +424,7 @@ export default function Home({
                 <div onClick={handleTelegramClick} className="social-links-item"><TelegramIcon /></div>
               </Link>
             </div>
-            <button type="button" onClick={handleOrderCallClick} className="button-orange contacts-button">Задать вопрос</button>
+            <Button type="button" onClick={handleOrderCallClick} className="contacts-button">Задать вопрос</Button>
             <p className="contacts-address">Москва, ул. Новоостаповская д5с2</p>
             {clientWindowWidth <= 480 && (
               <div className="contacts-ymap">

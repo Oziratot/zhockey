@@ -1,22 +1,26 @@
 export const NAVLINKS = [
     {
-        title: "Цены",
-        path: "#price",
+        title: 'Цены',
+        path: '#price',
     },
     {
-        title: "О школе",
-        path: "#about",
+        title: 'О школе',
+        path: '#about',
     },
     {
-        title: "Расписание",
-        path: "#schedule",
+        title: 'Расписание',
+        path: '#schedule',
     },
     {
-        title: "Отзывы",
-        path: "#reviews",
+        title: 'Отзывы',
+        path: '#reviews',
     },
     {
-        title: "Контакты",
-        path: "#contacts",
+      title: 'Сборы',
+      path: 'camp',
     },
-]
+    {
+        title: 'Контакты',
+        path: '#contacts',
+    },
+];

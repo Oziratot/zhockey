@@ -1,6 +1,6 @@
 {
-    "name": "Z-hockey",
-    "short_name": "Z-hockey",
+    "name": "Grishatov Hockey",
+    "short_name": "Grishatov Hockey",
     "icons": [
         {
             "src": "/android-chrome-192x192.png",
@@ -13,7 +13,7 @@
             "type": "image/png"
         }
     ],
-    "theme_color": "#ffffff",
-    "background_color": "#ffffff",
+    "theme_color": "#e16428",
+    "background_color": "#e16428",
     "display": "standalone"
 }

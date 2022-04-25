@@ -1,14 +1,9 @@
-import React, { useCallback, useRef, useState } from 'react';
+import React, { useCallback, useMemo, useRef, useState } from 'react';
 import Slider from 'react-slick';
 import { PHOTOS } from '../../constants/photos';
 import NextIcon from '../../assets/svg/slider-arrow-right.svg';
 import PrevIcon from '../../assets/svg/slider-arrow-left.svg';
 import CustomLightbox from '../Lightbox';
-
-const items = PHOTOS.map((item) => ({
-  src: item.src,
-  alt: item.photo,
-}));
 
 const NextArrow = function (props) {
   const { className, style, onClick } = props;
@@ -103,7 +98,11 @@ const settings = {
   ],
 };
 
-const PhotoSwiper = function () {
+const PhotoSwiper = function ({ photo }) {
+  const items = useMemo(() => photo.map((item) => ({
+    src: item.src,
+    alt: item.photo,
+  })), [photo]);
   const [isLightboxOpen, setIsLightboxOpen] = useState(false);
   const [currentImageIndex, setCurrentIndex] = useState(0);
   const handleLightboxClose = useCallback(() => {

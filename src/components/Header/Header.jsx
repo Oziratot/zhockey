@@ -1,5 +1,5 @@
 import React, {
-  useCallback, useEffect, useMemo, useState,
+  useCallback, useEffect, useState,
 } from 'react';
 import classnames from 'classnames';
 import { CSSTransition } from 'react-transition-group';

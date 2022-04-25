@@ -118,9 +118,9 @@
   //width: 500px;
   //margin: 10vh auto; // IE11 flex bug workaround
   padding: 60px 105px;
-  background: #fff;
   box-shadow: 0 16px 32px 0 rgba($black, 0.09);
   will-change: transform;
+  background-color: #F5F3F1;
 
   @media screen and (max-width: 900px) {
     max-width: 510px;

@@ -8,11 +8,6 @@
   width: 100%;
   margin: 0 15px;
 
-  @include landscape {
-    margin: 0 20px;
-    max-width: 452px;
-  }
-
   @include tablet {
     max-width: 85%;
   }
@@ -25,7 +20,7 @@
   .nav-link {
     color: white;
     text-decoration: none;
-    font-size: 24px;
+    font-size: 18px;
     line-height: 1.3;
     font-weight: 400;
     transition: opacity $trans;

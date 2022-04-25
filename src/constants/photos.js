@@ -71,4 +71,31 @@ export const PHOTOS = [
         photo: 'photo-18',
         src: '/assets/img/photos/photo-18.jpeg',
     },
-]
+];
+
+export const PARENTS_PHOTOS = [
+  {
+    photo: 'photo-1',
+    src: '/assets/img/camp/parents/parents-1.jpg',
+  },
+  {
+    photo: 'photo-2',
+    src: '/assets/img/camp/parents/parents-2.jpg',
+  },
+  {
+    photo: 'photo-3',
+    src: '/assets/img/camp/parents/parents-3.jpg',
+  },
+  {
+    photo: 'photo-4',
+    src: '/assets/img/camp/parents/parents-4.jpg',
+  },
+  {
+    photo: 'photo-5',
+    src: '/assets/img/camp/parents/parents-5.jpg',
+  },
+  {
+    photo: 'photo-6',
+    src: '/assets/img/camp/parents/parents-6.jpg',
+  },
+];

@@ -1,4 +1,4 @@
-import React, { useCallback } from 'react';
+import React from 'react';
 import Link from 'next/link';
 import { NAVLINKS } from '../../constants/navLinks';
 import InstagramIcon from '../../assets/svg/social/instagram-logo.svg';

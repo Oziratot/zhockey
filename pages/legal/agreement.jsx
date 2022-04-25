@@ -35,8 +35,8 @@ function Agreement() {
   return (
     <>
       <Head
-        title="Согласие на обработку персональных данных «Z-Hockey»"
-        desc="Ознакомьтесь с согласием на обработку персональный данных хоккейной школы Z-Hockey."
+        title="Согласие на обработку персональных данных «Grishatov Hockey»"
+        desc="Ознакомьтесь с согласием на обработку персональный данных хоккейной школы Grishatov Hockey."
         page="/legal/agreement"
         breadcrumbsData={BreadcrumbListStructuredData}
       />

@@ -1,0 +1,349 @@
+@import "variables";
+
+.camp {
+  position: relative;
+  overflow: hidden;
+  background-image: url("../src/assets/images/camp/camp-main.jpg");
+  background-position: right;
+  background-size: contain;
+  background-repeat: no-repeat;
+
+  .main-button {
+    margin-top: 50px;
+    width: 285px;
+  }
+
+  .camp-text {
+    position: relative;
+    z-index: 2;
+
+    .camp-title {
+      font-family: 'Oswald', 'sans-serif';
+      color: #FFFFFF;
+      font-size: 48px;
+      line-height: 1.1;
+      font-weight: 700;
+      padding-left: 15px;
+      border-left: 10px solid $primary;
+      margin: 50px 0;
+      position: relative;
+      text-transform: uppercase;
+    }
+  }
+
+  &:before {
+    content: '';
+    position: absolute;
+    height: 100%;
+    width: 68%;
+    left: 0;
+    top: 0;
+    background-color: #222222;
+    transform: skew(-30deg, 0deg);
+    transform-origin: 0 0;
+    z-index: 1;
+
+    @include mobile {
+      height: 50%;
+      width: 100%;
+      transform: none;
+      top: 50%;
+    }
+  }
+}
+
+.section-camp-advantages {
+  background-color: #F5F3F1;
+
+  .camp-advantages {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+
+    .adv-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 33%;
+      flex-grow: 1;
+
+      .adv-icon {
+        margin-bottom: 10px;
+      }
+
+      .text-l {
+        margin-bottom: 10px;
+        text-align: center;
+      }
+
+      .text-s {
+        text-align: center;
+      }
+    }
+  }
+}
+
+.section-camp-directions {
+  background-color: #FFFFFF;
+
+  .camp-directions {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    max-height: 750px;
+  }
+
+  .dir-item {
+    display: flex;
+    height: 230px;
+    width: 50%;
+    background-color: #F5F3F1;
+    margin-bottom: 30px;
+    margin-right: 30px;
+    padding: 20px;
+    box-shadow: 4px 4px 4px rgba(169, 157, 146, 0.25);
+
+    .dir-icon {
+      flex-shrink: 0;
+    }
+
+    .dir-text {
+      padding-left: 20px;
+
+      .text-xl {
+        margin-bottom: 10px;
+      }
+    }
+
+    &:nth-child(3n) {
+      margin-bottom: 0;
+    }
+
+    &:nth-child(n + 2) {
+      margin-right: 0;
+    }
+  }
+}
+
+.section-coaches {
+  background-color: #222222;
+  background-image: url('../src/assets/images/camp/coaches-background.jpg');
+  background-position: left;
+  background-repeat: no-repeat;
+
+  .camp-coaches {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    max-width: 800px;
+    margin: 0 auto;
+
+    .coach-item {
+      margin-right: 40px;
+
+      &:first-of-type {
+        margin-bottom: 30px;
+      }
+
+      &:nth-of-type(3) {
+        margin-right: 0;
+      }
+
+      &:nth-of-type(5) {
+        margin-right: 0;
+      }
+
+      .text-xl {
+        text-align: center;
+        padding-bottom: 7px;
+        margin-bottom: 10px;
+        border-bottom: 4px solid $primary;
+      }
+    }
+
+    .coach-photo {
+      margin-bottom: 10px;
+      flex-grow: 0;
+    }
+  }
+}
+
+.section-training {
+  background-color: #F5F3F1;
+
+  .training-container {
+    display: flex;
+    max-width: 980px;
+    width: 100%;
+    padding: 60px 90px 72px;
+    margin: 0 auto;
+    background-color: #FFFFFF;
+    box-shadow: 4px 4px 4px rgba(169, 157, 146, 0.25);
+
+    .container {
+      width: 50%;
+      height: 100%;
+      border-right: 1px solid #E0E0E0;
+
+      .ul-small {
+        list-style: disc;
+        padding-inline-start: 20px;
+      }
+
+      .text-xl {
+        color: $primary;
+        font-weight: 500;
+        margin-bottom: 20px;
+      }
+
+      .text-m {
+        margin-bottom: 15px;
+
+        &:last-of-type {
+          margin-bottom: 0;
+        }
+      }
+
+      &.left {
+        padding-right: 50px;
+
+        .ul-small {
+          margin-bottom: 64px;
+
+          &:last-of-type {
+            margin-bottom: 0;
+          }
+        }
+      }
+
+      &.right {
+        padding-left: 50px;
+        border-right: none;
+      }
+    }
+
+    .training-button {
+      white-space: nowrap;
+      height: 60px;
+      font-size: 20px;
+      font-weight: 700;
+      margin-top: 45px;
+      width: 100%;
+    }
+  }
+}
+
+.section-parents {
+  display: block;
+  background-color: #F5F3F1;
+
+  .section-wrapper {
+    margin: 0 auto;
+  }
+
+  .parents-list {
+    width: 600px;
+    list-style: disc;
+    margin: 20px auto 50px;
+    padding-top: 20px;
+    border-top: 1px solid #BDBDBD;
+  }
+}
+
+.section-schedule-price {
+  background-color: #FFFFFF;
+
+  .schedule-price-container {
+    width: 920px;
+    margin: 0 auto;
+
+    .section-title {
+      margin-bottom: 40px;
+    }
+
+    .desc {
+      margin-bottom: 40px;
+    }
+
+    .schedule-price-item {
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background-color: #F5F3F1;
+      margin-bottom: 20px;
+      padding: 10px 10px 10px 30px;
+      box-shadow: 4px 4px 4px rgba(169, 157, 146, 0.25);
+
+      &:last-of-type {
+        margin-bottom: 60px;
+      }
+
+      .price {
+        flex-grow: 1;
+        text-align: center;
+      }
+
+      .price-button {
+        height: 60px;
+        font-size: 20px;
+        font-weight: 700;
+      }
+    }
+
+    .price-includes {
+      padding-top: 20px;
+      margin-top: 20px;
+      border-top: 1px solid #E0E0E0;
+      list-style: disc;
+      padding-inline-start: 20px;
+
+      .price-includes-item {
+        margin-bottom: 15px;
+      }
+    }
+  }
+}
+
+.section-safety {
+  background-color: #222222;
+
+  .safety-items {
+    margin: 0 auto;
+    width: 585px;
+
+    .safety-item {
+      display: flex;
+      align-items: center;
+
+      .safety-icon {
+        flex-shrink: 0;
+        margin-right: 20px;
+        margin-bottom: 10px;
+
+        &:last-of-type {
+          margin-bottom: 0;
+        }
+      }
+    }
+  }
+}
+
+.section-living {
+  display: block;
+  background-color: #FFFFFF;
+
+  .section-wrapper {
+    margin: 0 auto;
+  }
+
+  .living {
+    list-style: disc;
+    padding-inline-start: 20px;
+    margin-top: 50px;
+
+    .living-item {
+      margin-bottom: 15px;
+    }
+  }
+}

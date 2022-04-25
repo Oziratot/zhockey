@@ -1,0 +1,367 @@
+@import "variables";
+@import "mixins";
+
+.ui-button {
+  position: relative;
+  display: inline-block;
+  padding: 1px 28px 0;
+  height: 60px;
+  //line-height: 47px;
+  text-align: center;
+  font-size: 20px;
+  font-weight: 700;
+  color: $black;
+  transition: background-color $trans;
+  cursor: pointer;
+  outline: none;
+  appearance: none;
+  -webkit-appearance: none;
+
+  @include landscape {
+    font-size: 24px;
+  }
+
+  @include iphone {
+    height: 60px;
+    font-size: 22px;
+  }
+
+  @include mobile-smallest {
+    height: 55px;
+    font-size: 18px;
+  }
+
+  @include noselect;
+
+  &[disabled],
+  &.disabled {
+    box-shadow: none;
+    background-color: #979DA9;
+    cursor: not-allowed;
+  }
+
+  .ui-button-content {
+    position: relative;
+    display: block;
+
+    .ui-button-text {
+      display: block;
+      will-change: transform;
+      transition: transform $trans;
+    }
+  }
+
+  &.ui-button-orange {
+    color: #FFFFFF;
+    background-color: $primary;
+    border: none;
+
+    &[disabled],
+    &.disabled {
+      background-color: #979DA9;
+    }
+
+    &:hover, &:focus {
+      background-color: #FD8618;
+
+      &[disabled],
+      &.disabled {
+        background-color: #979DA9;
+      }
+    }
+    &:active {
+      background-color: #9F3A0A;
+
+      &[disabled],
+      &.disabled {
+        background-color: #979DA9;
+      }
+    }
+
+    .ui-button-spinner {
+      .spinner-circle {
+        stroke: #FFF;
+        stroke-opacity: .15;
+      }
+      .spinner-spline {
+        stroke: #FFF;
+      }
+    }
+  }
+
+  &.ui-button-white {
+    width: 345px;
+    height: 70px;
+    color: $black;
+    background-color: #FFFFFF;
+
+    &:hover, &:focus {
+      background-color: #f2f2f2;
+
+      &[disabled],
+      &.disabled {
+        background-color: #FFFFFF;
+      }
+    }
+    &:active {
+      background-color: #e5e5e5;
+
+      &[disabled],
+      &.disabled {
+        background-color: #FFFFFF;
+      }
+    }
+
+    @include landscape {
+      width: 265px;
+      height: 60px;
+      //line-height: 60px;
+    }
+
+    @include tablet {
+      width: 345px;
+    }
+
+    @include mobile {
+      width: 265px;
+    }
+
+    @include mobile-small {
+      width: 100%;
+    }
+
+    @include iphone {
+      height: 60px;
+      font-size: 22px;
+    }
+
+    @include mobile-smallest {
+      height: 55px;
+      font-size: 18px;
+    }
+  }
+
+  &.ui-button-transparent {
+    color: #FFFFFF;
+    background-color: transparent;
+    border: 1px solid #FFFFFF;
+
+    &:hover, &:focus {
+      background-color: rgba(255,255,255,.1);
+
+      &[disabled],
+      &.disabled {
+        background-color: transparent;
+      }
+    }
+    &:active {
+      background-color: rgba(255,255,255,.5);
+
+      &[disabled],
+      &.disabled {
+        background-color: transparent;
+      }
+    }
+  }
+
+  &.ui-button-appearance-link {
+    opacity: .5;
+
+    .ui-button-text {
+      .back-icon, .back-text {
+        display: inline-block;
+        vertical-align: middle;
+      }
+      .back-icon {
+        margin-left: -4px;
+      }
+      .back-text {
+        margin-left: 8px;
+        line-height: 20px;
+      }
+    }
+
+    &:hover, &:focus {
+      opacity: .75;
+    }
+    &:active {
+      opacity: 1;
+    }
+  }
+
+  &:hover, &:focus, &:active {
+    text-decoration: none;
+  }
+
+  &.loading {
+    .ui-button-content {
+      .ui-button-text {
+        transform: translateX(12px) rotate(0.0001deg);
+      }
+    }
+  }
+}
+
+.ui-button-spinner {
+  display: inline-block;
+  vertical-align: middle;
+  position: absolute;
+  width: 18px;
+  height: 18px;
+  left: -12px;
+  top: 50%;
+  margin-top: -9px;
+  will-change: transform;
+
+  .ui-button-spinner-svg {
+    display: block;
+    width: 18px;
+    height: 18px;
+    will-change: transform;
+    animation: spin 1s infinite linear;
+
+    .spinner-spline {
+      stroke: $primary;
+    }
+  }
+
+  &.ui-button-spinner-enter {
+    transform: scale(0);
+    opacity: 0.01;
+  }
+  &.ui-button-spinner-enter-active {
+    transform: scale(1);
+    opacity: 1;
+    transition: transform $trans, opacity $trans;
+  }
+  &.ui-button-spinner-exit {
+    transform: scale(1);
+    opacity: 1;
+  }
+  &.ui-button-spinner-exit-active {
+    transform: scale(0);
+    opacity: 0.01;
+    transition: transform $trans, opacity $trans;
+  }
+}
+
+@keyframes spin {
+  0% { transform: rotate(-360deg); }
+  100% { transform: rotate(0deg); }
+}
+
+.ui-alert-machine {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1003;
+  overflow: hidden;
+  transition: height $trans-semi-slow, margin $trans-semi-slow;
+
+  .ui-alert-machine-content {}
+
+  .container {
+    //position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    padding: 0 30px;
+  }
+
+  .ui-alert-machine-close {
+    position: absolute;
+    top: 0;
+    //right: 20px;
+    right: 0;
+    padding: 14px;
+    cursor: pointer;
+
+    svg {
+      display: block;
+      transition: transform $trans, opacity $trans;
+    }
+
+    &:hover {
+      svg {
+        opacity: .75;
+        transform: rotate(90deg);
+      }
+    }
+  }
+
+  .ui-alert-machine-item {
+    //height: 40px;
+    padding: 5px 0;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 20px;
+    color: #fff;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    user-select: none;
+    background-color: #0654AC;
+
+    @include tablet {
+      font-size: 10px;
+    }
+
+    &.ui-alert-machine-item-error {
+      background-color: #FF1E31;
+    }
+
+    &.ui-alert-machine-item-important {
+      background-color: #06CF7F;
+    }
+
+    &.ui-alert-machine-item-info {
+      background-color: #0654AC;
+    }
+
+    &.ui-alert-machine-item-warning {
+      background-color: #f5a623;
+    }
+
+    &-enter {
+      will-change: transform;
+      transform: translateY(-100%) rotate(0.001deg);
+
+      &-active {
+        transform: translateY(0) rotate(0.001deg);
+        transition: transform $trans-semi-slow;
+      }
+    }
+
+    &-exit {
+      will-change: transform;
+      transform: translateY(0) rotate(0.001deg);
+
+      &-active {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        transform: translateY(100%) rotate(0.001deg);
+        transition: transform $trans-semi-slow;
+      }
+    }
+
+    &._clickable {
+      cursor: pointer;
+    }
+  }
+
+  .ui-alert-machine-icon {
+    align-self: flex-start;
+    flex-shrink: 0;
+    margin-right: 5px;
+  }
+
+  .ui-alert-machine-text {
+    //overflow: hidden;
+    //text-overflow: ellipsis;
+    //white-space: nowrap;
+  }
+}
