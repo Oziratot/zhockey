@@ -7,7 +7,7 @@ if (!empty($_REQUEST['gha-a-n-t-i-s-p-a-m-f-i-e-l-d']) && (bool) $_REQUEST['gha-
   // spam
 } else {
 //  $to      = 'romasty_92@mail.ru';
-   $to      = 'zhockeycon@gmail.com';
+   $to      = 'grishatov.hockey@gmail.com';
   $subject = 'Grishatov Hockey - '.$_POST['firstName'];
 
   $message = "<html><head><title>GHockeyAgency</title></head><body>".$_POST['topic']."<br><br>Имя: ".$_POST['firstName']."<br>Телефон: ".$_POST['phone']."<br>Сообщение: ".$_POST['comment']."</body></html>";

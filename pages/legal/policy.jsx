@@ -1,5 +1,5 @@
 import React from 'react';
-import Head from '../../src/components/Head'
+import Head from '../../src/components/Head';
 
 const BreadcrumbListStructuredData = {
   __html: `

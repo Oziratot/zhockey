@@ -237,41 +237,11 @@ export default function Home({
       <section className="section section-schedule" id="schedule">
         <div className="section-wrapper schedule-container">
           <h2 className="section-title schedule-title">Расписание</h2>
-          <div className="schedule-wrapper">
-            {clientWindowWidth > 1024 && (
-              <div className="schedule-image-container">
-                <img className="schedule-image" src="/assets/img/schedule.jpeg" alt="hockey field" />
-              </div>
-            )}
+          <div className="schedule">
             <div className="schedule-text">
-              {clientWindowWidth >= 768 ? (
-                <p className="section-text schedule-paragraph">Тренировки проходят по адресу г. Москва, ул.&nbsp;Новоостаповская&nbsp;д5с2,<br />ЛД «Морозово», каждую субботу и&nbsp;воскресенье</p>
-              ) : (
-                <p className="section-text schedule-paragraph">Тренировки проходят по адресу г. Москва, ул. Новоостаповская&nbsp;д5с2, ЛД «Морозово», каждую субботу и&nbsp;воскресенье</p>
-              )}
-              {clientWindowWidth <= 1024 && (
-              <div className="schedule-image-container">
-                <img className="schedule-image" src="/assets/img/schedule.jpeg" alt="hockey field" />
-              </div>
-              )}
-              <div className="schedule-table">
-                <div className="table-column highlighted">
-                  <p className="table-header">День&nbsp;недели</p>
-                  <p className="table-header">Суббота</p>
-                  <p className="table-header">Воскресенье</p>
-                </div>
-                <div className="table-column centered">
-                  <p className="table-header">Земля</p>
-                  <p className="table-text">18:15–19:15</p>
-                  <p className="table-text">9:30–10:30</p>
-                </div>
-                <div className="table-column centered">
-                  <p className="table-header">Лёд</p>
-                  <p className="table-text">19:30–21:00</p>
-                  <p className="table-text">7:45–9:15</p>
-                </div>
-              </div>
+              <p className="days">Понедельниик-среда-пятница</p>
             </div>
+            <img className="schedule-image" src="/assets/img/schedule.jpg" alt="coach with team" />
           </div>
         </div>
       </section>
