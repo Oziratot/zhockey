@@ -257,15 +257,17 @@ const Camp = function ({ handleOrderCallClick, clientWindowWidth, handleModalClo
             {campAdvantages.map((adv) => (
               <li key={adv.label} className="adv-item">
                 {adv.icon}
-                <div className="text-l bold" dangerouslySetInnerHTML={{ __html: adv.label }} />
-                <div className="text-s" dangerouslySetInnerHTML={{ __html: adv.text }} />
+                <div>
+                  <div className="text-l bold" dangerouslySetInnerHTML={{ __html: adv.label }} />
+                  <div className="text-s" dangerouslySetInnerHTML={{ __html: adv.text }} />
+                </div>
               </li>
             ))}
           </ul>
         </div>
       </section>
 
-      <section className="section section-camp-directions">
+      <section className="section section-camp-directions small-p">
         <div className="section-wrapper">
           <h2 className="section-title centered">Направленность лагеря</h2>
           <ul className="camp-directions">
@@ -353,9 +355,9 @@ const Camp = function ({ handleOrderCallClick, clientWindowWidth, handleModalClo
         <ReviewsSwiper />
       </section>
 
-      <section className="section section-schedule-price">
+      <section className="section section-schedule-price small-p">
         <div className="section-wrapper">
-          <div className="schedule-price-container">
+          <div className="schedule-price-container section-container">
             <h2 className="section-title centered">Расписание заездов и стоимость</h2>
             <p className=" desc text-xl light centered">* Для&nbsp;бронирования необходимо внести предоплату в&nbsp;размере 25% стоимости до&nbsp;15&nbsp;мая. Оставшуюся часть&nbsp;— 75% оплатить до&nbsp;1&nbsp;июня.</p>
             <ul className="schedule-price">

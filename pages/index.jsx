@@ -3,7 +3,6 @@ import Link from 'next/link';
 import classnames from 'classnames';
 import { createPortal } from 'react-dom';
 import { CSSTransition } from 'react-transition-group';
-import YouTube from 'react-youtube';
 import { ErrorMessage, Field, Formik } from 'formik';
 import * as Yup from 'yup';
 import axios from 'axios';
@@ -20,7 +19,6 @@ import PhotoSwiper from '../src/components/PhotoSwiper/PhotoSwiper';
 import InstagramIcon from '../src/assets/svg/social/instagram-logo.svg';
 import WhatsappIcon from '../src/assets/svg/social/whatsapp-logo.svg';
 import TelegramIcon from '../src/assets/svg/social/telegram-logo.svg';
-import YouTubePlay from '../src/assets/svg/youtube-play.svg';
 import useContactsMap from '../src/utils/hooks/useContactsMap';
 import MapModal from '../src/components/MapModal';
 import ReviewsSwiper from '../src/components/ReviewsSwiper/ReviewsSwiper';
@@ -34,6 +32,8 @@ import Button from '../src/components/Button/Button';
 import { PHOTOS } from '../src/constants/photos';
 import OnlyTextInputComponent from '../src/components/ui/OnlyTextInputComponent';
 import PhoneInputComponent from '../src/components/ui/PhoneInputComponent';
+import { PRICE } from '../src/constants/price';
+import PriceTab from '../src/components/PriceTab/PriceTab';
 
 export var ModalPortal = function ({ children }) {
   if (!process.browser) return null;
@@ -123,7 +123,7 @@ export default function Home({
         <div className="section-wrapper main-wrapper">
           <div className="address-wrapper">
             <MarkerIcon className="marker-icon" />
-            <span className="map-link" onClick={handleMapModalOpen}>Москва, ЛД «Морозово», ул. Новоостаповская д5с2</span>
+            <span className="map-link" onClick={handleMapModalOpen}>Москва, ЛД «Морозово», ул.&nbsp;Новоостаповская д5с2</span>
           </div>
           <h1 className="h1 main-title">
             Групповые&nbsp;тренировки
@@ -239,7 +239,24 @@ export default function Home({
           <h2 className="section-title schedule-title">Расписание</h2>
           <div className="schedule">
             <div className="schedule-text">
-              <p className="days">Понедельниик-среда-пятница</p>
+              <div className="days-item">
+                <p className="days">Понедельник-среда-пятница</p>
+                <div className="day-container">
+                  <p className="day text-xl bold">Лёд</p>
+                  <p className="day text-xl">13:00–14:15</p>
+                </div>
+              </div>
+              <div className="days-item">
+                <p className="days">Суббота</p>
+                <div className="day-container">
+                  <p className="day text-xl bold">Земля</p>
+                  <p className="day text-xl">18:15–19:15</p>
+                </div>
+                <div className="day-container">
+                  <p className="day text-xl bold">Лёд</p>
+                  <p className="day text-xl">19:30–21:00</p>
+                </div>
+              </div>
             </div>
             <img className="schedule-image" src="/assets/img/schedule.jpg" alt="coach with team" />
           </div>
@@ -253,11 +270,28 @@ export default function Home({
 
       <section className="section section-price" id="price">
         <h2 className="section-title price-title">Стоимость</h2>
-        <div className="price-wrapper">
-          <PriceSwiper
-            clientWindowWidth={clientWindowWidth}
-            orderCallClick={handleOrderCallClick}
-          />
+        <div className="section-wrapper">
+          {clientWindowWidth > 768 && (
+            <div className="price-l">
+              {PRICE.map((item) => (
+                <PriceTab
+                  key={item}
+                  type={item.type}
+                  days={item.days}
+                  items={item.items}
+                  price={item.price}
+                  orderCallClick={handleOrderCallClick}
+                />
+              ))}
+            </div>
+          )}
+          {clientWindowWidth <= 768 && (
+            <PriceSwiper
+              items={PRICE}
+              clientWindowWidth={clientWindowWidth}
+              orderCallClick={handleOrderCallClick}
+            />
+          )}
         </div>
       </section>
 
@@ -347,11 +381,11 @@ export default function Home({
                   <div className="form-row consent-and-submit">
                     {clientWindowWidth < 900 && (
                       <Button
-                        className="form-button"
+                        className="form-page-button"
                         disabled={!isValid || successfullySent}
                         type="submit"
                       >
-                        Записаться
+                        Получить консультацию
                       </Button>
                     )}
                     <div className="consent-personal-data-processing">
@@ -362,7 +396,7 @@ export default function Home({
                     </div>
                     {clientWindowWidth >= 900 && (
                       <Button
-                        className="form-button"
+                        className="form-page-button"
                         disabled={!isValid || successfullySent}
                         type="submit"
                       >

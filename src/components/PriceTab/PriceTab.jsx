@@ -1,23 +1,26 @@
 import React from 'react';
+import Button from '../Button/Button';
 
 const PriceTab = function ({
-  type, format, duration, list, price, note, orderCallClick,
+  type, days, items, price, orderCallClick,
 }) {
   return (
     <div className="pricetab">
-      <div className="pricetab-type">{type}</div>
-      <div className="pricetab-info">
-        <div className="pricetab-format">{format}</div>
-        {duration && <div className="pricetab-duration">{duration}</div>}
-        <ul className="pricetab-items">
-          {list.map((item) => (
-            <li key={item} className="pricetab-item">{item}</li>
-          ))}
-        </ul>
-        <div className="pricetab-price">{`${price} `}<span className="rub">Р</span></div>
-        {note && <div className="pricetab-note">{`${note} `}<span className="rub-small">Р</span></div> }
+      <div className="text-xl pricetab-title" dangerouslySetInnerHTML={{ __html: type }} />
+      <div className="pricetab-body">
+        <div className="body-wrap">
+          <div className="text-m centered days" dangerouslySetInnerHTML={{ __html: days }} />
+          <ul className="pricetab-items">
+            {items.map((item) => (
+              <li key={item} className="pricetab-item">
+                <div className="text-m" dangerouslySetInnerHTML={{ __html: item }} />
+              </li>
+            ))}
+          </ul>
+          <p className="text-xl bold price">{`${price} ₽`}</p>
+        </div>
+        <Button className="pricetab-btn" onClick={orderCallClick}>Забронировать</Button>
       </div>
-      <button type="button" onClick={orderCallClick} className="pricetab-btn">Записаться</button>
     </div>
   );
 };

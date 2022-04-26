@@ -86,6 +86,13 @@ body {
     padding: 50px 16px;
   }
 
+  &.small-p {
+    @include mobile {
+      padding-right: 15px;
+      padding-left: 15px;
+    }
+  }
+
   &.section-main {
     display: flex;
     justify-content: center;
@@ -93,6 +100,16 @@ body {
     padding-top: 154px;
     padding-bottom: 200px;
     height: calc(100vh - 100px);
+
+    @include tablet {
+      height: calc(100vh - 80px);
+    }
+
+    @include mobile {
+      height: calc(100vh - 60px);
+      flex-direction: column;
+      padding-bottom: 100px;
+    }
   }
 
   .section-wrapper {
@@ -114,6 +131,10 @@ body {
     .section-container {
       width: 920px;
       margin: 0 auto;
+
+      @include mobile {
+        width: 100%;
+      }
     }
 
     .section-text.section-text.section-text.section-text {
@@ -163,6 +184,10 @@ body {
     line-height: 1.3;
     font-weight: 300;
 
+    @include mobile {
+      font-size: 14px;
+    }
+
     &.white {
       color: #FFFFFF;
     }
@@ -185,6 +210,10 @@ body {
     font-size: 20px;
     line-height: 26px;
 
+    @include mobile {
+      font-size: 18px;
+    }
+
     &.bold {
       font-weight: 600;
     }
@@ -193,6 +222,10 @@ body {
   .text-xl {
     font-size: 24px;
     line-height: 1.3;
+
+    @include mobile {
+      font-size: 16px;
+    }
 
     &.light {
       font-weight: 300;
@@ -220,8 +253,15 @@ body {
   font-weight: 700;
   text-transform: uppercase;
 
+  @include mobile {
+    font-size: 30px;
+  }
+
   &.centered {
     text-align: center;
+    @include mobile {
+      margin: 0 auto 40px;
+    }
   }
 
   &.white {
@@ -240,20 +280,10 @@ body {
   }
 
   @include mobile {
-    font-size: 32px;
+    font-size: 30px;
     line-height: 39px;
     max-width: 540px;
     margin-bottom: 40px;
-  }
-
-  @include mobile-small {
-    margin-bottom: 40px;
-  }
-
-  @include iphone {
-    font-size: 24px;
-    line-height: 29px;
-    margin-bottom: 30px;
   }
 
   @include mobile-smallest {
@@ -323,13 +353,43 @@ body {
     width: 730px;
     margin: 0 auto;
 
+    @include mobile {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
     .founder {
       display: flex;
       background-color: #222222;
       align-items: center;
 
+      @include mobile {
+        flex-direction: column;
+        width: calc(100% + 60px);
+        align-self: center;
+        padding-top: 60px;
+        padding-bottom: 60px;
+      }
+
       .founder-text {
         margin-left: 40px;
+
+        @include mobile {
+          margin-left: 0;
+          margin-top: 20px;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          flex-direction: column;
+        }
+      }
+
+      .founder-image {
+        @include mobile {
+          height: 240px;
+        }
       }
 
       .founder-name {
@@ -345,7 +405,7 @@ body {
         &:after {
           position: absolute;
           bottom: 0;
-          left: 0;
+          left: 25%;
           content: '';
           border-bottom: 5px solid $primary;
           width: 50%;
@@ -389,14 +449,18 @@ body {
         height: 60px;
         width: 100%;
 
-        @include iphone {
-          height: 40px;
+        @include mobile {
+          height: 60px;
         }
       }
 
       .field-wrap {
         flex-grow: 1;
         margin-right: 30px;
+
+        @include mobile {
+          margin-right: 0;
+        }
 
         &:last-of-type {
           margin-right: 0;
@@ -415,7 +479,7 @@ body {
           }
 
           @include iphone {
-            margin-bottom: 15px;
+            margin-bottom: 20px;
           }
         }
 
@@ -446,11 +510,18 @@ body {
         }
       }
 
+      .form-page-button {
+        @include mobile {
+          width: 100%;
+          margin-top: 20px;
+          margin-bottom: 20px;
+        }
+      }
+
       &.consent-and-submit {
         align-items: center;
 
         .consent-personal-data-processing {
-          font-family: Montserrat;
           font-size: 18px;
           line-height: 1.3;
           color: #B6B6B6;
@@ -485,6 +556,12 @@ body {
       line-height: 20px;
       margin-top: 2px;
       color: $primary;
+    }
+
+    textarea {
+      @include mobile {
+        height: 120px;
+      }
     }
 
     input,
@@ -538,6 +615,10 @@ body {
       @media screen and (max-width: 900px) {
         width: 100%;
         margin-top: 30px;
+      }
+
+      @include mobile {
+        height: 120px;
       }
 
       @include mobile-small {

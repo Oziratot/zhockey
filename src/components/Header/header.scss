@@ -59,8 +59,7 @@
       }
 
       @include iphone {
-        width: 88px;
-        height: 38px;
+        transform: scale(0.68);
       }
     }
 
@@ -313,7 +312,6 @@
   }
 
   .header-contacts {
-    width: 175px;
     margin-left: 15px;
     display: flex;
     flex-direction: column;
@@ -330,7 +328,7 @@
     }
 
     .phone-number {
-      font-size: 24px;
+      font-size: 18px;
       line-height: 28px;
       margin-bottom: 10px;
       font-weight: 400;
@@ -355,7 +353,7 @@
       background-color: transparent;
       border: none;
       color: #E16428;
-      font-size: 24px;
+      font-size: 18px;
       line-height: 28px;
       transition: opacity $trans;
       padding: 0;

@@ -60,6 +60,10 @@
     flex-wrap: wrap;
     justify-content: space-between;
 
+    @include mobile {
+      flex-direction: column;
+    }
+
     .adv-item {
       display: flex;
       flex-direction: column;
@@ -67,17 +71,38 @@
       width: 33%;
       flex-grow: 1;
 
+      @include mobile {
+        flex-direction: row;
+        width: 100%;
+        margin-bottom: 40px;
+
+        &:last-of-type {
+          margin-bottom: 0;
+        }
+      }
+
       .adv-icon {
         margin-bottom: 10px;
+        flex-shrink: 0;
       }
 
       .text-l {
         margin-bottom: 10px;
         text-align: center;
+
+        @include mobile {
+          text-align: left;
+          margin-left: 15px;
+        }
       }
 
       .text-s {
         text-align: center;
+
+        @include mobile {
+          text-align: left;
+          margin-left: 15px;
+        }
       }
     }
   }
@@ -91,6 +116,10 @@
     flex-direction: column;
     flex-wrap: wrap;
     max-height: 750px;
+
+    @include mobile {
+      max-height: none;
+    }
   }
 
   .dir-item {
@@ -103,12 +132,26 @@
     padding: 20px;
     box-shadow: 4px 4px 4px rgba(169, 157, 146, 0.25);
 
+    @include mobile {
+      width: 100%;
+      margin-right: 0;
+      padding: 15px;
+    }
+
     .dir-icon {
       flex-shrink: 0;
+
+      @include mobile {
+        transform: scale(0.9);
+      }
     }
 
     .dir-text {
       padding-left: 20px;
+
+      @include mobile {
+        padding-left: 10px;
+      }
 
       .text-xl {
         margin-bottom: 10px;
@@ -117,10 +160,18 @@
 
     &:nth-child(3n) {
       margin-bottom: 0;
+
+      @include mobile {
+        margin-bottom: 30px;
+      }
     }
 
     &:nth-child(n + 2) {
       margin-right: 0;
+
+      @include mobile {
+        margin-bottom: 30px;
+      }
     }
   }
 }
@@ -274,6 +325,22 @@
       margin-bottom: 20px;
       padding: 10px 10px 10px 30px;
       box-shadow: 4px 4px 4px rgba(169, 157, 146, 0.25);
+
+      @include mobile {
+        padding: 40px 15px 15px;
+        flex-direction: column;
+        margin-bottom: 30px;
+
+        .price-button {
+          width: 100%;
+          margin-top: 30px;
+        }
+
+        .text-xl {
+          font-size: 24px;
+          margin-bottom: 30px;
+        }
+      }
 
       &:last-of-type {
         margin-bottom: 60px;

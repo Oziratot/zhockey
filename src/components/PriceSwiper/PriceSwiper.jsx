@@ -1,35 +1,8 @@
 import React, { useEffect, useRef } from 'react';
 import Slider from 'react-slick';
-import { PRICE } from '../../constants/price';
-import PriceTab from '../PriceTab/PriceTab';
-import NextIcon from '../../assets/svg/slider-arrow-right.svg';
-import PrevIcon from '../../assets/svg/slider-arrow-left.svg';
 import PropTypes from 'prop-types';
+import PriceTab from '../PriceTab/PriceTab';
 import usePrevious from '../../utils/hooks/usePrevious';
-
-const NextArrow = function (props) {
-  const { className, style, onClick } = props;
-  return (
-    <div
-      className={className}
-      onClick={onClick}
-    >
-      <NextIcon />
-    </div>
-  );
-};
-
-const PrevArrow = function (props) {
-  const { className, style, onClick } = props;
-  return (
-    <div
-      className={className}
-      onClick={onClick}
-    >
-      <PrevIcon />
-    </div>
-  );
-};
 
 const settings = {
   infinite: true,
@@ -61,8 +34,6 @@ const settings = {
         dots: true,
         slidesToShow: 2,
         slidesToScroll: 1,
-        nextArrow: <NextArrow />,
-        prevArrow: <PrevArrow />,
       },
     },
     {
@@ -76,14 +47,12 @@ const settings = {
         dots: true,
         slidesToShow: 1,
         slidesToScroll: 1,
-        nextArrow: <NextArrow />,
-        prevArrow: <PrevArrow />,
       },
     },
   ],
 };
 
-const PriceSwiper = function ({ orderCallClick, clientWindowWidth }) {
+const PriceSwiper = function ({ items, orderCallClick, clientWindowWidth }) {
   const sliderRef = useRef(1);
   const prevWidth = usePrevious(clientWindowWidth);
 
@@ -95,16 +64,14 @@ const PriceSwiper = function ({ orderCallClick, clientWindowWidth }) {
 
   return (
     <Slider {...settings} ref={sliderRef}>
-      {PRICE.map((item) => (
+      {items.map((item) => (
         <PriceTab
-          orderCallClick={orderCallClick}
-          key={item.price}
+          key={item}
           type={item.type}
-          format={item.format}
-          duration={item.duration}
-          list={item.items}
+          days={item.days}
+          items={item.items}
           price={item.price}
-          note={item.note}
+          orderCallClick={orderCallClick}
         />
       ))}
     </Slider>

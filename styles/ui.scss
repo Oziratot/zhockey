@@ -18,12 +18,13 @@
   -webkit-appearance: none;
 
   @include landscape {
-    font-size: 24px;
+    font-size: 20px;
   }
 
   @include iphone {
     height: 60px;
-    font-size: 22px;
+    font-size: 20px;
+    font-weight: 600;
   }
 
   @include mobile-smallest {
@@ -132,7 +133,7 @@
 
     @include iphone {
       height: 60px;
-      font-size: 22px;
+      font-size: 20px;
     }
 
     @include mobile-smallest {

@@ -57,6 +57,10 @@ html {
 
   .main-wrapper {
 
+    @include mobile {
+      margin-top: auto;
+    }
+
     .address-wrapper {
       display: flex;
       margin-left: -4px;
@@ -64,6 +68,10 @@ html {
 
       svg {
         overflow: visible !important;
+      }
+
+      @include mobile {
+        justify-content: center;
       }
     }
 
@@ -97,7 +105,9 @@ html {
       }
 
       @include mobile {
-        font-size: 24px;
+        font-size: 18px;
+        white-space: normal;
+        width: 220px;
       }
 
       @include mobile-small {
@@ -107,7 +117,6 @@ html {
 
       @include iphone {
         font-size: 14px;
-        white-space: nowrap;
       }
 
       @include mobile-smallest {
@@ -180,7 +189,7 @@ html {
       }
 
       @include iphone {
-        font-size: 20px;
+        font-size: 30px;
         padding-left: 13px;
       }
 
@@ -211,6 +220,7 @@ html {
       @include mobile-small {
         padding-left: 0;
         font-size: 24px;
+        text-align: center;
       }
 
       @include iphone {
@@ -240,14 +250,12 @@ html {
        }
 
        @include iphone {
-         font-size: 22px;
          height: 60px;
          margin-top: 30px;
        }
 
        @include mobile-smallest {
          height: 55px;
-         font-size: 18px;
          line-height: 1.3;
        }
      }
@@ -1048,12 +1056,72 @@ html {
     height: 422px;
     margin: 0 auto;
 
+    @include mobile {
+      flex-direction: column-reverse;
+      height: auto;
+      width: 100%;
+    }
+
+    .schedule-image {
+      @include mobile {
+        width: calc(100% + 60px);
+        align-self: center;
+        height: 200px;
+        object-fit: cover;
+      }
+    }
+
     .schedule-text {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      flex-grow: 1;
+      margin-right: 35px;
+
+      @include mobile {
+        margin-right: 0;
+      }
+
       .days {
         font-family: Oswald, sans-serif;
         font-size: 24px;
         line-height: 1.3;
         font-weight: 500;
+        margin-bottom: 30px;
+        text-transform: uppercase;
+
+        @include mobile {
+          margin-top: 30px;
+        }
+      }
+
+
+
+      .day-container {
+        display: flex;
+        width: 100%;
+        padding: 18px 3px 18px 48px ;
+        background-color: #F5F3F1;
+        margin-bottom: 30px;
+
+        &:last-of-type {
+          margin-bottom: 0;
+        }
+
+        .day {
+          width: 50%;
+          border-right: 1px solid #E0E0E0;
+
+          &:first-of-type {
+            padding-left: 10px;
+            border-left: 10px solid $primary;
+          }
+
+          &:last-of-type {
+            border-right: none;
+            margin-left: 34px;
+          }
+        }
       }
     }
   }
@@ -1119,6 +1187,13 @@ html {
 
   .price-wrapper {
     display: flex;
+  }
+
+  .price-l {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    width: 100%;
   }
 }
 
@@ -1647,7 +1722,6 @@ html {
     }
 
     .contacts-requisites {
-      font-family: Montserrat;
       color: #FFFFFF;
       font-size: 24px;
       line-height: 1.3;
