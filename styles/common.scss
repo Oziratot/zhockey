@@ -197,6 +197,10 @@ body {
     font-size: 18px;
     line-height: 1.3;
 
+    @include mobile {
+      font-size: 16px;
+    }
+
     &.light {
       font-weight: 300;
     }
@@ -681,5 +685,41 @@ body {
   //  box-shadow: 4px 4px 4px rgba(169, 157, 146, 0.25);
   //  border: none;
   //}
+}
+
+.show-more-block {
+  text-align: center;
+  padding-top: 40px;
+
+  .show-more-btn {
+    color: white;
+    width: 200px;
+    height: 50px;
+    font-size: 20px;
+    font-weight: 600;
+    background-color: $primary;
+    cursor: pointer;
+  }
+
+  .show-more-icon {
+    margin: 11px auto 0;
+    cursor: pointer;
+
+    &.rotated {
+      transform: rotate(180deg);
+    }
+  }
+
+  &-exit {
+    height: 174px;
+    opacity: 1;
+
+    &-active {
+      height: 0;
+      padding-top: 0;
+      opacity: 0;
+      transition: all $trans;
+    }
+  }
 }
 

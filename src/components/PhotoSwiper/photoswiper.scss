@@ -82,22 +82,8 @@
       height: 60px;
     }
 
-    @include mobile-small {
-      width: 60px;
-      height: 60px;
-
-      svg {
-        transform: scale(0.8);
-      }
-    }
-
-    @include mobile-smallest {
-      width: 38px;
-      height: 38px;
-
-      svg {
-        transform: scale(0.5);
-      }
+    @include mobile {
+      display: none;
     }
 
     &.slick-next {

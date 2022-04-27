@@ -10,6 +10,10 @@
   box-shadow: 4px 4px 4px rgba(169, 157, 146, 0.25);
   margin: 0 auto 20px;
 
+  @include mobile {
+    margin: 0 10px;
+  }
+
   .pricetab-title {
     flex-shrink: 0;
     background-color: #222222;

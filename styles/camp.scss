@@ -8,14 +8,43 @@
   background-size: contain;
   background-repeat: no-repeat;
 
+  @include mobile {
+    background-image: url("../src/assets/images/camp/camp-main-mobile.jpg");
+    background-position: top;
+
+    .section-wrapper {
+      padding: 0 30px 100px;
+      position: absolute;
+      bottom: 0;
+      right: 0;
+    }
+  }
+
   .main-button {
     margin-top: 50px;
     width: 285px;
+
+    @include mobile {
+      width: 100%;
+      margin-top: 20px;
+    }
   }
 
   .camp-text {
     position: relative;
     z-index: 2;
+
+    .text-xl {
+      @include mobile {
+        font-size: 18px;
+        text-align: center;
+
+        &.first {
+          font-size: 18px;
+          text-align: left;
+        }
+      }
+    }
 
     .camp-title {
       font-family: 'Oswald', 'sans-serif';
@@ -28,6 +57,13 @@
       margin: 50px 0;
       position: relative;
       text-transform: uppercase;
+
+      @include mobile {
+        font-size: 30px;
+        padding-left: 10px;
+        border-left: 6px solid $primary;
+        margin: 20px 0;
+      }
     }
   }
 
@@ -44,10 +80,9 @@
     z-index: 1;
 
     @include mobile {
-      height: 50%;
       width: 100%;
       transform: none;
-      top: 50%;
+      top: 35%;
     }
   }
 }
@@ -117,13 +152,14 @@
     flex-wrap: wrap;
     max-height: 750px;
 
-    @include mobile {
+    @include tablet {
       max-height: none;
     }
   }
 
   .dir-item {
     display: flex;
+    position: relative;
     height: 230px;
     width: 50%;
     background-color: #F5F3F1;
@@ -132,7 +168,50 @@
     padding: 20px;
     box-shadow: 4px 4px 4px rgba(169, 157, 146, 0.25);
 
-    @include mobile {
+    &-enter {
+      height: 0;
+      overflow: hidden;
+      transition: height $trans, padding $trans;
+      padding: 0 15px;
+
+      @include laptop {
+        padding: 0 8px;
+      }
+      @include tablet {
+        padding: 0 15px;
+      }
+
+      &-active {
+        height: 230px;
+        padding: 34px 15px;
+
+        @include laptop {
+          padding: 20px 8px;
+        }
+        @include tablet {
+          padding: 15px;
+        }
+      }
+    }
+    &-exit {
+      height: 230px;
+      overflow: hidden;
+      transition: height $trans, padding $trans;
+
+      &-active {
+        height: 0;
+        padding: 0 15px;
+
+        @include laptop {
+          padding: 0 8px;
+        }
+        @include tablet {
+          padding: 0 15px;
+        }
+      }
+    }
+
+    @include tablet {
       width: 100%;
       margin-right: 0;
       padding: 15px;
@@ -141,7 +220,7 @@
     .dir-icon {
       flex-shrink: 0;
 
-      @include mobile {
+      @include tablet {
         transform: scale(0.9);
       }
     }
@@ -149,7 +228,7 @@
     .dir-text {
       padding-left: 20px;
 
-      @include mobile {
+      @include tablet {
         padding-left: 10px;
       }
 
@@ -161,7 +240,7 @@
     &:nth-child(3n) {
       margin-bottom: 0;
 
-      @include mobile {
+      @include tablet {
         margin-bottom: 30px;
       }
     }
@@ -169,7 +248,7 @@
     &:nth-child(n + 2) {
       margin-right: 0;
 
-      @include mobile {
+      @include tablet {
         margin-bottom: 30px;
       }
     }
@@ -182,6 +261,11 @@
   background-position: left;
   background-repeat: no-repeat;
 
+  @include mobile {
+    background-image: none;
+    padding-bottom: 100px;
+  }
+
   .camp-coaches {
     display: flex;
     flex-wrap: wrap;
@@ -189,33 +273,11 @@
     max-width: 800px;
     margin: 0 auto;
 
-    .coach-item {
-      margin-right: 40px;
-
-      &:first-of-type {
-        margin-bottom: 30px;
-      }
-
-      &:nth-of-type(3) {
-        margin-right: 0;
-      }
-
-      &:nth-of-type(5) {
-        margin-right: 0;
-      }
-
-      .text-xl {
-        text-align: center;
-        padding-bottom: 7px;
-        margin-bottom: 10px;
-        border-bottom: 4px solid $primary;
-      }
+    @include tablet {
+      width: 100%;
     }
 
-    .coach-photo {
-      margin-bottom: 10px;
-      flex-grow: 0;
-    }
+
   }
 }
 
@@ -231,20 +293,47 @@
     background-color: #FFFFFF;
     box-shadow: 4px 4px 4px rgba(169, 157, 146, 0.25);
 
+    @include tablet {
+      flex-direction: column;
+      align-items: center;
+      padding: 40px 15px 15px;
+    }
+
     .container {
       width: 50%;
       height: 100%;
       border-right: 1px solid #E0E0E0;
 
+      @include tablet {
+        border-right: none;
+      }
+
       .ul-small {
         list-style: disc;
         padding-inline-start: 20px;
+
+        @include mobile {
+          margin: 0 auto;
+          width: 240px;
+        }
+      }
+
+      .training-days {
+        @include tablet {
+          padding-bottom: 30px;
+          margin-bottom: 30px;
+          border-bottom: 1px solid #E0E0E0;
+        }
       }
 
       .text-xl {
         color: $primary;
         font-weight: 500;
         margin-bottom: 20px;
+
+        @include tablet {
+          text-align: center;
+        }
       }
 
       .text-m {
@@ -257,6 +346,10 @@
 
       &.left {
         padding-right: 50px;
+        @include tablet {
+          padding-right: 0;
+          width: 100%;
+        }
 
         .ul-small {
           margin-bottom: 64px;
@@ -270,6 +363,11 @@
       &.right {
         padding-left: 50px;
         border-right: none;
+
+        @include tablet {
+          width: 100%;
+          padding-left: 0;
+        }
       }
     }
 
@@ -280,6 +378,12 @@
       font-weight: 700;
       margin-top: 45px;
       width: 100%;
+
+      @include tablet {
+        width: 100%;
+        font-size: 16px;
+        margin-top: 60px;
+      }
     }
   }
 }
@@ -288,8 +392,17 @@
   display: block;
   background-color: #F5F3F1;
 
+  @include mobile {
+    padding-left: 0;
+    padding-right: 0;
+  }
+
   .section-wrapper {
     margin: 0 auto;
+
+    @include mobile {
+      padding: 0 30px;
+    }
   }
 
   .parents-list {
@@ -298,6 +411,19 @@
     margin: 20px auto 50px;
     padding-top: 20px;
     border-top: 1px solid #BDBDBD;
+
+    @include mobile {
+      width: 100%;
+      padding-inline-start: 20px;
+    }
+
+    .parents-item {
+      margin-bottom: 15px;
+
+      &:last-of-type {
+        margin-bottom: 0;
+      }
+    }
   }
 }
 
@@ -379,6 +505,10 @@
     margin: 0 auto;
     width: 585px;
 
+    @include tablet {
+      width: 100%;
+    }
+
     .safety-item {
       display: flex;
       align-items: center;
@@ -411,6 +541,72 @@
 
     .living-item {
       margin-bottom: 15px;
+    }
+  }
+}
+
+.coach-item {
+  margin-right: 40px;
+
+  @include tablet {
+    width: 240px !important;
+    margin: 30px 20px;
+  }
+
+  @include mobile {
+    margin: 0 auto;
+  }
+
+  &:first-of-type {
+    margin-bottom: 30px;
+
+    @include tablet {
+      margin-bottom: 0;
+    }
+  }
+
+  &:nth-of-type(3) {
+    margin-right: 0;
+
+    @include tablet {
+      margin: 30px 20px;
+    }
+  }
+
+  &:nth-of-type(5) {
+    margin-right: 0;
+
+    @include tablet {
+      margin: 30px 20px;
+    }
+  }
+
+  .text-xl {
+    text-align: center;
+    padding-bottom: 7px;
+    margin-bottom: 10px;
+    border-bottom: 4px solid $primary;
+
+    @include mobile {
+      font-size: 24px;
+    }
+  }
+
+  .text-s {
+    @include tablet {
+      text-align: center;
+    }
+    @include mobile {
+      font-size: 18px;
+    }
+  }
+
+  .coach-photo {
+    margin-bottom: 10px;
+    flex-grow: 0;
+
+    @include tablet {
+      margin: 0 auto 10px;
     }
   }
 }

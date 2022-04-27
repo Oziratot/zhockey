@@ -5,8 +5,9 @@ import Link from 'next/link';
 import * as Yup from 'yup';
 import axios from 'axios';
 import { stringify } from 'qs';
+import { CSSTransition, TransitionGroup } from 'react-transition-group';
+import DoubleArrowDownIcon from '../src/assets/svg/double-arrow-down.svg';
 
-import { CSSTransition } from 'react-transition-group';
 import Button from '../src/components/Button/Button';
 import { LIVING_PHOTOS } from '../src/constants/livingPhotos';
 import { PREV_CAMP_PHOTOS } from '../src/constants/prevCampPhotos';
@@ -48,6 +49,7 @@ import { ModalPortal } from './index';
 import useContactsMap from '../src/utils/hooks/useContactsMap';
 import OnlyTextInputComponent from '../src/components/ui/OnlyTextInputComponent';
 import PhoneInputComponent from '../src/components/ui/PhoneInputComponent';
+import CoachesSwiper from '../src/components/CoachesSwiper/CoachesSwiper';
 
 const validationSchema = Yup.object({
   firstName: Yup.string().required('Поле обязательно'),
@@ -183,6 +185,7 @@ const Camp = function ({ handleOrderCallClick, clientWindowWidth, handleModalClo
   const [activeFaqItem, setActiveFaqItem] = useState({ 0: true });
   const [modalActive, setModalActive] = useState(false);
   const [successfullySent, setSuccessfullySent] = useState(false);
+  const [visibleDirs, setVisibleDirs] = useState(2);
   const formRef = useRef(null);
   const firstNameRef = useRef('');
   const mapRef = useRef();
@@ -191,6 +194,8 @@ const Camp = function ({ handleOrderCallClick, clientWindowWidth, handleModalClo
   const gtag = useGTag();
   const fbq = useFbPixel();
   const handleMapModalOpen = useCallback(() => setModalActive(true), []);
+  const handleDirsShownClick = useCallback(() => setVisibleDirs(campDirections.length), []);
+  const handleDirsShownLessClick = useCallback(() => setVisibleDirs(2), []);
 
   const handleTelegramClick = useCallback(() => {
     ym('reachGoal', 'TELEGRAM_CLICKED');
@@ -241,11 +246,11 @@ const Camp = function ({ handleOrderCallClick, clientWindowWidth, handleModalClo
       <section className="section section-main camp">
         <div className="section-wrapper main-wrapper">
           <div className="camp-text">
-            <p className="text-xl white">Интенсивная подготовка хоккеистов 2003–2010&nbsp;г.&nbsp;р.</p>
+            <p className="text-xl white first">Интенсивная подготовка хоккеистов 2003–2010&nbsp;г.&nbsp;р.</p>
             <h1 className="camp-title">Хоккейный лагерь<br />в&nbsp;бресте июнь-июль 2022</h1>
             <p className="text-xl white">26&nbsp;июня&nbsp;— 9&nbsp;июля</p>
             <p className="text-xl white">10&nbsp;июля&nbsp;— 23&nbsp;июля</p>
-            <Button className="main-button">Забронировать</Button>
+            <Button className="main-button" onClick={handleOrderCallClick}>Забронировать</Button>
           </div>
         </div>
       </section>
@@ -270,38 +275,87 @@ const Camp = function ({ handleOrderCallClick, clientWindowWidth, handleModalClo
       <section className="section section-camp-directions small-p">
         <div className="section-wrapper">
           <h2 className="section-title centered">Направленность лагеря</h2>
-          <ul className="camp-directions">
-            {campDirections.map((dir) => (
-              <li key={dir.label} className="dir-item">
-                {dir.icon}
-                <div className="dir-text">
-                  <div className="text-xl bold" dangerouslySetInnerHTML={{ __html: dir.label }} />
-                  <ul className="dirs">
-                    {dir.text.map((item) => (
-                      <li key={item} className="dir">
-                        <div className="text-s" dangerouslySetInnerHTML={{ __html: item }} />
-                      </li>
+          {clientWindowWidth > 1024 && (
+            <ul className="camp-directions">
+              {campDirections.map((dir) => (
+                <li key={dir.label} className="dir-item">
+                  {dir.icon}
+                  <div className="dir-text">
+                    <div className="text-xl bold" dangerouslySetInnerHTML={{ __html: dir.label }} />
+                    <ul className="dirs">
+                      {dir.text.map((item) => (
+                        <li key={item} className="dir">
+                          <div className="text-s" dangerouslySetInnerHTML={{ __html: item }} />
+                        </li>
                     ))}
-                  </ul>
-                </div>
-              </li>
+                    </ul>
+                  </div>
+                </li>
             ))}
-          </ul>
+            </ul>
+          )}
+
+          {clientWindowWidth <= 1024 && (
+            <>
+              <ul className="camp-directions">
+                <TransitionGroup component={null}>
+                  {campDirections.slice(0, visibleDirs).map((dir) => (
+                    <CSSTransition
+                      key={dir.label}
+                      timeout={450}
+                      classNames="dir-item"
+                    >
+                      <li className="dir-item">
+                        {dir.icon}
+                        <div className="dir-text">
+                          <div className="text-xl bold" dangerouslySetInnerHTML={{ __html: dir.label }} />
+                          <ul className="dirs">
+                            {dir.text.map((item) => (
+                              <li key={item} className="dir">
+                                <div className="text-s" dangerouslySetInnerHTML={{ __html: item }} />
+                              </li>
+                            ))}
+                          </ul>
+                        </div>
+                      </li>
+                    </CSSTransition>
+                  ))}
+                </TransitionGroup>
+              </ul>
+              <CSSTransition in={visibleDirs < campDirections.length} classNames="show-more-block" timeout={300} unmountOnExit>
+                <div className="show-more-block hidden-xs">
+                  <button className="show-more-btn" type="button" onClick={handleDirsShownClick}>Показать еще</button>
+                  <DoubleArrowDownIcon className="show-more-icon" onClick={handleDirsShownClick} />
+                </div>
+              </CSSTransition>
+              <CSSTransition in={visibleDirs >= campDirections.length} classNames="show-more-block" timeout={300} unmountOnExit>
+                <div className="show-more-block hidden-xs">
+                  <button className="show-more-btn" type="button" onClick={handleDirsShownLessClick}>Свернуть</button>
+                  <DoubleArrowDownIcon className="show-more-icon rotated" onClick={handleDirsShownLessClick} />
+                </div>
+              </CSSTransition>
+            </>
+          )}
         </div>
       </section>
 
       <section className="section section-coaches">
         <div className="section-wrapper">
           <h2 className="section-title centered white">Тренеры</h2>
-          <ul className="camp-coaches">
-            {coaches.map((coach) => (
-              <li key={coach.name} className="coach-item">
-                <img className="coach-photo" src={coach.src} alt={coach.name} />
-                <p className="text-xl bold white">{coach.name}</p>
-                <div className="text-s white" dangerouslySetInnerHTML={{ __html: coach.desc }} />
-              </li>
+          {clientWindowWidth > 1024 && (
+            <ul className="camp-coaches">
+              {coaches.map((coach) => (
+                <li key={coach.name} className="coach-item">
+                  <img className="coach-photo" src={coach.src} alt={coach.name} />
+                  <p className="text-xl bold white">{coach.name}</p>
+                  <div className="text-s white" dangerouslySetInnerHTML={{ __html: coach.desc }} />
+                </li>
             ))}
-          </ul>
+            </ul>
+          )}
+          {clientWindowWidth <= 1024 && (
+            <CoachesSwiper clientWindowWidth={clientWindowWidth} items={coaches} />
+          )}
         </div>
       </section>
 
@@ -310,16 +364,20 @@ const Camp = function ({ handleOrderCallClick, clientWindowWidth, handleModalClo
           <h2 className="section-title centered">Тренировки 6&nbsp;дней в&nbsp;неделю</h2>
           <div className="training-container">
             <div className="container left">
-              <p className="text-xl">Понедельник—Пятница</p>
-              <ul className="ul-small">
-                <li className="text-m light">4&nbsp;тренировки в&nbsp;день</li>
-                <li className="text-m light">2,5&nbsp;часа льда ежедневно</li>
-                <li className="text-m light">2,5&nbsp;часа земли ежедневно</li>
-              </ul>
-              <p className="text-xl">Суббота</p>
-              <ul className="ul-small">
-                <li className="text-m light">Полноценные игры по&nbsp;1,5&nbsp;часа для&nbsp;каждой группы</li>
-              </ul>
+              <div className="training-days">
+                <p className="text-xl">Понедельник—Пятница</p>
+                <ul className="ul-small">
+                  <li className="text-m light">4&nbsp;тренировки в&nbsp;день</li>
+                  <li className="text-m light">2,5&nbsp;часа льда ежедневно</li>
+                  <li className="text-m light">2,5&nbsp;часа земли ежедневно</li>
+                </ul>
+              </div>
+              <div className="training-days">
+                <p className="text-xl">Суббота</p>
+                <ul className="ul-small">
+                  <li className="text-m light">Полноценные игры по&nbsp;1,5&nbsp;часа для&nbsp;каждой группы</li>
+                </ul>
+              </div>
             </div>
             <div className="container right">
               <p className="text-xl">Полноценное восстановление между&nbsp;тренировками</p>
@@ -365,7 +423,7 @@ const Camp = function ({ handleOrderCallClick, clientWindowWidth, handleModalClo
                 <li key={item.dates} className="schedule-price-item">
                   <div className="dates text-xl" dangerouslySetInnerHTML={{ __html: item.dates }} />
                   <div className="price text-xl bold" dangerouslySetInnerHTML={{ __html: item.price }} />
-                  <Button className="price-button">Забронировать</Button>
+                  <Button className="price-button" onClick={handleOrderCallClick}>Забронировать</Button>
                 </li>
               ))}
             </ul>
@@ -496,11 +554,11 @@ const Camp = function ({ handleOrderCallClick, clientWindowWidth, handleModalClo
                   <div className="form-row consent-and-submit">
                     {clientWindowWidth < 900 && (
                       <Button
-                        className="form-button"
+                        className="form-button form-page-button"
                         disabled={!isValid || successfullySent}
                         type="submit"
                       >
-                        Записаться
+                        Получить консультацию
                       </Button>
                     )}
                     <div className="consent-personal-data-processing">
@@ -511,7 +569,7 @@ const Camp = function ({ handleOrderCallClick, clientWindowWidth, handleModalClo
                     </div>
                     {clientWindowWidth >= 900 && (
                       <Button
-                        className="form-button"
+                        className="form-button form-page-button"
                         disabled={!isValid || successfullySent}
                         type="submit"
                       >
