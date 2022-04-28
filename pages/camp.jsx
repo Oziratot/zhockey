@@ -124,11 +124,65 @@ const campDirections = [
 ];
 
 const coaches = [
-  { name: 'Дмитрий Михин', desc: 'Тренер по&nbsp;ледовой подготовке', src: '/assets/img/camp/coaches/mihin.jpg' },
-  { name: 'Егор Гришатов', desc: 'Тренер по&nbsp;ледовой подготовке', src: '/assets/img/camp/coaches/egrishatov.jpg' },
-  { name: 'Илья Винокуров', desc: 'Тренер по&nbsp;ледовой подготовке', src: '/assets/img/camp/coaches/vinokurov.jpg' },
-  { name: 'Александр Юрин', desc: 'Тренер по&nbsp;физической подготовке', src: '/assets/img/camp/coaches/yurin.jpg' },
-  { name: 'Олег Гришатов', desc: 'Тренер по&nbsp;физической подготовке', src: '/assets/img/camp/coaches/ogrishatov.jpg' },
+  {
+    name: 'Дмитрий Михин',
+    desc: 'Тренер по&nbsp;ледовой подготовке',
+    src: '/assets/img/camp/coaches/mihin.jpg',
+    text: [
+      'Тренер по&nbsp;ледовой подготовке',
+      'Тренерский стаж с&nbsp;2014&nbsp;года',
+      'Высшее педагогическое образование РГУФКСМиТ, специальность «Тренер по&nbsp;хоккею с&nbsp;шайбой»',
+      'Специалист по&nbsp;технической и&nbsp;функциональной подготовке на&nbsp;льду',
+      'Работал с&nbsp;хоккеистами высших молодёжных и&nbsp;профессиональных лиг&nbsp;США, Канады и&nbsp;Европы.',
+    ],
+},
+  {
+    name: 'Егор Гришатов',
+    desc: 'Тренер по&nbsp;ледовой подготовке',
+    src: '/assets/img/camp/coaches/egrishatov.jpg',
+    text: [
+      'Тренер по&nbsp;ледовой подготовке',
+      'Тренерский стаж с&nbsp;2016&nbsp;года',
+      'Высшее педагогическое образование РГСУ, специальность «Физическая культура и&nbsp;спорт»',
+      'Основатель спортивной школы Grishatov Hockey',
+      'Основатель хоккейного агентства Grishatov Hockey Agency.',
+    ],
+},
+  {
+    name: 'Илья Винокуров',
+    desc: 'Тренер по&nbsp;ледовой подготовке',
+    src: '/assets/img/camp/coaches/vinokurov.jpg',
+    text: [
+      'Тренер по&nbsp;ледовой подготовке',
+      'Тренерский стаж с&nbsp;2019&nbsp;года',
+      'Высшее педагогическое образование НГГУ, специальность «Физическая Культура и&nbsp;Спорт»',
+      'Специалист по&nbsp;технической подготовке на&nbsp;льду',
+      'Работал с&nbsp;хоккеистами высших молодёжных и&nbsp;профессиональных лиг&nbsp;США, Канады и&nbsp;Европы.',
+    ],
+},
+  {
+    name: 'Александр Юрин',
+    desc: 'Тренер по&nbsp;физической подготовке',
+    src: '/assets/img/camp/coaches/yurin.jpg',
+    text: [
+      'Тренер по&nbsp;физической подготовке',
+      'Тренерский стаж с&nbsp;2008&nbsp;года',
+      'Образование National Academy of Sport Medicine USA',
+      'Специалист по&nbsp;функциональной подготовке и&nbsp;ортопедическому контролю спортсменов',
+      'Основатель спортивного центра диагностики, коррекции и&nbsp;восстановления D.R.E.A.M.',
+    ],
+},
+  {
+    name: 'Олег Гришатов',
+    desc: 'Тренер по&nbsp;физической подготовке',
+    src: '/assets/img/camp/coaches/ogrishatov.jpg',
+    text: [
+      'Тренер по&nbsp;физической подготовке',
+      'Действующий игрок канадской команды Lakehead University, USport',
+      'Лучший защитник канадской команды Bradford Rattlers, GMHL в&nbsp;сезоне 19–20&nbsp;и&nbsp;21–22',
+      'Сертифицированный тренер американской ассоциации NSCA по&nbsp;направлению STRENGTH AND CONDITIONING SPECIALIST (CSCS).',
+    ],
+},
 ];
 
 const priceSchedule = [
@@ -186,6 +240,7 @@ const Camp = function ({ handleOrderCallClick, clientWindowWidth, handleModalClo
   const [modalActive, setModalActive] = useState(false);
   const [successfullySent, setSuccessfullySent] = useState(false);
   const [visibleDirs, setVisibleDirs] = useState(2);
+  const [coach, setCoach] = useState({});
   const formRef = useRef(null);
   const firstNameRef = useRef('');
   const mapRef = useRef();
@@ -193,7 +248,8 @@ const Camp = function ({ handleOrderCallClick, clientWindowWidth, handleModalClo
   const ym = useYMetrika();
   const gtag = useGTag();
   const fbq = useFbPixel();
-  const handleMapModalOpen = useCallback(() => setModalActive(true), []);
+  const handleCoachClose = useCallback(() => setCoach({}), []);
+  const handleCoachClick = useCallback((coach) => setCoach(coach), []);
   const handleDirsShownClick = useCallback(() => setVisibleDirs(campDirections.length), []);
   const handleDirsShownLessClick = useCallback(() => setVisibleDirs(2), []);
 
@@ -345,7 +401,7 @@ const Camp = function ({ handleOrderCallClick, clientWindowWidth, handleModalClo
           {clientWindowWidth > 1024 && (
             <ul className="camp-coaches">
               {coaches.map((coach) => (
-                <li key={coach.name} className="coach-item">
+                <li key={coach.name} className="coach-item" onClick={() => handleCoachClick(coach)}>
                   <img className="coach-photo" src={coach.src} alt={coach.name} />
                   <p className="text-xl bold white">{coach.name}</p>
                   <div className="text-s white" dangerouslySetInnerHTML={{ __html: coach.desc }} />
@@ -354,7 +410,7 @@ const Camp = function ({ handleOrderCallClick, clientWindowWidth, handleModalClo
             </ul>
           )}
           {clientWindowWidth <= 1024 && (
-            <CoachesSwiper clientWindowWidth={clientWindowWidth} items={coaches} />
+            <CoachesSwiper setCoach={setCoach} clientWindowWidth={clientWindowWidth} items={coaches} />
           )}
         </div>
       </section>
@@ -648,6 +704,23 @@ const Camp = function ({ handleOrderCallClick, clientWindowWidth, handleModalClo
           </Modal>
         </div>
       </section>
+
+      <Modal className="coach-modal" onClose={handleCoachClose} active={!!Object.keys(coach).length}>
+        <div className="coach-modal-content">
+          <img className="coach-modal-image" src={coach.src} alt={coach.name} />
+          <div className="modal-text">
+            <p className="text-xl">{coach.name}</p>
+            <ul className="coach-text-items">
+              {coach?.text?.map((item) => (
+                <li key={item} className="coach-text-item">
+                  <div className="text-s" dangerouslySetInnerHTML={{ __html: item }} />
+                </li>
+              ))}
+            </ul>
+
+          </div>
+        </div>
+      </Modal>
 
     </>
   );

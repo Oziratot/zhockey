@@ -50,8 +50,8 @@ const LogoStructuredData = {
     {
       "@context": "https://schema.org",
       "@type": "Organization",
-      "url": "https://zhockey.ru/",
-      "logo": "https://zhockey.ru/assets/img/GHA-og-logo.png"
+      "url": "https://ghockey.ru/",
+      "logo": "https://ghockey.ru/assets/img/GHA-og-logo.png"
     }
   `,
 };
@@ -61,8 +61,8 @@ const OrganizationStructuredData = {
     {
       "@context": "https://schema.org",
       "@type": "SportsOrganization",
-      "image": ["https://zhockey.ru/assets/img/GHA-og-logo.png"],
-      "@id": "https://zhockey.ru/#organization",
+      "image": ["https://ghockey.ru/assets/img/GHA-og-logo.png"],
+      "@id": "https://ghockey.ru/#organization",
       "name": "Grishatov Hockey Agency",
       "address": {
         "@type": "PostalAddress",
@@ -72,7 +72,7 @@ const OrganizationStructuredData = {
         "postalCode": "115088",
         "addressCountry": "Russia"
       },
-      "url": "https://zhockey.ru/contacts",
+      "url": "https://ghockey.ru/contacts",
       "telephone": "+79160791214",
       "openingHoursSpecification": [
         {

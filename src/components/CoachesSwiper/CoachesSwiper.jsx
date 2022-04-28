@@ -39,13 +39,13 @@ const settings = {
   ],
 };
 
-const CoachesSwiper = function ({ items, clientWindowWidth }) {
+const CoachesSwiper = function ({ items, setCoach }) {
   const sliderRef = useRef(1);
 
   return (
     <Slider {...settings} ref={sliderRef}>
       {items.map((item) => (
-        <div key={item.name} className="coach-item">
+        <div key={item.name} className="coach-item" onClick={() => setCoach(item)}>
           <img className="coach-photo" src={item.src} alt={item.name} />
           <p className="text-xl bold white">{item.name}</p>
           <div className="text-s white" dangerouslySetInnerHTML={{ __html: item.desc }} />

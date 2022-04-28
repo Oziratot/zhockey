@@ -547,6 +547,7 @@
 
 .coach-item {
   margin-right: 40px;
+  cursor: pointer;
 
   @include tablet {
     width: 240px !important;
@@ -607,6 +608,63 @@
 
     @include tablet {
       margin: 0 auto 10px;
+    }
+  }
+}
+
+.coach-modal {
+  .modal-content {
+    padding: 40px;
+    width: 700px;
+
+    @include mobile {
+      padding: 60px 20px;
+    }
+
+    .coach-modal-content {
+      display: flex;
+    }
+
+    .coach-modal-image {
+      flex-shrink: 0;
+      @include mobile {
+        display: none;
+      }
+    }
+
+    .modal-text {
+      margin-left: 20px;
+      display: flex;
+      flex-direction: column;
+      flex-shrink: 1;
+
+      .text-xl {
+        font-size: 24px;
+        font-weight: 600;
+        line-height: 1.3;
+        padding-bottom: 8px;
+        width: fit-content;
+        margin-bottom: 10px;
+        border-bottom: 4px solid $primary;
+
+        @include mobile {
+          width: 100%;
+          text-align: center;
+        }
+      }
+
+      .text-s {
+        font-size: 16px;
+        line-height: 1.3;
+      }
+
+      .coach-text-items {
+        display: flex;
+        flex-direction: column;
+        list-style: disc;
+        flex-grow: 1;
+        padding-inline-start: 20px;
+      }
     }
   }
 }

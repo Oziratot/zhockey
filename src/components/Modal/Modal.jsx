@@ -59,7 +59,9 @@ class Modal extends PureComponent {
 
     document.body.classList.add('ui-modal-open');
     document.body.style.paddingRight = `${scrollbarWidth}px`;
-    this.element.current.style.paddingRight = `${scrollbarWidth}px`;
+    if (this.element.current) {
+      this.element.current.style.paddingRight = `${scrollbarWidth}px`;
+    }
 
     if (document.activeElement) {
       this.prevActiveElement = document.activeElement;

@@ -1,5 +1,5 @@
 {
-  "name": "zhockey",
+  "name": "ghockey",
   "private": true,
   "scripts": {
     "dev": "next dev",

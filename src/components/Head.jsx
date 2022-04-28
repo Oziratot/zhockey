@@ -14,8 +14,8 @@ const Head = function ({
       <meta name="twitter:description" content={desc} />
       <meta name="og-title" property="og:title" content={title} />
       <meta name="og-description" property="og:description" content={desc} />
-      <meta name="og-url" property="og:url" content={`https://zhockey.ru${page}`} />
-      <link rel="canonical" href={`https://zhockey.ru${page}`} />
+      <meta name="og-url" property="og:url" content={`https://ghockey.ru${page}`} />
+      <link rel="canonical" href={`https://ghockey.ru${page}`} />
       {breadcrumbsData && <script name="structured-data-breadcrumb-list" type="application/ld+json" dangerouslySetInnerHTML={breadcrumbsData} />}
       {children}
     </NextHead>
