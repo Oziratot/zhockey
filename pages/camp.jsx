@@ -233,6 +233,30 @@ const safety = [
   { text: 'Связь с&nbsp;тренерским штабом 24/7', icon: <SafetyIcon5 className="safety-icon" /> },
 ];
 
+const modalSchedule = [
+  '7:30 подъем',
+  '7:45 завтрак',
+  '8:00 отъезд на лед',
+  '8:45-10:00 земля 08-12',
+  '10:30-11:45 лед 08-12',
+  '9:00-10:15 лед 03-07',
+  '10:45-12:00 земля 03-07',
+  '12:15 отъезд на базу',
+  '12:45 обед',
+  '13:00-15:30 тихий час',
+  '15:45 полдник',
+  '16:00 отъезд на лед',
+  '16:45-18:00 земля 08-12',
+  '18:30-19:45 лед 08-12',
+  '17:00-18:15 лед 03-07',
+  '18:45-20:00 земля 03-07',
+  '20:15 отъезд на базу',
+  '20:45 ужин',
+  '21:00-22:00 свободное время',
+  '22:15 в комнатах',
+  '22:30 отбой',
+];
+
 const modalHeader = <p>Оставьте ваш контакт — мы&nbsp;перезвоним и&nbsp;ответим на&nbsp;все&nbsp;вопросы</p>;
 
 const Camp = function ({ handleOrderCallClick, clientWindowWidth, handleModalClose, orderCallModalActive }) {
@@ -240,6 +264,7 @@ const Camp = function ({ handleOrderCallClick, clientWindowWidth, handleModalClo
   const [modalActive, setModalActive] = useState(false);
   const [successfullySent, setSuccessfullySent] = useState(false);
   const [visibleDirs, setVisibleDirs] = useState(2);
+  const [scheduleActive, setscheduleActive] = useState(false);
   const [coach, setCoach] = useState({});
   const formRef = useRef(null);
   const firstNameRef = useRef('');
@@ -252,6 +277,7 @@ const Camp = function ({ handleOrderCallClick, clientWindowWidth, handleModalClo
   const handleCoachClick = useCallback((coach) => setCoach(coach), []);
   const handleDirsShownClick = useCallback(() => setVisibleDirs(campDirections.length), []);
   const handleDirsShownLessClick = useCallback(() => setVisibleDirs(2), []);
+  const handleScheduleClick = useCallback(() => setscheduleActive((prev) => !prev), []);
 
   const handleTelegramClick = useCallback(() => {
     ym('reachGoal', 'TELEGRAM_CLICKED');
@@ -442,7 +468,7 @@ const Camp = function ({ handleOrderCallClick, clientWindowWidth, handleModalClo
                 <li className="text-m light">2&nbsp;часа дневной&nbsp;сон</li>
                 <li className="text-m light">30&nbsp;минут перерыв между&nbsp;вечерними льдом и&nbsp;землёй</li>
               </ul>
-              <Button className="training-button">Посмотреть распорядок дня</Button>
+              <Button className="training-button" onClick={handleScheduleClick}>Посмотреть распорядок дня</Button>
             </div>
           </div>
         </div>
@@ -717,8 +743,18 @@ const Camp = function ({ handleOrderCallClick, clientWindowWidth, handleModalClo
                 </li>
               ))}
             </ul>
-
           </div>
+        </div>
+      </Modal>
+
+      <Modal className="schedule-modal" onClose={handleScheduleClick} active={scheduleActive}>
+        <div className="schedule-modal-content">
+          <p className="title">Распорядок дня</p>
+          <ul className="schedule-items">
+            {modalSchedule.map((item) => (
+              <li key={item} className="text-s">{item}</li>
+            ))}
+          </ul>
         </div>
       </Modal>
 

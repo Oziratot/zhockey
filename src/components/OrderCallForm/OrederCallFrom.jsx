@@ -89,6 +89,7 @@ const OrderCallFrom = function ({ clientWindowWidth, handleModalClose }) {
         gtag('event', 'FILLED_AND_SUCCESSFULLY_SUBMITTED');
         fbq('track', 'FILLED_AND_SUCCESSFULLY_SUBMITTED');
         setSubmitting(false);
+        setSuccessfullySent(true);
       })
       .catch(() => {
         setSubmitting(false);
