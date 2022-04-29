@@ -213,7 +213,7 @@
 
   .close-icon {
     display: block;
-    opacity: .25;
+    opacity: 1;
     will-change: transform;
     transition: transform $trans, opacity $trans;
   }

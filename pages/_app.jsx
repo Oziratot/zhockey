@@ -113,6 +113,7 @@ const MyApp = function ({ Component, pageProps }) {
         <link rel="preload" href="/fonts/Roboto-Medium.woff2" as="font" crossOrigin="" />
         <link rel="preload" href="/fonts/Roboto-Bold.woff2" as="font" crossOrigin="" />
         <link rel="preload" href="/fonts/Oswald-Medium.woff2" as="font" crossOrigin="" />
+        <link rel="preload" href="/fonts/Oswald-Regular.woff2" as="font" crossOrigin="" />
         <link rel="preload" href="/fonts/Oswald-Bold.woff2" as="font" crossOrigin="" />
       </Head>
       <Root Component={Component} pageProps={pageProps} />

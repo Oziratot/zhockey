@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import dynamic from 'next/dynamic';
 import { CSSTransition } from 'react-transition-group';
 import classnames from 'classnames';
-import CloseIconDefault from './assets/close.svg';
+import CloseIconDefault from '../../../src/assets/svg/close.svg';
 
 const Portal = dynamic(
   () => import('./Portal'),

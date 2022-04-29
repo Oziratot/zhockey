@@ -97,8 +97,6 @@ body {
     display: flex;
     justify-content: center;
     width: 100%;
-    padding-top: 154px;
-    padding-bottom: 200px;
     height: calc(100vh - 100px);
 
     @include tablet {
@@ -405,14 +403,19 @@ body {
         position: relative;
         padding-bottom: 14px;
         margin-bottom: 10px;
+        text-transform: uppercase;
 
         &:after {
           position: absolute;
           bottom: 0;
-          left: 25%;
+          left: 0;
           content: '';
           border-bottom: 5px solid $primary;
           width: 50%;
+
+          @include mobile {
+            left: 25%;
+          }
         }
       }
     }
@@ -571,7 +574,6 @@ body {
     input,
     textarea {
       padding: 0 20px;
-      font-family: Montserrat;
       font-size: 20px;
       line-height: 24px;
       color: #222222;
@@ -598,7 +600,6 @@ body {
       }
 
       &::placeholder {
-        font-family: Montserrat;
         font-size: 20px;
         line-height: 24px;
         color: #B6B6B6;

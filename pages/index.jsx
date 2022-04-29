@@ -303,7 +303,7 @@ export default function Home({
       <section className="section section-faq">
         <div className="section-wrapper">
           <div className="faq-wrapper">
-            <h2 className="section-title faq-title">FAQ</h2>
+            <h2 className="section-title faq-title">Ответы на часто задаваемые вопросы</h2>
             <ul className="faq-list">
               {FAQ.map(({ question, answer }, i) => (
                 <li
@@ -355,7 +355,7 @@ export default function Home({
                       <ErrorMessage name="firstName" component="div" className="field-error" />
                     </div>
                     <div className="field-wrap width-50">
-                      <Field name="phone" component={PhoneInputComponent} placeholder="Телефон" className={classnames({ invalid: errors.phone && touched.phone })} />
+                      <Field name="phone" component={PhoneInputComponent} placeholder="Телефон для связи" className={classnames({ invalid: errors.phone && touched.phone })} />
                       <ErrorMessage name="phone" component="div" className="field-error" />
                     </div>
                   </div>

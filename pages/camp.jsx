@@ -344,7 +344,7 @@ const Camp = function ({ handleOrderCallClick, clientWindowWidth, handleModalClo
             {campAdvantages.map((adv) => (
               <li key={adv.label} className="adv-item">
                 {adv.icon}
-                <div>
+                <div className="adv-wrapper">
                   <div className="text-l bold" dangerouslySetInnerHTML={{ __html: adv.label }} />
                   <div className="text-s" dangerouslySetInnerHTML={{ __html: adv.text }} />
                 </div>
@@ -482,7 +482,7 @@ const Camp = function ({ handleOrderCallClick, clientWindowWidth, handleModalClo
             <ul className="living">
               {living.map((item) => (
                 <li key={item} className="living-item">
-                  <div className="text-xl" dangerouslySetInnerHTML={{ __html: item }} />
+                  <div className="text-xl light" dangerouslySetInnerHTML={{ __html: item }} />
                 </li>
               ))}
             </ul>
@@ -501,10 +501,10 @@ const Camp = function ({ handleOrderCallClick, clientWindowWidth, handleModalClo
             <h2 className="section-title centered">Расписание заездов и стоимость</h2>
             <p className=" desc text-xl light centered">* Для&nbsp;бронирования необходимо внести предоплату в&nbsp;размере 25% стоимости до&nbsp;15&nbsp;мая. Оставшуюся часть&nbsp;— 75% оплатить до&nbsp;1&nbsp;июня.</p>
             <ul className="schedule-price">
-              {priceSchedule.map((item) => (
+              {priceSchedule.map((item, i) => (
                 <li key={item.dates} className="schedule-price-item">
                   <div className="dates text-xl" dangerouslySetInnerHTML={{ __html: item.dates }} />
-                  <div className="price text-xl bold" dangerouslySetInnerHTML={{ __html: item.price }} />
+                  <div className={`price text-xl bold price-${i}`} dangerouslySetInnerHTML={{ __html: item.price }} />
                   <Button className="price-button" onClick={handleOrderCallClick}>Забронировать</Button>
                 </li>
               ))}
@@ -513,7 +513,7 @@ const Camp = function ({ handleOrderCallClick, clientWindowWidth, handleModalClo
             <ul className="price-includes">
               {priceIncludes.map((item) => (
                 <li className="price-includes-item" key={item}>
-                  <div className="text-xl" dangerouslySetInnerHTML={{ __html: item }} />
+                  <div className="text-xl light" dangerouslySetInnerHTML={{ __html: item }} />
                 </li>
               ))}
             </ul>
@@ -528,7 +528,7 @@ const Camp = function ({ handleOrderCallClick, clientWindowWidth, handleModalClo
           <ul className="parents-list">
             {parents.map((item) => (
               <li key={item} className="parents-item">
-                <div className="text-xl" dangerouslySetInnerHTML={{ __html: item }} />
+                <div className="text-xl light" dangerouslySetInnerHTML={{ __html: item }} />
               </li>
             ))}
           </ul>
@@ -560,7 +560,7 @@ const Camp = function ({ handleOrderCallClick, clientWindowWidth, handleModalClo
       <section className="section section-faq">
         <div className="section-wrapper">
           <div className="faq-wrapper">
-            <h2 className="section-title faq-title">FAQ</h2>
+            <h2 className="section-title faq-title">Ответы на часто задаваемые вопросы</h2>
             <ul className="faq-list">
               {CAMP_FAQ.map(({ question, answer }, i) => (
                 <li

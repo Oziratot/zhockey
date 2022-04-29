@@ -46,6 +46,7 @@
 
       img {
         border-top: 10px solid #ED652C;
+        filter: drop-shadow(4px 4px 4px rgba(169, 157, 146, 0.25));
 
         @include mobile-small {
           border-top: 7px solid #ED652C;
