@@ -58,6 +58,12 @@ const settings = {
     {
       breakpoint: 768,
       settings: {
+        customPaging() {
+          return (
+            <div className="custom-dot" />
+          );
+        },
+        dots: true,
         slidesToShow: 1,
         centerMode: true,
         centerPadding: '150px',
@@ -66,6 +72,12 @@ const settings = {
     {
       breakpoint: 624,
       settings: {
+        customPaging() {
+          return (
+            <div className="custom-dot" />
+          );
+        },
+        dots: true,
         slidesToShow: 1,
         centerMode: true,
         centerPadding: '100px',
@@ -82,6 +94,12 @@ const settings = {
     {
       breakpoint: 390,
       settings: {
+        customPaging() {
+          return (
+            <div className="custom-dot" />
+          );
+        },
+        dots: true,
         slidesToShow: 1,
         centerMode: true,
         centerPadding: '55px',
@@ -90,6 +108,12 @@ const settings = {
     {
       breakpoint: 320,
       settings: {
+        customPaging() {
+          return (
+            <div className="custom-dot" />
+          );
+        },
+        dots: true,
         slidesToShow: 1,
         centerMode: true,
         centerPadding: '50px',

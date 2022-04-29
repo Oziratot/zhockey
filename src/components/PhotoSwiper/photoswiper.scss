@@ -43,10 +43,10 @@
       max-height: none;
       z-index: 3;
       cursor: zoom-in;
+      filter: drop-shadow(4px 4px 4px rgba(169, 157, 146, 0.25));
 
       img {
         border-top: 10px solid #ED652C;
-        filter: drop-shadow(4px 4px 4px rgba(169, 157, 146, 0.25));
 
         @include mobile-small {
           border-top: 7px solid #ED652C;
@@ -141,6 +141,28 @@
 
     &:hover {
       background-color: #FFFFFF;
+    }
+  }
+
+  .slick-dots {
+    @include mobile {
+      display: flex !important;
+      margin: 0 auto;
+      width: 330px;
+      justify-content: center;
+      position: relative;
+      bottom: -40px;
+      li {
+        width: calc(100% / 3);
+        height: 2px;
+        background-color: #E0E0E0;
+        margin: 0;
+        transition: background-color $trans;
+
+        &.slick-active {
+          background-color: $primary;
+        }
+      }
     }
   }
 }

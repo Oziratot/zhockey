@@ -64,7 +64,6 @@ export default function Home({
   const [modalActive, setModalActive] = useState(false);
   const [successfullySent, setSuccessfullySent] = useState(false);
   const handleMapModalOpen = useCallback(() => setModalActive(true), []);
-  const videoRef = useRef();
   const mapRef = useRef();
   const formRef = useRef(null);
   const firstNameRef = useRef('');
@@ -161,8 +160,8 @@ export default function Home({
             <div className="methodology-wrapper">
               <h2 className="section-title highlighted methodology-title">О методике</h2>
               {clientWindowWidth <= 768 && <div className="methodology-image" />}
-              <p className="section-text methodology-text">Меня зовут Егор Гришатов — я хоккейный тренер и агент, работаю с лигами США, Канады и Европы.</p>
-              <p className="section-text methodology-text">Моя авторская методика основана на актуальных требованиях современного хоккея — упор на игровые упражнения и&nbsp;комплексное развитие навыков как для защитников, так и для нападающих.</p>
+              <p className="section-text methodology-text">Меня зовут Егор Гришатов — я&nbsp;хоккейный тренер и&nbsp;агент, работаю с&nbsp;лигами США, Канады и&nbsp;Европы.</p>
+              <p className="section-text methodology-text">Моя авторская методика основана на&nbsp;актуальных требованиях современного хоккея — упор на&nbsp;игровые упражнения и&nbsp;комплексное развитие навыков как для защитников, так и&nbsp;для&nbsp;нападающих.</p>
               <ul className="methodology-list">
                 {METHODOLOGY.map((item) => (
                   <li className="section-text methodology-item" key={item}>{item}</li>

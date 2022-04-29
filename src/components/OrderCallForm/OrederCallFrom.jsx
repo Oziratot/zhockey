@@ -146,7 +146,7 @@ const OrderCallFrom = function ({ clientWindowWidth, handleModalClose }) {
                   disabled={!isValid || successfullySent}
                   type="submit"
                 >
-                  Записаться
+                  Отправить
                 </button>
                     )}
                 <div className="consent-personal-data-processing">
@@ -161,7 +161,7 @@ const OrderCallFrom = function ({ clientWindowWidth, handleModalClose }) {
                   disabled={!isValid || successfullySent}
                   type="submit"
                 >
-                  Записаться
+                  Отправить
                 </button>
                     )}
               </div>

@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useRef } from 'react';
 import Slider from 'react-slick';
 import PropTypes from 'prop-types';
 
@@ -6,6 +6,7 @@ const settings = {
   infinite: true,
   speed: 300,
   slidesToShow: 4,
+  initialSlide: 1,
   slidesToScroll: 4,
   responsive: [
     {

@@ -801,7 +801,7 @@ html {
 
             @include mobile-small {
               font-size: 22px;
-              font-weight: normal;
+              //font-weight: normal;
             }
 
             @include iphone {
@@ -1127,8 +1127,8 @@ html {
   flex-direction: column;
   align-items: center;
 
-  @include landscape {
-
+  @include  mobile {
+    padding-bottom: 100px;
   }
 
   @include mobile-small {
@@ -1266,6 +1266,10 @@ html {
 
       @include tablet {
         margin-bottom: 50px;
+      }
+
+      @include mobile {
+        white-space: normal;
       }
 
       @include mobile-small {
@@ -1414,8 +1418,8 @@ html {
               margin-bottom: 20px;
             }
 
-            @include mobile-small {
-              margin-bottom: 20px;
+            @include mobile {
+              margin-bottom: 10px;
             }
 
             .faq-icon {
@@ -1437,6 +1441,10 @@ html {
   display: block;
   padding-left: 0;
   padding-right: 0;
+
+  @include mobile {
+    padding-bottom: 100px;
+  }
 
   .photo-title {
     text-align: center;

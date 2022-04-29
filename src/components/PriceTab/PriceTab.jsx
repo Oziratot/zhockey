@@ -13,7 +13,7 @@ const PriceTab = function ({
           <ul className="pricetab-items">
             {items.map((item) => (
               <li key={item} className="pricetab-item">
-                <div className="text-m" dangerouslySetInnerHTML={{ __html: item }} />
+                <div className="text-m day" dangerouslySetInnerHTML={{ __html: item }} />
               </li>
             ))}
           </ul>

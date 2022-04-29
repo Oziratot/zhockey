@@ -123,6 +123,13 @@
       .adv-icon {
         margin-bottom: 10px;
         flex-shrink: 0;
+        width: 110px;
+        height: 110px;
+
+        @include mobile {
+          width: 75px;
+          height: 75px;
+        }
       }
 
       .text-l {
@@ -551,6 +558,7 @@
 .section-living {
   display: block;
   background-color: #FFFFFF;
+  padding-right: 0;
 
   .section-wrapper {
     margin: 0 auto;
@@ -558,8 +566,13 @@
 
   .living {
     list-style: disc;
-    padding-inline-start: 20px;
+    padding-inline-start: 50px;
     margin-top: 50px;
+
+    @include mobile {
+      margin-top: 90px;
+      padding: 0 30px;
+    }
 
     .living-item {
       margin-bottom: 15px;
@@ -630,6 +643,11 @@
 
     @include tablet {
       margin: 0 auto 10px;
+    }
+
+    @include mobile {
+      transform: scale(1.2);
+      margin-bottom: 45px;
     }
   }
 }
