@@ -53,6 +53,8 @@ const validationSchema = Yup.object({
   comment: Yup.string(),
 });
 
+const desktopHeader = <h1>Групповые&nbsp;тренировки<br />по&nbsp;хоккею&nbsp;для&nbsp;детей<br />от&nbsp;9&nbsp;лет</h1>;
+const mobileHeader = <h1>Групповые<br />тренировки&nbsp;по&nbsp;хоккею<br />для&nbsp;детей&nbsp;от&nbsp;9&nbsp;лет</h1>;
 const modalHeader = <p>Оставьте ваш контакт — мы&nbsp;перезвоним и&nbsp;ответим на&nbsp;все&nbsp;вопросы</p>;
 const firstBookBarText = <p>Запишитесь на первую тренировку со&nbsp;скидкой 50%</p>;
 
@@ -125,11 +127,9 @@ export default function Home({
             <span className="map-link" onClick={handleMapModalOpen}>Москва, ЛД «Морозово», ул.&nbsp;Новоостаповская д5с2</span>
           </div>
           <h1 className="h1 main-title">
-            Групповые&nbsp;тренировки
-            <br />
-            по&nbsp;хоккею&nbsp;для&nbsp;детей
-            <br />
-            от&nbsp;9&nbsp;лет
+            {clientWindowWidth > 768 ?
+              desktopHeader :
+              mobileHeader}
           </h1>
           <p className="main-text">Запишитесь на первую тренировку<br />со&nbsp;скидкой 50%</p>
           <Button className="main-button" onClick={handleOrderCallClick}>Забронировать</Button>

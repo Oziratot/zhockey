@@ -230,9 +230,16 @@
 
     .dir-icon {
       flex-shrink: 0;
+      width: 110px;
+      height: 123px;
 
       @include tablet {
         transform: scale(0.9);
+      }
+
+      @include mobile {
+        width: 67px;
+        height: 75px;
       }
     }
 
@@ -240,7 +247,7 @@
       padding-left: 20px;
 
       @include tablet {
-        padding-left: 10px;
+        padding-left: 15px;
       }
 
       .text-xl {
@@ -415,6 +422,7 @@
   @include mobile {
     padding-left: 0;
     padding-right: 0;
+    padding-bottom: 100px;
   }
 
   .section-wrapper {
@@ -479,7 +487,6 @@
 
         .price-button {
           width: 100%;
-          margin-top: 30px;
         }
 
         .text-xl {
@@ -559,6 +566,7 @@
   display: block;
   background-color: #FFFFFF;
   padding-right: 0;
+  padding-left: 0;
 
   .section-wrapper {
     margin: 0 auto;
@@ -571,7 +579,7 @@
 
     @include mobile {
       margin-top: 90px;
-      padding: 0 30px;
+      padding: 0 40px;
     }
 
     .living-item {
@@ -712,26 +720,61 @@
 
 .schedule-modal {
   .modal-content {
-    width: 400px;
-    padding: 40px;
+    padding: 60px 65px;
+    background-color: #F5F3F1;
+    width: 920px;
+
+    @include mobile {
+      width: auto;
+      padding: 30px 0 0 0;
+    }
 
     .schedule-modal-content {
+      background-color: #FFFFFF;
+      padding: 30px 67px;
+      height: 465px;
       display: flex;
-      flex-direction: column;
-      align-items: center;
+
+      @include mobile {
+        height: auto;
+      }
     }
     .title {
       font-family: Oswald, sans-serif;
+      width: fit-content;
       font-size: 24px;
       line-height: 1.3;
       font-weight: 600;
-      margin-bottom: 15px;
-      padding-bottom: 10px;
-      border-bottom: 4px solid $primary;
+      border-left: 10px solid $primary;
+      text-transform: uppercase;
+      padding-left: 15px;
+      margin: 0 auto 30px;
+
+      @include mobile {
+        border-left: none;
+      }
     }
 
     .schedule-items {
-      list-style: disc;
+      height: 100%;
+      width: 100%;
+      column-count: 2;
+
+      @include mobile {
+        column-count: 1;
+      }
+
+      .item {
+        margin-bottom: 7px;
+
+        @include mobile {
+          font-size: 16px;
+        }
+
+        span {
+          color: $primary;
+        }
+      }
     }
   }
 }

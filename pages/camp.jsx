@@ -234,27 +234,27 @@ const safety = [
 ];
 
 const modalSchedule = [
-  '7:30 подъем',
-  '7:45 завтрак',
-  '8:00 отъезд на лед',
-  '8:45-10:00 земля 08-12',
-  '10:30-11:45 лед 08-12',
-  '9:00-10:15 лед 03-07',
-  '10:45-12:00 земля 03-07',
-  '12:15 отъезд на базу',
-  '12:45 обед',
-  '13:00-15:30 тихий час',
-  '15:45 полдник',
-  '16:00 отъезд на лед',
-  '16:45-18:00 земля 08-12',
-  '18:30-19:45 лед 08-12',
-  '17:00-18:15 лед 03-07',
-  '18:45-20:00 земля 03-07',
-  '20:15 отъезд на базу',
-  '20:45 ужин',
-  '21:00-22:00 свободное время',
-  '22:15 в комнатах',
-  '22:30 отбой',
+  '<span className="accent">7:30</span>&nbsp;— подъем',
+  '<span className="accent">7:45</span>&nbsp;— завтрак',
+  '<span className="accent">8:00</span>&nbsp;— отъезд на лед',
+  '<span className="accent">8:45-10:00</span>&nbsp;— земля 08-12',
+  '<span className="accent">10:30-11:45</span>&nbsp;— лед 08-12',
+  '<span className="accent">9:00-10:15</span>&nbsp;— лед 03-07',
+  '<span className="accent">10:45-12:00</span>&nbsp;— земля 03-07',
+  '<span className="accent">12:15</span>&nbsp;— отъезд на базу',
+  '<span className="accent">12:45</span>&nbsp;— обед',
+  '<span className="accent">13:00-15:30</span>&nbsp;— тихий час',
+  '<span className="accent">15:45</span>&nbsp;— полдник',
+  '<span className="accent">16:00</span>&nbsp;— отъезд на лед',
+  '<span className="accent">16:45-18:00</span>&nbsp;— земля 08-12',
+  '<span className="accent">18:30-19:45</span>&nbsp;— лед 08-12',
+  '<span className="accent">17:00-18:15</span>&nbsp;— лед 03-07',
+  '<span className="accent">18:45-20:00</span>&nbsp;— земля 03-07',
+  '<span className="accent">20:15</span>&nbsp;— отъезд на базу',
+  '<span className="accent">20:45</span>&nbsp;— ужин',
+  '<span className="accent">21:00-22:00</span>&nbsp;— свободное время',
+  '<span className="accent">22:15</span>&nbsp;— в комнатах',
+  '<span className="accent">22:30</span>&nbsp;— отбой',
 ];
 
 const modalHeader = <p>Оставьте ваш контакт — мы&nbsp;перезвоним и&nbsp;ответим на&nbsp;все&nbsp;вопросы</p>;
@@ -498,7 +498,7 @@ const Camp = function ({ handleOrderCallClick, clientWindowWidth, handleModalClo
       <section className="section section-schedule-price small-p">
         <div className="section-wrapper">
           <div className="schedule-price-container section-container">
-            <h2 className="section-title centered">Расписание заездов и стоимость</h2>
+            <h2 className="section-title centered">Расписание заездов и&nbsp;стоимость</h2>
             <p className=" desc text-xl light centered">* Для&nbsp;бронирования необходимо внести предоплату в&nbsp;размере 25% стоимости до&nbsp;15&nbsp;мая. Оставшуюся часть&nbsp;— 75% оплатить до&nbsp;1&nbsp;июня.</p>
             <ul className="schedule-price">
               {priceSchedule.map((item, i) => (
@@ -748,11 +748,13 @@ const Camp = function ({ handleOrderCallClick, clientWindowWidth, handleModalClo
       </Modal>
 
       <Modal className="schedule-modal" onClose={handleScheduleClick} active={scheduleActive}>
+        <p className="title">Распорядок дня</p>
         <div className="schedule-modal-content">
-          <p className="title">Распорядок дня</p>
           <ul className="schedule-items">
             {modalSchedule.map((item) => (
-              <li key={item} className="text-s">{item}</li>
+              <li key={item} className="schedule-item">
+                <div className="text-s item" dangerouslySetInnerHTML={{ __html: item }} />
+              </li>
             ))}
           </ul>
         </div>
