@@ -426,6 +426,9 @@
   }
 
   .section-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     margin: 0 auto;
 
     @include mobile {
@@ -436,7 +439,7 @@
   .parents-list {
     width: 600px;
     list-style: disc;
-    margin: 20px auto 50px;
+    margin: 20px auto 40px;
     padding-top: 20px;
     border-top: 1px solid #BDBDBD;
 
@@ -451,6 +454,12 @@
       &:last-of-type {
         margin-bottom: 0;
       }
+    }
+  }
+
+  .parents-image {
+    @include mobile {
+      width: 100%;
     }
   }
 }

@@ -188,7 +188,7 @@ const coaches = [
 const priceSchedule = [
   { dates: '26&nbsp;июня&nbsp;— 9&nbsp;июля (14&nbsp;дней)', price: '84 900&nbsp;₽' },
   { dates: '10 июля&nbsp;— 23&nbsp;июля (14&nbsp;дней)', price: '84 900&nbsp;₽' },
-  { dates: '26&nbsp;июня&nbsp;— 23&nbsp;июля (28&nbsp;дней)', price: '144 900&nbsp;₽' },
+  { dates: '26&nbsp;июня&nbsp;— 23&nbsp;июля (28&nbsp;дней)', price: '154 900&nbsp;₽' },
 ];
 
 const priceIncludes = [
@@ -278,6 +278,7 @@ const Camp = function ({ handleOrderCallClick, clientWindowWidth, handleModalClo
   const handleDirsShownClick = useCallback(() => setVisibleDirs(campDirections.length), []);
   const handleDirsShownLessClick = useCallback(() => setVisibleDirs(2), []);
   const handleScheduleClick = useCallback(() => setscheduleActive((prev) => !prev), []);
+  const parentsImageSrc = clientWindowWidth > 768 ? '/assets/img/camp/parents/parents.jpg' : '/assets/img/camp/parents/parents-mobile.jpg';
 
   const handleTelegramClick = useCallback(() => {
     ym('reachGoal', 'TELEGRAM_CLICKED');
@@ -532,8 +533,8 @@ const Camp = function ({ handleOrderCallClick, clientWindowWidth, handleModalClo
               </li>
             ))}
           </ul>
+          <img className="parents-image" src={parentsImageSrc} alt="Для родителей" />
         </div>
-        <PhotoSwiper photo={PARENTS_PHOTOS} />
       </section>
 
       <section className="section section-safety">

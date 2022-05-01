@@ -1057,6 +1057,7 @@ html {
     }
 
     .schedule-image {
+      width: 51%;
       @include mobile {
         width: calc(100% + 60px);
         align-self: center;
