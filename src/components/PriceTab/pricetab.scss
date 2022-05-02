@@ -50,6 +50,7 @@
     .days {
       font-weight: 500;
       margin-bottom: 20px;
+      white-space: nowrap;
 
       @include mobile {
         font-size: 18px;

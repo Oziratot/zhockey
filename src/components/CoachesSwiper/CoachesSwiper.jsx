@@ -47,7 +47,9 @@ const CoachesSwiper = function ({ items, setCoach }) {
     <Slider {...settings} ref={sliderRef}>
       {items.map((item) => (
         <div key={item.name} className="coach-item" onClick={() => setCoach(item)}>
-          <img className="coach-photo" src={item.src} alt={item.name} />
+          <div className="photo-wrap">
+            <img className="coach-photo" src={item.src} alt={item.name} />
+          </div>
           <p className="text-xl bold white">{item.name}</p>
           <div className="text-s white" dangerouslySetInnerHTML={{ __html: item.desc }} />
         </div>

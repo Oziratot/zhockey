@@ -390,7 +390,10 @@ body {
 
       .founder-image {
         @include mobile {
+          width: 240px;
           height: 240px;
+          object-fit: cover;
+          object-position: top;
         }
       }
 

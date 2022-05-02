@@ -12,7 +12,6 @@ import Button from '../src/components/Button/Button';
 import { LIVING_PHOTOS } from '../src/constants/livingPhotos';
 import { PREV_CAMP_PHOTOS } from '../src/constants/prevCampPhotos';
 import { CAMP_FAQ } from '../src/constants/faq';
-import { PARENTS_PHOTOS } from '../src/constants/photos';
 
 import CampAdvIcon1 from '../src/assets/svg/camp-adv/camp-adv-1.svg';
 import CampAdvIcon2 from '../src/assets/svg/camp-adv/camp-adv-2.svg';
@@ -222,7 +221,7 @@ const parents = [
   '2–3-х местные номера с&nbsp;Wi-Fi, телевизором и&nbsp;санузлом в&nbsp;номере',
   'Трехразовое питание',
   'Трансфер от базы до&nbsp;ледового дворца в&nbsp;стоимость не&nbsp;входит',
-  'Проживание на территории базы в отдельном корпусе для родителей',
+  'Проживание на территории базы в&nbsp;отдельном корпусе для&nbsp;родителей',
 ];
 
 const safety = [
@@ -431,7 +430,7 @@ const Camp = function ({ handleOrderCallClick, clientWindowWidth, handleModalClo
                 <li key={coach.name} className="coach-item" onClick={() => handleCoachClick(coach)}>
                   <img className="coach-photo" src={coach.src} alt={coach.name} />
                   <p className="text-xl bold white">{coach.name}</p>
-                  <div className="text-s white" dangerouslySetInnerHTML={{ __html: coach.desc }} />
+                  <div className="text-s white coaches centered" dangerouslySetInnerHTML={{ __html: coach.desc }} />
                 </li>
             ))}
             </ul>
@@ -476,7 +475,7 @@ const Camp = function ({ handleOrderCallClick, clientWindowWidth, handleModalClo
       </section>
 
       <section className="section section-living">
-        <h2 className="section-title centered">Отличные бытовые и спортивные условия</h2>
+        <h2 className="section-title centered">Отличные бытовые и&nbsp;спортивные условия</h2>
         <PhotoSwiper photo={LIVING_PHOTOS} currentWidth={clientWindowWidth} />
         <div className="section-wrapper">
           <div className="section-container">

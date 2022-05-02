@@ -56,7 +56,7 @@
           }
 
           @include iphone {
-            margin-bottom: 15px;
+            margin-bottom: 20px;
           }
         }
 
@@ -140,7 +140,7 @@
           @include iphone {
             height: 60px;
             font-size: 20px;
-            margin-bottom: 10px;
+            margin-bottom: 20px;
           }
 
           @include mobile-smallest {

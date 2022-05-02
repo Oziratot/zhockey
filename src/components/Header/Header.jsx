@@ -150,8 +150,8 @@ const Header = function ({ windowWidth, orderCallClick }) {
               </div>
             </div>
           </CSSTransition>
+          <div className={classnames('backdrop', { active: menuOpened })} />
         </>
-
       )}
     </header>
   );

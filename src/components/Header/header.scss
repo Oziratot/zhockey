@@ -11,6 +11,21 @@
   z-index: 6;
   transition: height $trans-semi-slow;
 
+  .backdrop {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #3D3D3D;
+    opacity: 0.2;
+
+    &.active {
+      display: block;
+    }
+  }
+
   .header-wrapper {
     position: relative;
     z-index: 3;
@@ -44,22 +59,13 @@
     }
 
     .header-logo {
-      //width: 167px;
-      //height: 76px;
+      width: 150px;
+      height: 58px;
       cursor: pointer;
 
-      @include landscape {
-        //width: 111px;
-        //height: 48px;
-      }
-
-      @include tablet {
-        width: 118px;
-        height: 52px;
-      }
-
-      @include iphone {
-        transform: scale(0.68);
+      @include mobile {
+        width: 102px;
+        height: 40px;
       }
     }
 
