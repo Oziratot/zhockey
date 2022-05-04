@@ -279,7 +279,7 @@ const Camp = function ({ handleOrderCallClick, clientWindowWidth, handleModalClo
   const handleScheduleClick = useCallback(() => setscheduleActive((prev) => !prev), []);
   const onModalClose = useCallback(() => {
     handleModalClose();
-    setSuccessfullySent(false);
+    // setSuccessfullySent(false);
   }, []);
   const parentsImageSrc = clientWindowWidth > 768 ? '/assets/img/camp/parents/parents.jpg' : '/assets/img/camp/parents/parents-mobile.jpg';
 
@@ -728,7 +728,7 @@ const Camp = function ({ handleOrderCallClick, clientWindowWidth, handleModalClo
             </CSSTransition>
           </ModalPortal>
           <Modal
-            onClose={handleModalClose}
+            onClose={onModalClose}
             active={orderCallModalActive}
             header={modalHeader}
           >

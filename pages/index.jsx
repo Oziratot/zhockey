@@ -68,7 +68,7 @@ export default function Home({
   const handleMapModalOpen = useCallback(() => setModalActive(true), []);
   const onModalClose = useCallback(() => {
     handleModalClose();
-    setSuccessfullySent(false);
+    // setSuccessfullySent(false);
   }, []);
   const mapRef = useRef();
   const formRef = useRef(null);
@@ -472,7 +472,7 @@ export default function Home({
             </CSSTransition>
           </ModalPortal>
           <Modal
-            onClose={handleModalClose}
+            onClose={onModalClose}
             active={orderCallModalActive}
             header={successfullySent ? '' : modalHeader}
           >

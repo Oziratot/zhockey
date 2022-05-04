@@ -14,6 +14,7 @@ import useYMetrika from '../../utils/hooks/useYMetrika';
 import useGTag from '../../utils/hooks/useGTag';
 import useFbPixel from '../../utils/hooks/useFbPixel';
 import SuccessIcon from '../../assets/svg/success-orange.svg';
+import DomHolder from '../ui/DomHolder';
 
 const validationSchema = Yup.object({
   firstName: Yup.string().required('Поле обязательно'),
@@ -82,7 +83,6 @@ const OrderCallFrom = function ({ clientWindowWidth, handleModalClose, successfu
     }
 
     firstNameRef.current = values.firstName;
-    setSuccessfullySent(true);
 
     axios.post('/feedback-form.php', stringify(safeValues), { 'Content-Type': 'application/x-www-form-urlencoded', headers: { 'Access-Control-Allow-Origin': '*' } })
       .then(() => {
@@ -99,7 +99,7 @@ const OrderCallFrom = function ({ clientWindowWidth, handleModalClose, successfu
 
   return (
     <div className="order-call-form">
-      {!successfullySent ? (
+      {!successfullySent && (
         <Formik
           initialValues={{ firstName: '', phone: '', comment: '' }}
           validationSchema={validationSchema}
@@ -168,12 +168,18 @@ const OrderCallFrom = function ({ clientWindowWidth, handleModalClose, successfu
             </form>
           )}
         </Formik>
-      ) : (
-        <div className="success">
-          <SuccessIcon />
-          <p className="text-xl bold">Ваша заявка принята</p>
-          <p className="text-l light">Мы&nbsp;свяжемся с&nbsp;вами в&nbsp;ближайшее время!</p>
-        </div>
+      )}
+
+      {successfullySent && (
+        <DomHolder>
+          {successfullySent && (
+            <div className="success">
+              <SuccessIcon />
+              <p className="text-xl bold">Ваша заявка принята</p>
+              <p className="text-l light">Мы&nbsp;свяжемся с&nbsp;вами в&nbsp;ближайшее время!</p>
+            </div>
+          )}
+        </DomHolder>
       )}
     </div>
   );
