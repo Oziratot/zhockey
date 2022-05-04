@@ -59,13 +59,17 @@ const modalHeader = <p>Оставьте ваш контакт — мы&nbsp;пе
 const firstBookBarText = <p>Запишитесь на первую тренировку со&nbsp;скидкой 50%</p>;
 
 export default function Home({
-  clientWindowWidth, handleModalClose, orderCallModalActive, handleOrderCallClick,
+  clientWindowWidth, handleModalClose, orderCallModalActive, handleOrderCallClick, setlOrderCallModalActive,
 }) {
   const [activeDirectionsItems, setActiveDirectionsItems] = useState({ 0: true });
   const [activeFaqItem, setActiveFaqItem] = useState({ 0: true });
   const [modalActive, setModalActive] = useState(false);
   const [successfullySent, setSuccessfullySent] = useState(false);
   const handleMapModalOpen = useCallback(() => setModalActive(true), []);
+  const onModalClose = useCallback(() => {
+    handleModalClose();
+    setSuccessfullySent(false);
+  }, []);
   const mapRef = useRef();
   const formRef = useRef(null);
   const firstNameRef = useRef('');
@@ -95,7 +99,7 @@ export default function Home({
   const handleSubmit = useCallback((values, { isSubmitting, setSubmitting }) => {
     if (isSubmitting || successfullySent) return;
 
-    const safeValues = { ...values, topic };
+    const safeValues = { ...values };
 
     if (formRef.current['gha-a-n-t-i-s-p-a-m-f-i-e-l-d'].checked) {
       safeValues['gha-a-n-t-i-s-p-a-m-f-i-e-l-d'] = 1;
@@ -109,11 +113,15 @@ export default function Home({
         gtag('event', 'FILLED_AND_SUCCESSFULLY_SUBMITTED');
         fbq('track', 'FILLED_AND_SUCCESSFULLY_SUBMITTED');
         setSubmitting(false);
+        setSuccessfullySent(true);
+
+        if (!modalActive) {
+          setlOrderCallModalActive(true);
+        }
       })
       .catch(() => {
         setSubmitting(false);
       });
-    handleModalClose();
   }, [successfullySent]);
 
   useContactsMap(mapRef, true);
@@ -274,7 +282,7 @@ export default function Home({
             <div className="price-l">
               {PRICE.map((item) => (
                 <PriceTab
-                  key={item}
+                  key={item.type}
                   type={item.type}
                   days={item.days}
                   items={item.items}
@@ -466,10 +474,15 @@ export default function Home({
           <Modal
             onClose={handleModalClose}
             active={orderCallModalActive}
-            header={modalHeader}
+            header={successfullySent ? '' : modalHeader}
           >
             <div>
-              <OrderCallFrom handleModalClose={handleModalClose} clientWindowWidth={clientWindowWidth} />
+              <OrderCallFrom
+                successfullySent={successfullySent}
+                setSuccessfullySent={setSuccessfullySent}
+                handleModalClose={onModalClose}
+                clientWindowWidth={clientWindowWidth}
+              />
             </div>
           </Modal>
         </div>

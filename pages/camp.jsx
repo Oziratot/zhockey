@@ -258,7 +258,7 @@ const modalSchedule = [
 
 const modalHeader = <p>Оставьте ваш контакт — мы&nbsp;перезвоним и&nbsp;ответим на&nbsp;все&nbsp;вопросы</p>;
 
-const Camp = function ({ handleOrderCallClick, clientWindowWidth, handleModalClose, orderCallModalActive }) {
+const Camp = function ({ handleOrderCallClick, clientWindowWidth, handleModalClose, orderCallModalActive, setlOrderCallModalActive }) {
   const [activeFaqItem, setActiveFaqItem] = useState({ 0: true });
   const [modalActive, setModalActive] = useState(false);
   const [successfullySent, setSuccessfullySent] = useState(false);
@@ -277,6 +277,10 @@ const Camp = function ({ handleOrderCallClick, clientWindowWidth, handleModalClo
   const handleDirsShownClick = useCallback(() => setVisibleDirs(campDirections.length), []);
   const handleDirsShownLessClick = useCallback(() => setVisibleDirs(2), []);
   const handleScheduleClick = useCallback(() => setscheduleActive((prev) => !prev), []);
+  const onModalClose = useCallback(() => {
+    handleModalClose();
+    setSuccessfullySent(false);
+  }, []);
   const parentsImageSrc = clientWindowWidth > 768 ? '/assets/img/camp/parents/parents.jpg' : '/assets/img/camp/parents/parents-mobile.jpg';
 
   const handleTelegramClick = useCallback(() => {
@@ -316,11 +320,15 @@ const Camp = function ({ handleOrderCallClick, clientWindowWidth, handleModalClo
         gtag('event', 'FILLED_AND_SUCCESSFULLY_SUBMITTED');
         fbq('track', 'FILLED_AND_SUCCESSFULLY_SUBMITTED');
         setSubmitting(false);
+        setSuccessfullySent(true);
+
+        if (!modalActive) {
+          setlOrderCallModalActive(true);
+        }
       })
       .catch(() => {
         setSubmitting(false);
       });
-    handleModalClose();
   }, [successfullySent]);
 
   return (
@@ -725,7 +733,12 @@ const Camp = function ({ handleOrderCallClick, clientWindowWidth, handleModalClo
             header={modalHeader}
           >
             <div>
-              <OrderCallFrom handleModalClose={handleModalClose} clientWindowWidth={clientWindowWidth} />
+              <OrderCallFrom
+                successfullySent={successfullySent}
+                setSuccessfullySent={setSuccessfullySent}
+                handleModalClose={onModalClose}
+                clientWindowWidth={clientWindowWidth}
+              />
             </div>
           </Modal>
         </div>

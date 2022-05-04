@@ -33,6 +33,7 @@ const Root = function ({ Component, pageProps }) {
           orderCallModalActive={orderCallModalActive}
           handleOrderCallClick={handleOrderCallClick}
           clientWindowWidth={clientWindowWidth}
+          setlOrderCallModalActive={setlOrderCallModalActive}
           {...pageProps}
         />
       </main>

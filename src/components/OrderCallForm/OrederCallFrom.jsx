@@ -13,6 +13,7 @@ import { stringify } from 'qs';
 import useYMetrika from '../../utils/hooks/useYMetrika';
 import useGTag from '../../utils/hooks/useGTag';
 import useFbPixel from '../../utils/hooks/useFbPixel';
+import SuccessIcon from '../../assets/svg/success-orange.svg';
 
 const validationSchema = Yup.object({
   firstName: Yup.string().required('Поле обязательно'),
@@ -64,8 +65,7 @@ const OnlyTextInputComponent = function ({
   );
 };
 
-const OrderCallFrom = function ({ clientWindowWidth, handleModalClose }) {
-  const [successfullySent, setSuccessfullySent] = useState(false);
+const OrderCallFrom = function ({ clientWindowWidth, handleModalClose, successfullySent, setSuccessfullySent }) {
   const formRef = useRef(null);
   const firstNameRef = useRef('');
   const ym = useYMetrika();
@@ -82,6 +82,7 @@ const OrderCallFrom = function ({ clientWindowWidth, handleModalClose }) {
     }
 
     firstNameRef.current = values.firstName;
+    setSuccessfullySent(true);
 
     axios.post('/feedback-form.php', stringify(safeValues), { 'Content-Type': 'application/x-www-form-urlencoded', headers: { 'Access-Control-Allow-Origin': '*' } })
       .then(() => {
@@ -94,12 +95,11 @@ const OrderCallFrom = function ({ clientWindowWidth, handleModalClose }) {
       .catch(() => {
         setSubmitting(false);
       });
-    handleModalClose();
   }, [successfullySent]);
 
   return (
     <div className="order-call-form">
-      {!successfullySent && (
+      {!successfullySent ? (
         <Formik
           initialValues={{ firstName: '', phone: '', comment: '' }}
           validationSchema={validationSchema}
@@ -168,6 +168,12 @@ const OrderCallFrom = function ({ clientWindowWidth, handleModalClose }) {
             </form>
           )}
         </Formik>
+      ) : (
+        <div className="success">
+          <SuccessIcon />
+          <p className="text-xl bold">Ваша заявка принята</p>
+          <p className="text-l light">Мы&nbsp;свяжемся с&nbsp;вами в&nbsp;ближайшее время!</p>
+        </div>
       )}
     </div>
   );
