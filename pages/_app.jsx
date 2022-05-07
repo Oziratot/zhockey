@@ -103,11 +103,11 @@ const MyApp = function ({ Component, pageProps }) {
         <meta name="description" content="Хоккейная школа Grishatov Hockey" />
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
         <meta name="format-detection" content="telephone=no" />
-        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
-        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
-        <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32v1.png" />
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16v1.png" />
+        <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-iconv1.png" />
         <link rel="manifest" href="/site.webmanifest" />
-        <link rel="mask-icon" href="/safari-pinned-tab.svg" />
+        <link rel="mask-icon" href="/safari-pinned-tabv1.svg" />
         <link rel="preload" href="/fonts/Roboto-Light.woff2" as="font" crossOrigin="" />
         <link rel="preload" href="/fonts/Roboto-Regular.woff2" as="font" crossOrigin="" />
         <link rel="preload" href="/fonts/Roboto-Medium.woff2" as="font" crossOrigin="" />
