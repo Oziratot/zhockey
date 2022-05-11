@@ -63,10 +63,10 @@ const Header = function ({ windowWidth, orderCallClick }) {
     <header
       className="header"
       style={{
-        height: `${windowWidth > 1024 ? height : (windowWidth > 390 ? 80 : 60)}px`,
+        height: `${windowWidth > 1279 ? height : (windowWidth > 390 ? 80 : 60)}px`,
       }}
     >
-      {(windowWidth > 1024) ? (
+      {(windowWidth > 1279) ? (
         <div className="header-wrapper">
           <div className="container">
             <Link passHref href="/">
@@ -88,6 +88,7 @@ const Header = function ({ windowWidth, orderCallClick }) {
         </div>
       ) : (
         <>
+          <div className="mobile-header" />
           <div className="header-wrapper">
             <Link passHref href="/">
               <a>

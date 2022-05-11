@@ -166,7 +166,7 @@
     flex-wrap: wrap;
     max-height: 750px;
 
-    @include tablet {
+    @include laptop {
       max-height: none;
     }
   }
@@ -225,7 +225,7 @@
       }
     }
 
-    @include tablet {
+    @include laptop {
       width: 100%;
       margin-right: 0;
       padding: 15px;
@@ -265,7 +265,7 @@
     &:nth-child(3n) {
       margin-bottom: 0;
 
-      @include tablet {
+      @include laptop {
         margin-bottom: 30px;
       }
     }
@@ -273,7 +273,7 @@
     &:nth-child(n + 2) {
       margin-right: 0;
 
-      @include tablet {
+      @include laptop {
         margin-bottom: 30px;
       }
     }

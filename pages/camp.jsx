@@ -345,7 +345,7 @@ const Camp = function ({ handleOrderCallClick, clientWindowWidth, handleModalClo
         </div>
       </section>
 
-      <section className="section section-camp-advantages">
+      <section className="section section-camp-advantages" id="about">
         <div className="section-wrapper">
           <h2 className="section-title centered">Преимущества лагеря</h2>
           <ul className="camp-advantages">
@@ -429,7 +429,7 @@ const Camp = function ({ handleOrderCallClick, clientWindowWidth, handleModalClo
         </div>
       </section>
 
-      <section className="section section-coaches">
+      <section className="section section-coaches" id="treners">
         <div className="section-wrapper">
           <h2 className="section-title centered white">Тренеры</h2>
           {clientWindowWidth > 1024 && (
@@ -503,7 +503,7 @@ const Camp = function ({ handleOrderCallClick, clientWindowWidth, handleModalClo
         <ReviewsSwiper />
       </section>
 
-      <section className="section section-schedule-price small-p">
+      <section className="section section-schedule-price small-p" id="price">
         <div className="section-wrapper">
           <div className="schedule-price-container section-container">
             <h2 className="section-title centered">Расписание заездов и&nbsp;стоимость</h2>

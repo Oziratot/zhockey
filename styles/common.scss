@@ -25,6 +25,10 @@ main {
   overflow: hidden;
   padding-top: 100px;
 
+  @include tablet-laptop {
+    padding-top: 80px;
+  }
+
   @include tablet {
     padding-top: 80px;
   }

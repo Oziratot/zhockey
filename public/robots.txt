@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+sitemap: http://ghockey.ru/sitemap.xml
