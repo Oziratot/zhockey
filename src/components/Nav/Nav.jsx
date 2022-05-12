@@ -21,7 +21,7 @@ const Nav = function ({ mobile, setMenuOpened, handleTelegramClick, handleWhatsa
       </nav>
       {!mobile && (
       <div className="social-links">
-        <Link passHref href="https://www.instagram.com/gha_hockey/" target="_blank">
+        <Link passHref href="https://instagram.com/grishatov_hockey" target="_blank">
           <div className="social-links-item"><InstagramIcon /></div>
         </Link>
         <Link passHref href="https://wa.me/79160791214">

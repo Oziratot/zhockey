@@ -137,7 +137,7 @@ const Header = function ({ windowWidth, orderCallClick }) {
                     <button onClick={orderCallClick} type="button" className="header-button">Заказать звонок</button>
                   </div>
                   <div className="social-links">
-                    <Link passHref href="https://www.instagram.com/z_hockey_/" target="_blank">
+                    <Link passHref href="https://instagram.com/grishatov_hockey" target="_blank">
                       <div className="social-links-item"><InstagramIcon /></div>
                     </Link>
                     <Link passHref href="https://wa.me/79160791214">

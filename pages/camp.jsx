@@ -681,7 +681,7 @@ const Camp = function ({ handleOrderCallClick, clientWindowWidth, handleModalClo
             <p className="contacts-text">Свяжитесь с нами</p>
             <a className="contacts-tel" onClick={handlePhoneClick} href="tel:79160791214">+7 916 079-12-14</a>
             <div className="social-links">
-              <Link passHref href="https://www.instagram.com/z_hockey_/" target="_blank">
+              <Link passHref href="https://instagram.com/grishatov_hockey" target="_blank">
                 <div className="social-links-item"><InstagramIcon /></div>
               </Link>
               <Link passHref href="https://wa.me/79160791214">
