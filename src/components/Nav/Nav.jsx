@@ -5,7 +5,7 @@ import InstagramIcon from '../../assets/svg/social/instagram-logo.svg';
 import WhatsappIcon from '../../assets/svg/social/whatsapp-logo.svg';
 import TelegramIcon from '../../assets/svg/social/telegram-logo.svg';
 
-const Nav = function ({ mobile, setMenuOpened, handleTelegramClick, handleWhatsappClick, handlePhoneClick }) {
+const Nav = function ({ mobile, setMenuOpened, handleTelegramClick, handleWhatsappClick }) {
   const handleCloseClick = () => {
     setMenuOpened(false);
   };
