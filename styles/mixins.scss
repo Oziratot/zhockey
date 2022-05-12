@@ -38,6 +38,12 @@
   }
 }
 
+@mixin laptop-max {
+  @media #{$media-laptop-max} {
+    @content;
+  }
+}
+
 @mixin laptop {
   @media #{$media-laptop} {
     @content;

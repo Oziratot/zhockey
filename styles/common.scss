@@ -118,7 +118,7 @@ body {
     max-width: 58.3%;
     width: 100%;
 
-    @include landscape {
+    @include laptop-max {
       max-width: 77.7%;
     }
 

@@ -28,7 +28,7 @@ $media-desktop: '(min-width: #{$laptopMaxWidth + 1})';
 $media-laptop-landscape: '(max-width: #{$tabletLandscapeMaxWidth + 1})';
 $media-laptop: '(max-width: #{$laptopMinWidth + 1})';
 $media-laptop-desktop: '(min-width: #{$tabletMaxWidth + 1})';
-//$media-laptop: '(max-width: #{$laptopMaxWidth})';
+$media-laptop-max: '(max-width: #{$laptopMaxWidth})';
 $media-laptop-only: '(min-width: #{$tabletMaxWidth + 1}) and (max-width: #{$laptopMaxWidth})';
 $media-tablet-laptop-desktop: '(min-width: #{$mobileMaxWidth + 1})';
 $media-tablet-laptop: '(min-width: #{$mobileMaxWidth + 1}) and (max-width: #{$laptopMinWidth})';

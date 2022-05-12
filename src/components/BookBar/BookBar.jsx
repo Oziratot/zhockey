@@ -5,7 +5,7 @@ const BookBar = function ({ text, buttonText, orderCallClick }) {
   return (
     <div className="bookbar">
       <div className="bookbar-container">
-        <p className="bookbar-text">{text}</p>
+        <div className="bookbar-text" dangerouslySetInnerHTML={{ __html: text }} />
         <Button color="white" onClick={orderCallClick} type="button">{buttonText}</Button>
       </div>
     </div>

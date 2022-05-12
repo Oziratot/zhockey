@@ -53,10 +53,9 @@ const validationSchema = Yup.object({
   comment: Yup.string(),
 });
 
-const desktopHeader = <h1>Групповые&nbsp;тренировки<br />по&nbsp;хоккею&nbsp;для&nbsp;детей<br />от&nbsp;9&nbsp;лет</h1>;
-const mobileHeader = <h1>Групповые<br />тренировки&nbsp;по&nbsp;хоккею<br />для&nbsp;детей&nbsp;от&nbsp;9&nbsp;лет</h1>;
+const desktopHeader = <h1 className="h1 main-title">Групповые&nbsp;тренировки<br />по&nbsp;хоккею&nbsp;для&nbsp;детей<br />от&nbsp;9&nbsp;лет</h1>;
+const mobileHeader = <h1 className="h1 main-title">Групповые<br />тренировки&nbsp;по&nbsp;хоккею<br />для&nbsp;детей&nbsp;от&nbsp;9&nbsp;лет</h1>;
 const modalHeader = <p>Оставьте ваш контакт — мы&nbsp;перезвоним и&nbsp;ответим на&nbsp;все&nbsp;вопросы</p>;
-const firstBookBarText = <p>Запишитесь на первую тренировку со&nbsp;скидкой 50%</p>;
 
 export default function Home({
   clientWindowWidth, handleModalClose, orderCallModalActive, handleOrderCallClick, setlOrderCallModalActive,
@@ -134,11 +133,9 @@ export default function Home({
             <MarkerIcon className="marker-icon" />
             <span className="map-link" onClick={handleMapModalOpen}>Москва, ЛД «Морозово», ул.&nbsp;Новоостаповская д5с2</span>
           </div>
-          <h1 className="h1 main-title">
-            {clientWindowWidth > 768 ?
-              desktopHeader :
-              mobileHeader}
-          </h1>
+          {clientWindowWidth > 768 ?
+            desktopHeader :
+            mobileHeader}
           <p className="main-text">Запишитесь на первую тренировку<br />со&nbsp;скидкой 50%</p>
           <Button className="main-button" onClick={handleOrderCallClick}>Забронировать</Button>
         </div>
@@ -180,7 +177,7 @@ export default function Home({
         </div>
       </section>
 
-      <BookBar orderCallClick={handleOrderCallClick} text={firstBookBarText} buttonText="Записаться" />
+      <BookBar orderCallClick={handleOrderCallClick} text="Запишитесь на первую тренировку со&nbsp;скидкой 50%" buttonText="Записаться" />
 
       <section className="section section-directions">
         <div className="section-wrapper directions-container">
